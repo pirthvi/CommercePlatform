@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jetty-server-9.4.46.v20220331">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/eclipse/jetty/jetty-server/9.4.46.v20220331/jetty-server-9.4.46.v20220331.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

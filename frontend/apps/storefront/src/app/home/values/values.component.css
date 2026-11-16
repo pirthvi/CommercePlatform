@@ -1,0 +1,64 @@
+:host { display: block; min-width: 0; }
+
+.home-values {
+  max-width: var(--content);
+  margin: auto;
+  padding: 56px 30px 62px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 35px;
+}
+.home-values>div {
+  padding: 6px 18px;
+  border-left: 1px solid #ded9d0;
+}
+.home-values>div>span {
+  font-size: 8px;
+  color: #a47a40;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+.home-values h3 {
+  font-size: 14px;
+  margin: 8px 0 5px;
+}
+.home-values p {
+  max-width: 275px;
+  font-size: 10px;
+  color: #767169;
+  line-height: 1.7;
+  margin: 0;
+}
+.home-values h3 {
+  font-size: 17px;
+}
+.home-values p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+.home-values>div>span {
+  font-size: 10px;
+}
+@media (max-width:680px) {
+  .home-values p {
+    font-size: 14px;
+  }
+  .home-values h3 {
+    font-size: 16px;
+  }
+  .home-values {
+    padding: 37px 20px 42px;
+    grid-template-columns: 1fr;
+    gap: 19px;
+  }
+  .home-values>div {
+    padding: 4px 14px;
+  }
+  .home-values p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .home-values h3 {
+    font-size: 16px;
+  }
+}

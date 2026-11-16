@@ -1,0 +1,4 @@
+:host { display: block; min-width: 0; }
+.stock-row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; padding:12px 0; border-bottom:1px solid var(--cms-border); }
+.stock-row > :first-child { flex:1 1 160px; }
+.stock-row small {display:block; color:var(--cms-muted);}

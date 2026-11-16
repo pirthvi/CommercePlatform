@@ -1,0 +1,13 @@
+:host { display: block; min-width: 0; }
+
+.connection-error {min-height:60vh;display:grid;place-content:center;gap:12px;text-align:center;}
+
+.content-loading {
+  min-height: 55vh;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  color: #6f7165;
+  font: italic 17px var(--serif);
+  text-align: center;
+}

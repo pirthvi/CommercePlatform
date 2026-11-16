@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="maven-reporting-exec-1.6.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/apache/maven/reporting/maven-reporting-exec/1.6.0/maven-reporting-exec-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

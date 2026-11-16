@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="plexus-compiler-javac-2.13.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/codehaus/plexus/plexus-compiler-javac/2.13.0/plexus-compiler-javac-2.13.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

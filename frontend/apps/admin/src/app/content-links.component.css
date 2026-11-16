@@ -1,0 +1,12 @@
+:host { display: block; min-width: 0; }
+
+.cms-link-row {
+  margin-block: 12px;
+  padding: 14px;
+  border: 1px solid var(--cms-border);
+  border-radius: 7px;
+  background: #f9faf5;
+}
+.cms-link-row > .cms-actions {
+  margin-top: 10px;
+}

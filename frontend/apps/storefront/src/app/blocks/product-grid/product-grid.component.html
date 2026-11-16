@@ -1,0 +1,8 @@
+<section class="grid-block">
+  @if (section.eyebrow) { <span class="eyebrow">{{ section.eyebrow }}</span> }
+  @if (section.heading) { <h2>{{ section.heading }}</h2> }
+  <div class="product-grid">
+    @for (product of selected; track product.id) { <shop-product-card [product]="product" /> }
+    @empty { <p>{{ section.emptyMessage }}</p> }
+  </div>
+</section>

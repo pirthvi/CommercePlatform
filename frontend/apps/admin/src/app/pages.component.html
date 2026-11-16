@@ -1,0 +1,21 @@
+<div class="manager-heading">
+  <h1>{{ ui.text('pages.pages') }}</h1>
+  <a class="primary-button" routerLink="/pages/new">{{ ui.text('pages.createPage') }}</a>
+</div>
+@if (error) { <div class="flash error-flash" role="alert">{{ error }} <button type="button" (click)="load()">{{ ui.text('connection.retry') }}</button></div> }
+<section class="panel page-manager"><div class="page-list">
+  @for (page of pages; track page.id) {
+    <article class="page-row">
+      <span class="page-symbol" aria-hidden="true">▤</span>
+      <div class="page-info"><h3><a [routerLink]="editor(page)">{{ page.title }}</a></h3>
+        <small>{{ ui.text('pages.updated') }} {{ page.updatedAt | date:'d MMM y' }}</small>
+      </div>
+      <span class="status-pill" [class.status-delivered]="page.published">{{ ui.text(page.published ? 'pages.published' : 'pages.draft') }}</span>
+      <div class="row-actions">
+        @if (page.published && url(page); as href) { <a [href]="href" target="_blank" rel="noopener">{{ ui.text('pages.view') }}</a> }
+        <a [routerLink]="editor(page)">{{ ui.text('pages.edit') }}</a>
+        @if (!page.templateKey) { <button type="button" (click)="remove(page)">{{ ui.text('pages.remove') }}</button> }
+      </div>
+    </article>
+  } @empty { <p class="table-empty">{{ ui.text(loading ? 'pages.loadingPages' : 'pages.noAdditionalPagesYetUseCreatePageTo') }}</p> }
+</div></section>

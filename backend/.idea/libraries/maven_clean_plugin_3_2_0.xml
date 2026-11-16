@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="maven-clean-plugin-3.2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/apache/maven/plugins/maven-clean-plugin/3.2.0/maven-clean-plugin-3.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

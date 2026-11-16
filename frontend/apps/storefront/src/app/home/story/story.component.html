@@ -1,0 +1,12 @@
+<section class="home-story">
+  <div class="home-story-image">
+    <img *ngIf="section.imageUrl" [src]="section.imageUrl" [alt]="section.imageAlt || section.heading || ''" loading="lazy">
+    <span>{{ section.imageCaption }}</span>
+  </div>
+  <div class="home-story-copy">
+    <span class="home-kicker dark-kicker">{{ section.eyebrow }}</span>
+    <h2>{{ section.heading }}</h2>
+    <p>{{ section.body }}</p>
+    <a class="home-cta home-cta-dark" *ngIf="section.buttonLabel" [shopBlockLink]="section.buttonPath || '/pages/about'" [blockCategory]="section.buttonCategory">{{ section.buttonLabel }} <span>↗</span></a>
+  </div>
+</section>

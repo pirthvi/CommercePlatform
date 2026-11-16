@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="maven-compat-3.2.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/apache/maven/maven-compat/3.2.5/maven-compat-3.2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

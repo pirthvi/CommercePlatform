@@ -1,0 +1,77 @@
+:host { display: block; min-width: 0; }
+
+.home-featured {
+  max-width: var(--content);
+  margin: auto;
+  padding: 70px 30px 75px;
+}
+.home-featured {
+  padding-top: 4px;
+  padding-bottom: 80px;
+}
+.collection-tabs {
+  display: flex;
+  gap: 25px;
+  border-bottom: 1px solid #e9e6e0;
+  margin: -3px 0 24px;
+}
+.collection-tabs button {
+  position: relative;
+  border: 0;
+  background: none;
+  padding: 9px 0 12px;
+  color: #77736b;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  cursor: pointer;
+}
+.collection-tabs button.active {
+  color: #1b1a18;
+}
+.collection-tabs button.active:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #a57a3f;
+}
+.home-product-grid {
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  column-gap: 15px;
+  row-gap: 34px;
+}
+.collection-tabs button {
+  font-size: 12px;
+  letter-spacing: .025em;
+  text-transform: none;
+}
+@media (max-width:680px) {
+  .collection-tabs button {
+    font-size: 10px;
+  }
+  .home-featured {
+    padding: 48px 16px 52px;
+  }
+  .home-featured {
+    padding-top: 0;
+    padding-bottom: 54px;
+  }
+  .collection-tabs {
+    gap: 20px;
+    margin-bottom: 18px;
+  }
+  .collection-tabs button {
+    font-size: 8px;
+    padding-bottom: 10px;
+  }
+  .home-product-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 25px 11px;
+  }
+  .collection-tabs button {
+    font-size: 12px;
+  }
+}

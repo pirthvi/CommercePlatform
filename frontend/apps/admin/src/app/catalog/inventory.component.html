@@ -1,0 +1,50 @@
+<div class="cms-workspace">
+  <div class="cms-heading">
+    <h1>{{ ui.text('inventory.inventory') }}</h1>
+    <button class="cms-button" (click)="refresh()" [disabled]="busy">{{ ui.text('inventory.refreshStock') }}</button>
+  </div>
+  @if (error) {
+    <p class="cms-error" role="alert">{{ error }}</p>
+  }
+  <section class="cms-panel">
+    <label class="cms-field">{{ ui.text('inventory.findAProduct') }}<input [(ngModel)]="term" type="search"></label>
+    @for (p of filtered; track p.id) {
+      <div class="stock-row">
+        <div>
+          <strong>{{ p.name }}</strong>
+          <small>{{ p.category }}</small>
+        </div>
+        <span>{{ p.stock }} {{ ui.text('inventory.units') }}</span>
+        <button type="button" class="cms-button" [disabled]="busy" (click)="select(p)">{{ ui.text('inventory.adjustStock') }}</button>
+      </div>
+    }
+    @empty {
+      <p>{{ ui.text('inventory.noProductsFound') }}</p>
+    }
+  </section>
+  @if (selected; as product) {
+    <form class="cms-panel" #adjustment="ngForm" (ngSubmit)="save()">
+      <h2>{{ product.name }}</h2>
+      <p>{{ ui.text('inventory.onHand') }} <strong>{{ product.stock }}</strong></p>
+      <div class="cms-fields">
+        <label>{{ ui.text('inventory.quantityChange') }}<input type="number" step="1" name="delta" [(ngModel)]="delta" required></label>
+        <label>{{ ui.text('inventory.reason') }}<input name="reason" [(ngModel)]="reason" maxlength="160" required></label>
+      </div>
+      <p>{{ ui.text('inventory.positiveNumbersAddStockNegativeNumbersRemoveStock') }}</p>
+      <button class="cms-button" [disabled]="busy || adjustment.invalid || !delta || product.stock + delta < 0">{{ ui.text('inventory.applyAdjustment') }}</button>
+    </form>
+    <section class="cms-panel">
+      <h2>{{ ui.text('inventory.recentMovements') }}</h2>
+      @for (entry of history; track entry.id) {
+        <div class="stock-row">
+          <span>{{ entry.createdAt | date:'medium' }}</span>
+          <span>{{ movementLabel(entry.reason) }}</span>
+          <strong>{{ entry.quantityChange > 0 ? '+' : '' }}{{ entry.quantityChange }} → {{ entry.balance }}</strong>
+        </div>
+      }
+      @empty {
+        <p>{{ ui.text('inventory.noAdjustmentsRecordedYet') }}</p>
+      }
+    </section>
+  }
+</div>

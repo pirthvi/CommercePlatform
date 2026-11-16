@@ -1,0 +1,16 @@
+<article class="product-card">
+  <a class="product-image-wrap" [routerLink]="['/products', product.slug]">
+    <img [src]="product.imageUrl" [alt]="product.name" loading="lazy">
+    <span class="product-badge" *ngIf="product.badge">{{ product.badge }}</span>
+    <span class="card-arrow" aria-hidden="true">↗</span>
+  </a>
+  <div class="product-meta">
+    <span>{{ product.category }}</span>
+    <span>{{ product.stock > 0 ? ui.text('product-card.inStock') : ui.text('product-card.soldOut') }}</span>
+  </div>
+  <div class="product-title-row">
+    <a [routerLink]="['/products', product.slug]">{{ product.name }}</a>
+    <span>{{ product.price | storeMoney }}</span>
+  </div>
+  <button class="add-small" (click)="add()" [disabled]="product.stock < 1">{{ added ? ui.text('product-card.addedToYourCart') : (product.stock < 1 ? ui.text('product-card.soldOut') : ui.text('product-card.addToCart')) }}</button>
+</article>

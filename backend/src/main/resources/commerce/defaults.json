@@ -1,0 +1,215 @@
+{
+  "site": {
+    "announcementText": "",
+    "announcementSecondary": "",
+    "brandMark": "S",
+    "brandName": "My Store",
+    "brandTagline": "",
+    "searchLabel": "Search",
+    "signInLabel": "Sign in",
+    "accountLabel": "Account",
+    "bagLabel": "Cart",
+    "footerStory": "",
+    "navigation": [
+      {
+        "label": "Shop all",
+        "path": "/shop"
+      },
+      {
+        "label": "About",
+        "path": "/pages/about"
+      }
+    ],
+    "footerColumns": [
+      {
+        "heading": "Shop",
+        "links": [
+          {
+            "label": "All products",
+            "path": "/shop"
+          }
+        ]
+      },
+      {
+        "heading": "Information",
+        "links": [
+          {
+            "label": "About",
+            "path": "/pages/about"
+          },
+          {
+            "label": "Delivery & returns",
+            "path": "/pages/shipping"
+          },
+          {
+            "label": "Contact",
+            "path": "/pages/contact"
+          }
+        ]
+      }
+    ],
+    "footerBottom": [
+      "© {year} {store}"
+    ],
+    "homeSections": [
+      {
+        "type": "hero",
+        "visible": true,
+        "imageKey": "home-hero",
+        "heading": "Discover the collection",
+        "body": "Explore the latest products in our store.",
+        "buttonLabel": "Shop all",
+        "buttonPath": "/shop",
+        "items": []
+      },
+      {
+        "type": "benefits",
+        "visible": false,
+        "items": []
+      },
+      {
+        "type": "collections",
+        "visible": true,
+        "heading": "Shop by category",
+        "body": "Loading categories…",
+        "linkLabel": "View all",
+        "linkPath": "/shop",
+        "cardLinkLabel": "Explore",
+        "items": []
+      },
+      {
+        "type": "featured",
+        "visible": true,
+        "heading": "Featured products",
+        "body": "Loading products…",
+        "linkLabel": "Shop all",
+        "linkPath": "/shop",
+        "emptyMessage": "New products are coming soon.",
+        "emptyLinkLabel": "About the store",
+        "items": [
+          {
+            "title": "All products",
+            "path": "all"
+          },
+          {
+            "title": "Featured",
+            "path": "featured"
+          }
+        ]
+      },
+      {
+        "type": "story",
+        "visible": false,
+        "imageKey": "home-story",
+        "heading": "About the store",
+        "buttonLabel": "Read more",
+        "buttonPath": "/pages/about",
+        "items": []
+      },
+      {
+        "type": "values",
+        "visible": false,
+        "items": []
+      },
+      {
+        "type": "banner",
+        "visible": false,
+        "imageKey": "home-banner",
+        "heading": "Explore our products",
+        "buttonLabel": "Shop now",
+        "buttonPath": "/shop",
+        "items": []
+      }
+    ]
+  },
+  "pages": [
+    {
+      "slug": "about",
+      "title": "About us",
+      "body": "Discover our store and the products we carry.",
+      "eyebrow": "",
+      "metaDescription": "Discover our store and the products we carry.",
+      "published": true
+    },
+    {
+      "slug": "shipping",
+      "title": "Delivery and returns",
+      "body": "Delivery charges are calculated at checkout. Contact the store about an order or return.",
+      "eyebrow": "",
+      "metaDescription": "Delivery charges are calculated at checkout. Contact the store about an order or return.",
+      "published": true
+    },
+    {
+      "slug": "contact",
+      "title": "Contact us",
+      "body": "Contact our team for help with your order.",
+      "eyebrow": "",
+      "metaDescription": "Contact our team for help with your order.",
+      "published": true
+    },
+    {
+      "slug": "home",
+      "title": "Home",
+      "body": "Explore our store.",
+      "eyebrow": "",
+      "metaDescription": "Explore our store.",
+      "published": true
+    },
+    {
+      "slug": "shop",
+      "title": "Shop all",
+      "body": "Browse the catalogue and filter by category.",
+      "eyebrow": "",
+      "metaDescription": "Browse the catalogue and filter by category.",
+      "published": true
+    },
+    {
+      "slug": "cart",
+      "title": "Your cart",
+      "body": "Review the items in your cart.",
+      "eyebrow": "",
+      "metaDescription": "Review the items in your cart.",
+      "published": true
+    },
+    {
+      "slug": "checkout",
+      "title": "Checkout",
+      "body": "Enter your delivery and contact details.",
+      "eyebrow": "",
+      "metaDescription": "Enter your delivery and contact details.",
+      "published": true
+    },
+    {
+      "slug": "login",
+      "title": "Sign in",
+      "body": "Sign in to view your account and orders.",
+      "eyebrow": "",
+      "metaDescription": "Sign in to view your account and orders.",
+      "published": true
+    },
+    {
+      "slug": "register",
+      "title": "Create an account",
+      "body": "Keep track of your orders in one place.",
+      "eyebrow": "",
+      "metaDescription": "Keep track of your orders in one place.",
+      "published": true
+    },
+    {
+      "slug": "account",
+      "title": "Your account",
+      "body": "View your profile and order history.",
+      "eyebrow": "",
+      "metaDescription": "View your profile and order history.",
+      "published": true
+    },
+    {
+      "slug": "order-success",
+      "title": "Thank you for your order",
+      "body": "Your order has been received.",
+      "eyebrow": "",
+      "metaDescription": "Your order has been received.",
+      "published": true
+    }
+  ]
+}

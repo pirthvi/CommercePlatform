@@ -1,0 +1,39 @@
+<section class="shop-intro">
+  <span class="eyebrow">{{ section.eyebrow }}</span>
+  <h1>{{ section.heading }}</h1>
+  <p>{{ section.body }}</p>
+</section>
+<section class="shop-content">
+  <div class="shop-toolbar">
+    <div class="category-filters" [attr.aria-label]="ui.text('shop.filterByCollection')">
+      <button [class.selected]="!activeCategory" (click)="filterBy()">{{ ui.text('shop.allProducts') }}</button>
+      <button *ngFor="let category of offeredCategories" [class.selected]="activeCategory?.id === category.id" (click)="filterBy(category)">{{ category.name }}</button>
+    </div>
+    <label class="search-box">
+      <span aria-hidden="true">⌕</span>
+      <input [(ngModel)]="query" [attr.aria-label]="ui.text('shop.searchProducts')" [placeholder]="ui.text('shop.searchProducts2')">
+    </label>
+  </div>
+  <div class="product-grid" *ngIf="!loading && visibleProducts.length">
+    <shop-product-card *ngFor="let product of visibleProducts" [product]="product" />
+  </div>
+  <p class="loading-state" *ngIf="loading">{{ ui.text('shop.loadingProducts') }}</p>
+  <div class="empty-state" *ngIf="!loading && !error && !offeredProducts.length">
+    <span>✳</span>
+    <h2>{{ ui.text('shop.noProductsAvailableYet') }}</h2>
+    <p>{{ ui.text('shop.checkBackForNewArrivals') }}</p>
+    <a class="text-link" routerLink="/pages/about">{{ ui.text('shop.aboutTheStore') }}</a>
+  </div>
+  <div class="empty-state" *ngIf="!loading && !error && offeredProducts.length && !visibleProducts.length">
+    <span>✳</span>
+    <h2>{{ ui.text('shop.noProductsMatchYourSearch') }}</h2>
+    <p>{{ ui.text('shop.tryAnotherPhraseOrClearYourFiltersTo') }}</p>
+    <button class="text-link" type="button" (click)="query=''; filterBy()">{{ ui.text('shop.clearFilters') }}</button>
+  </div>
+  <div class="empty-state" *ngIf="error">
+    <span>✳</span>
+    <h2>{{ ui.text('shop.weLlBeBackInAMoment') }}</h2>
+    <p>{{ error }}</p>
+    <button class="text-link" type="button" (click)="loadProducts()">{{ ui.text('shop.tryAgain') }}</button>
+  </div>
+</section>

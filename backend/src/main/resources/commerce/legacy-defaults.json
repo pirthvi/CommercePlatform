@@ -1,0 +1,312 @@
+{
+  "site": {
+    "announcementText": "Free delivery on orders over PKR 5,000",
+    "announcementSecondary": "Wildflower honey · Gathered in Pakistan",
+    "brandMark": "tn",
+    "brandName": "tharnectar",
+    "brandTagline": "HONEY FROM THE WILD",
+    "searchLabel": "Search",
+    "signInLabel": "Sign in",
+    "accountLabel": "My account",
+    "bagLabel": "Bag",
+    "footerStory": "Wildflower honey, gathered with care and made to be shared.",
+    "navigation": [
+      {
+        "label": "Shop all",
+        "path": "/shop",
+        "category": ""
+      },
+      {
+        "label": "Raw honey",
+        "path": "/shop",
+        "category": "Raw honey"
+      },
+      {
+        "label": "Honeycomb",
+        "path": "/shop",
+        "category": "Honeycomb"
+      },
+      {
+        "label": "Gifts",
+        "path": "/shop",
+        "category": "Gift sets"
+      },
+      {
+        "label": "Our story",
+        "path": "/pages/about",
+        "category": ""
+      }
+    ],
+    "footerColumns": [
+      {
+        "heading": "Shop",
+        "links": [
+          {
+            "label": "All products",
+            "path": "/shop",
+            "category": ""
+          },
+          {
+            "label": "Raw honey",
+            "path": "/shop",
+            "category": "Raw honey"
+          },
+          {
+            "label": "Gift sets",
+            "path": "/shop",
+            "category": "Gift sets"
+          }
+        ]
+      },
+      {
+        "heading": "Discover",
+        "links": [
+          {
+            "label": "Our story",
+            "path": "/pages/about",
+            "category": ""
+          },
+          {
+            "label": "Shipping & returns",
+            "path": "/pages/shipping",
+            "category": ""
+          }
+        ]
+      },
+      {
+        "heading": "Need a hand?",
+        "links": [
+          {
+            "label": "Contact us",
+            "path": "/pages/contact",
+            "category": ""
+          },
+          {
+            "label": "hello@tharnectar.pk",
+            "path": "mailto:hello@tharnectar.pk",
+            "category": ""
+          }
+        ]
+      }
+    ],
+    "footerBottom": [
+      "© {year} Thar Nectar",
+      "Made with care in Pakistan",
+      "Raw honey · Nothing added"
+    ],
+    "homeSections": [
+      {
+        "type": "hero",
+        "visible": true,
+        "imageKey": "home-hero",
+        "clearImage": false,
+        "eyebrow": "THAR NECTAR · WILDFLOWER HONEY FROM PAKISTAN",
+        "heading": "A taste of the Thar.",
+        "body": "Raw, unblended honey gathered in small harvests from the wild blooms of the Thar.",
+        "imageUrl": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=2200&q=90",
+        "imageAlt": "A jar of golden Thar Nectar honey",
+        "buttonLabel": "Explore the harvest",
+        "buttonPath": "/shop",
+        "items": []
+      },
+      {
+        "type": "benefits",
+        "visible": true,
+        "items": [
+          {
+            "icon": "✳",
+            "title": "Raw & unfiltered"
+          },
+          {
+            "icon": "⌁",
+            "title": "Packed with care"
+          },
+          {
+            "icon": "♡",
+            "title": "From Pakistan"
+          },
+          {
+            "icon": "↗",
+            "title": "Free delivery over PKR 5,000"
+          }
+        ]
+      },
+      {
+        "type": "collections",
+        "visible": true,
+        "eyebrow": "A GOOD PLACE TO BEGIN",
+        "heading": "Find a jar you’ll love.",
+        "body": "Finding this season’s harvest…",
+        "linkLabel": "Shop all",
+        "linkPath": "/shop",
+        "cardEyebrow": "EXPLORE",
+        "cardLinkLabel": "SHOP NOW",
+        "items": []
+      },
+      {
+        "type": "featured",
+        "visible": true,
+        "eyebrow": "FROM OUR CURRENT HARVEST",
+        "heading": "A little good, every day.",
+        "body": "Bringing the jars to the shelf…",
+        "linkLabel": "View all products",
+        "linkPath": "/shop",
+        "emptyMessage": "We’re preparing the next harvest.",
+        "emptyLinkLabel": "Get to know our story",
+        "items": [
+          {
+            "title": "All jars",
+            "path": "all"
+          },
+          {
+            "title": "Featured jars",
+            "path": "featured"
+          }
+        ]
+      },
+      {
+        "type": "story",
+        "visible": true,
+        "imageKey": "home-story",
+        "clearImage": false,
+        "eyebrow": "OUR STORY · ROOTED IN THE THAR",
+        "heading": "Made slowly, close to home.",
+        "body": "Our honey follows the blooms across the Thar. Each small harvest stays close to its source, so every jar carries the character of its place and season.",
+        "imageUrl": "https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&fit=crop&w=1400&q=85",
+        "imageAlt": "Wildflower honeycomb gathered by hand",
+        "imageCaption": "GATHERED IN THE THAR DESERT",
+        "buttonLabel": "Meet our family",
+        "buttonPath": "/pages/about",
+        "items": []
+      },
+      {
+        "type": "values",
+        "visible": true,
+        "items": [
+          {
+            "icon": "01",
+            "title": "One simple ingredient",
+            "body": "Pure honey, just as the season gave it to us."
+          },
+          {
+            "icon": "02",
+            "title": "Handled with care",
+            "body": "Small harvests, gently strained and carefully packed."
+          },
+          {
+            "icon": "03",
+            "title": "From Pakistan, with care",
+            "body": "A little taste of the Thar, sent from our home to yours."
+          }
+        ]
+      },
+      {
+        "type": "banner",
+        "visible": true,
+        "imageKey": "home-banner",
+        "clearImage": false,
+        "eyebrow": "A SWEET LITTLE GIFT",
+        "heading": "A little sweetness to share.",
+        "imageUrl": "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=1400&q=85",
+        "imageAlt": "A thoughtful gift of honey",
+        "buttonLabel": "Explore gift sets",
+        "buttonPath": "/shop",
+        "buttonCategory": "Gift sets",
+        "items": []
+      }
+    ]
+  },
+  "pages": [
+    {
+      "title": "Our story",
+      "slug": "about",
+      "eyebrow": "Rooted in the desert",
+      "body": "Thar Nectar began with a simple promise: let the land lead. We work alongside beekeepers who know every bloom, every season, and the quiet work that makes a truly good jar of honey.\n\nOur hives move with the wildflowers. Every batch is harvested in small quantities, gently strained, and left just as nature made it. No heat, no blending, no shortcuts.\n\nFrom our family to your table, thank you for making room for a little sweetness.",
+      "metaDescription": "The people and place behind every jar of Thar Nectar.",
+      "published": true
+    },
+    {
+      "title": "Shipping & returns",
+      "slug": "shipping",
+      "eyebrow": "From our hands to yours",
+      "body": "We pack each order with care and ship across Pakistan. Orders are usually dispatched within two working days, with delivery in 3–5 working days depending on your location.\n\nShipping is PKR 250, and complimentary on orders of PKR 5,000 or more. You will receive a message when your parcel is on the way.\n\nIf a jar arrives damaged, please contact us within 48 hours with your order number and a photo. We will make it right with a replacement or refund.",
+      "metaDescription": "Delivery details, shipping rates and our damaged parcel promise.",
+      "published": true
+    },
+    {
+      "title": "Say hello",
+      "slug": "contact",
+      "eyebrow": "We are here for you",
+      "body": "Questions about a harvest, a gift, or an order? We would love to hear from you.\n\nEmail: hello@tharnectar.pk\nPhone: +92 300 123 4567\n\nOur small team is available Monday to Saturday, 9am–5pm PKT. We usually reply within one working day.",
+      "metaDescription": "Get in touch with the Thar Nectar team.",
+      "published": true
+    },
+    {
+      "title": "A taste of the Thar.",
+      "slug": "home",
+      "eyebrow": "Raw wildflower honey · gathered in Pakistan",
+      "body": "Raw, unblended honey gathered in small harvests from the wild blooms of the Thar.",
+      "metaDescription": "Discover raw honey, honeycomb and thoughtful gifts from Thar Nectar.",
+      "published": true,
+      "heroImageUrl": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=2200&q=90",
+      "buttonLabel": "Explore the harvest",
+      "buttonLink": "/shop"
+    },
+    {
+      "title": "Shop the harvest.",
+      "slug": "shop",
+      "eyebrow": "A jar for every kind of day",
+      "body": "Explore honey, honeycomb, thoughtful gifts and little things for the home.",
+      "metaDescription": "Browse Thar Nectar honey, honeycomb, gifts and home goods.",
+      "published": true
+    },
+    {
+      "title": "Your bag.",
+      "slug": "cart",
+      "eyebrow": "Your picks",
+      "body": "Review your jars and delivery total before you check out.",
+      "metaDescription": "Your Thar Nectar shopping bag.",
+      "published": true
+    },
+    {
+      "title": "Where should we send your honey?",
+      "slug": "checkout",
+      "eyebrow": "The final step",
+      "body": "Share a few details and we’ll prepare your order with care.",
+      "metaDescription": "Complete your Thar Nectar order.",
+      "published": true
+    },
+    {
+      "title": "Welcome back.",
+      "slug": "login",
+      "eyebrow": "Your Thar Nectar account",
+      "body": "Sign in to see your orders and pick up where you left off.",
+      "metaDescription": "Sign in to your Thar Nectar account.",
+      "published": true
+    },
+    {
+      "title": "A little sweetness, closer.",
+      "slug": "register",
+      "eyebrow": "Your Thar Nectar account",
+      "body": "Create an account to keep your orders together and make it easier to shop again.",
+      "metaDescription": "Create a Thar Nectar customer account.",
+      "published": true
+    },
+    {
+      "title": "Welcome to your account.",
+      "slug": "account",
+      "eyebrow": "Your Thar Nectar account",
+      "body": "Your orders, all together.",
+      "metaDescription": "View your Thar Nectar account and order history.",
+      "published": true
+    },
+    {
+      "title": "Thank you for your order.",
+      "slug": "order-success",
+      "eyebrow": "Your order is in good hands",
+      "body": "We’ve received it. We’ll pack your honey with care and send you a message when it’s on its way. You’ll pay when it arrives.",
+      "metaDescription": "Your Thar Nectar order confirmation.",
+      "published": true
+    }
+  ]
+}

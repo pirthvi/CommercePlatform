@@ -1,0 +1,141 @@
+:host { display: block; min-width: 0; }
+
+.account-order-top>div>span {
+  font-size: 10px;
+}
+.account-order-top>div>strong, .account-order-items {
+  font-size: 13px;
+}
+.account-message, .account-empty {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.account-heading h1 span {
+  color: #a57a3f;
+}
+.account-content {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 48px 28px 100px;
+}
+.account-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 25px;
+}
+.account-section-title h2 {
+  font-size: 26px;
+  letter-spacing: -.04em;
+  margin: 7px 0 0;
+}
+.account-signout {
+  border: 1px solid #d5d0c6;
+  background: #fff;
+  padding: 10px 15px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.account-signout:hover {
+  border-color: #a57a3f;
+  color: #765a31;
+}
+.account-order {
+  border: 1px solid #e7e3dc;
+  margin-bottom: 13px;
+  padding: 18px 20px;
+  background: #fff;
+}
+.account-order-top {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+.account-order-top>div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.account-order-top>div>span {
+  font-size: 7px;
+  letter-spacing: .14em;
+  color: #837d72;
+}
+.account-order-top>div>strong {
+  font-size: 10px;
+}
+.account-order-status {
+  color: #8a6c3f;
+}
+.account-order-total {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.account-order-items {
+  border-top: 1px solid #eeeae4;
+  margin-top: 14px;
+  padding-top: 12px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #6e6a62;
+  font-size: 10px;
+}
+.account-message, .account-empty {
+  padding: 28px;
+  background: #f5f3ee;
+  color: #6e6a62;
+  font-size: 12px;
+}
+.account-error {
+  background: #f8e9e5;
+  color: #8d3f33;
+}
+.account-empty {
+  text-align: center;
+  padding: 44px 20px;
+}
+.account-empty .button {
+  margin-top: 8px;
+}
+@media (max-width:680px) {
+  .account-content {
+    padding: 33px 15px 70px;
+  }
+  .account-section-title h2 {
+    font-size: 22px;
+  }
+  .account-order {
+    padding: 14px 12px;
+  }
+  .account-order-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+  }
+  .account-order-total {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+}
+@media (max-width:700px) {
+  .account-order-items {
+    line-height: 1.6;
+  }
+}
+@media (max-width:680px) {
+  .account-message, .account-empty {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+@media (max-width:430px) {
+  .account-order-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+  }
+}

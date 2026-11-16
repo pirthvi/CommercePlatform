@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="swagger-parser-1.0.41">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/io/swagger/swagger-parser/1.0.41/swagger-parser-1.0.41.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

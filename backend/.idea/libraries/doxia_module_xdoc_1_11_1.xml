@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="doxia-module-xdoc-1.11.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/apache/maven/doxia/doxia-module-xdoc/1.11.1/doxia-module-xdoc-1.11.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

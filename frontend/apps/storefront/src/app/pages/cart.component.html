@@ -1,0 +1,57 @@
+<section class="page-heading">
+  <span class="eyebrow">{{ section.eyebrow }}</span>
+  <h1>{{ section.heading }}</h1>
+  <p>{{ cart.count }} {{ cart.count === 1 ? ui.text('cart.item') : ui.text('cart.items') }} {{ section.body }}</p>
+</section>
+<p class="cart-service-error" role="alert" *ngIf="cart.errors$ | async as cartError">{{ cartError }} <button type="button" (click)="cart.refresh()">{{ ui.text('cart.tryAgain') }}</button></p>
+<p class="loading-state cart-loading" *ngIf="!cart.isLoaded">{{ ui.text('cart.loadingYourCart') }}</p>
+<ng-container *ngIf="cart.lines$ | async as lines">
+  <div class="cart-layout" *ngIf="cart.isLoaded">
+    <div class="cart-lines" *ngIf="lines.length; else emptyCart">
+      <article class="cart-line" *ngFor="let line of lines">
+        <a [routerLink]="['/products', line.product.slug]" class="cart-thumb"><img [src]="line.product.imageUrl" [alt]="line.product.name"></a>
+        <div class="cart-line-info">
+          <span>{{ line.product.category }}</span>
+          <a [routerLink]="['/products', line.product.slug]">{{ line.product.name }}</a>
+          <small>{{ line.product.price | storeMoney }} {{ ui.text('cart.each') }}</small>
+        </div>
+        <div class="quantity-control">
+          <button (click)="cart.quantity(line.product.id, line.quantity - 1)" [attr.aria-label]="ui.text('cart.decreaseQuantity')">−</button>
+          <span>{{ line.quantity }}</span>
+          <button (click)="cart.quantity(line.product.id, line.quantity + 1)" [disabled]="line.quantity >= line.product.stock" [attr.aria-label]="ui.text('cart.increaseQuantity')">+</button>
+        </div>
+        <strong class="line-total">{{ line.product.price * line.quantity | storeMoney }}</strong>
+        <button class="remove-line" (click)="cart.remove(line.product.id)" [attr.aria-label]="ui.text('cart.removeProduct')">×</button>
+      </article>
+      <a class="text-link continue-link" routerLink="/shop">{{ ui.text('cart.continueBrowsing') }}</a>
+    </div>
+    <ng-template #emptyCart>
+      <div class="empty-cart">
+        <span class="empty-bloom">✳</span>
+        <h2>{{ ui.text('cart.yourCartIsEmpty') }}</h2>
+        <p>{{ ui.text('cart.browseTheCatalogToAddYourFirstItem') }}</p>
+        <a class="button button-dark" routerLink="/shop">{{ ui.text('cart.browseProducts') }} <span>↗</span></a>
+      </div>
+    </ng-template>
+    <aside class="cart-summary" *ngIf="lines.length">
+      <span class="eyebrow">{{ ui.text('cart.yourOrder') }}</span>
+      <h2>{{ ui.text('cart.orderSummary') }}</h2>
+      <div>
+        <span>{{ ui.text('cart.subtotal') }}</span>
+        <strong>{{ cart.subtotal | storeMoney }}</strong>
+      </div>
+      <div>
+        <span>{{ ui.text('cart.delivery') }}</span>
+        <strong>{{ ui.delivery(cart.subtotal) === 0 ? ui.text('cart.free') : ui.money(ui.delivery(cart.subtotal)) }}</strong>
+      </div>
+      <p class="shipping-progress" *ngIf="ui.config()?.commerce?.freeDeliveryFrom as threshold"><ng-container *ngIf="cart.subtotal < threshold">{{ ui.text('cart.freeRemaining', {amount: ui.money(threshold - cart.subtotal)}) }}</ng-container></p>
+      <p class="shipping-progress free-note" *ngIf="ui.delivery(cart.subtotal) === 0">{{ ui.text('cart.freeDeliveryUnlockedItSOnUs') }}</p>
+      <div class="cart-total">
+        <span>{{ ui.text('cart.total') }}</span>
+        <strong>{{ cart.subtotal + (ui.delivery(cart.subtotal)) | storeMoney }}</strong>
+      </div>
+      <a class="button button-dark checkout-link" routerLink="/checkout">{{ ui.text('cart.continueToCheckout') }} <span>↗</span></a>
+      <small>{{ ui.text('cart.cashOnDelivery') }}</small>
+    </aside>
+  </div>
+</ng-container>

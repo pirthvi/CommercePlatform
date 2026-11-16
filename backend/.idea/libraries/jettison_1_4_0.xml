@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jettison-1.4.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/codehaus/jettison/jettison/1.4.0/jettison-1.4.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

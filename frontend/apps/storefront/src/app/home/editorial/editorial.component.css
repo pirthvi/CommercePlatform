@@ -1,0 +1,37 @@
+:host { display: block; min-width: 0; }
+
+.home-editorial {
+  max-width: var(--content);
+  margin: auto;
+  padding: 85px 32px;
+  background: var(--cream);
+}
+.home-editorial > img {
+  display: block;
+  max-width: 100%;
+  max-height: 460px;
+  object-fit: contain;
+  margin-bottom: 24px;
+}
+.home-editorial h2 {
+  max-width: 680px;
+  margin: 14px 0;
+  color: var(--ink);
+  font: 500 clamp(32px, 4vw, 50px)/1.15 var(--serif);
+  letter-spacing: -1px;
+}
+.home-editorial>p {
+  max-width: 680px;
+  color: #747369;
+  font-size: 14px;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+@media (max-width: 700px) {
+  .home-editorial {
+    padding: 48px 20px;
+  }
+  .home-editorial>p {
+    font-size: 13px;
+  }
+}

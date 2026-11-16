@@ -1,0 +1,141 @@
+:host { display: block; min-width: 0; }
+
+.order-manager {
+  overflow: hidden;
+}
+.order-list {
+  padding: 0 17px;
+}
+.admin-order {
+  padding: 16px 0;
+  border-bottom: 1px solid #eeede7;
+}
+.admin-order:last-child {
+  border-bottom: 0;
+}
+.order-main {
+  display: grid;
+  grid-template-columns: .8fr 1.45fr 1fr 120px;
+  gap: 15px;
+  align-items: center;
+}
+.order-number, .order-customer, .order-amount, .status-select-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.order-number>span, .status-select-label>span {
+  font-size: 7px;
+  color: #98998e;
+  letter-spacing: .11em;
+}
+.order-number strong {
+  font: 600 9px var(--sans);
+}
+.order-number small, .order-customer small, .order-amount small {
+  font-size: 7px;
+  color: #929388;
+}
+.order-customer strong {
+  font-size: 9px;
+  font-weight: 600;
+}
+.order-customer span {
+  font-size: 8px;
+  color: #77796f;
+}
+.order-amount>span {
+  font-size: 8px;
+  color: #7a7c71;
+}
+.order-amount strong {
+  font: 500 14px var(--serif);
+}
+.status-select-label select {
+  border: 1px solid #e1dfd5;
+  background: #f7f6f0;
+  border-radius: 16px;
+  padding: 6px 8px;
+  color: #8a703f;
+  font-size: 8px;
+  font-weight: 600;
+  outline: none;
+}
+.order-items {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 13px 0 0 0;
+  padding-left: calc(20% + 3px);
+}
+.order-items>span {
+  font-size: 6px;
+  letter-spacing: .1em;
+  color: #99998f;
+  margin-right: 2px;
+}
+.order-items>b {
+  background: #f1f0e9;
+  padding: 5px 7px;
+  font-size: 7px;
+  font-weight: 500;
+  color: #5c5e53;
+}
+.order-items small {
+  font-size: 7px;
+  color: #83857a;
+}
+@media (max-width:1050px) {
+  .order-main {
+    grid-template-columns: .8fr 1.3fr .8fr 120px;
+    gap: 10px;
+  }
+}
+@media (max-width:700px) {
+  .order-list {
+    padding-inline: 12px;
+  }
+  .order-main {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 12px;
+  }
+  .order-number {
+    grid-column: 1;
+  }
+  .order-customer {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .order-amount {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .status-select-label {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .order-items {
+    padding-left: 0;
+    margin-top: 12px;
+  }
+  .order-items>span {
+    width: 100%;
+  }
+  .status-select-label select {
+    padding: 5px 7px;
+    font-size: 7px;
+  }
+}
+
+.admin-order {
+  border-radius: 4px;
+}
+.status-select-label select {
+  border-radius: 3px;
+}
+@media (max-width: 700px) {
+  .order-list {
+    padding-inline: 10px;
+  }
+}

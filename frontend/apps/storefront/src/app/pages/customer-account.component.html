@@ -1,0 +1,43 @@
+<section class="page-heading account-heading">
+  <span class="eyebrow">{{ section.eyebrow }}</span>
+  <h1>{{ section.heading }}</h1>
+  <p *ngIf="auth.customer$ | async as customer">{{ section.body }} · {{ customer.fullName }} · {{ customer.email }}</p>
+</section>
+<section class="account-content">
+  <div class="account-section-title">
+    <div>
+      <span class="eyebrow">{{ ui.text('customer-account.yourOrders') }}</span>
+      <h2>{{ ui.text('customer-account.orderHistory') }}</h2>
+    </div>
+    <button class="account-signout" type="button" (click)="signOut()">{{ ui.text('customer-account.signOut') }}</button>
+  </div>
+  <p class="account-message" *ngIf="loading">{{ ui.text('customer-account.gatheringYourOrderDetails') }}</p>
+  <p class="account-message account-error" role="alert" *ngIf="error">{{ error }}</p>
+  <div class="account-orders" *ngIf="!loading && !error && orders.length">
+    <article class="account-order" *ngFor="let order of orders">
+      <div class="account-order-top">
+        <div>
+          <span>{{ ui.text('customer-account.order') }}</span>
+          <strong>#{{ order.orderNumber.slice(0, 8).toUpperCase() }}</strong>
+        </div>
+        <div>
+          <span>{{ ui.text('customer-account.placed') }}</span>
+          <strong>{{ order.createdAt | date:'d MMM y' }}</strong>
+        </div>
+        <div>
+          <span>{{ ui.text('customer-account.status') }}</span>
+          <strong class="account-order-status">{{ ui.text('status.' + order.status) }}</strong>
+        </div>
+        <strong class="account-order-total">{{ order.total | storeMoney:order.currency }}</strong>
+      </div>
+      <div class="account-order-items">
+        <span *ngFor="let item of order.items">{{ item.productName }} × {{ item.quantity }}</span>
+      </div>
+    </article>
+  </div>
+  <div class="account-empty" *ngIf="!loading && !error && !orders.length">
+    <h3>{{ ui.text('customer-account.yourOrderHistoryIsEmpty') }}</h3>
+    <p>{{ ui.text('customer-account.whenYouPlaceAnOrderYouLlFind') }}</p>
+    <a class="button button-dark" routerLink="/shop">{{ ui.text('customer-account.browseProducts') }} <span>↗</span></a>
+  </div>
+</section>

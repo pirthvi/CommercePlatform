@@ -1,0 +1,21 @@
+@if (pdp.product; as product) {
+@let relatedStyles = pdp.relatedProducts(section);
+<section class="pdp-related" *ngIf="relatedStyles.length">
+  <div class="pdp-related-heading">
+    <span class="eyebrow">{{ ui.text('product-detail.moreFromTheStore') }}</span>
+    <h2>{{ ui.text('product-detail.relatedProducts') }}</h2>
+  </div>
+  <div class="product-grid">
+    <article class="product-card" *ngFor="let related of relatedStyles">
+      <a class="product-image-wrap" [routerLink]="['/products', related.slug]"><img [src]="related.imageUrl" [alt]="related.name" loading="lazy"></a>
+      <div class="product-meta">
+        <span>{{ related.category }}</span>
+      </div>
+      <div class="product-title-row">
+        <a [routerLink]="['/products', related.slug]">{{ related.name }}</a>
+        <span>{{ related.price | storeMoney }}</span>
+      </div>
+    </article>
+  </div>
+</section>
+}

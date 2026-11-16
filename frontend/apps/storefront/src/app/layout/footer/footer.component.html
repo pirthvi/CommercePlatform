@@ -1,0 +1,20 @@
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-story">
+      <shop-brand [site]="site" [inFooter]="true" />
+      <p>{{ site.footerStory }}</p>
+    </div>
+    <div *ngFor="let column of site.footerColumns">
+      <h4>{{ column.heading }}</h4>
+      <ng-container *ngFor="let link of column.links">
+        <a *ngIf="isExternal(link.path); else internalFooterLink" [href]="link.path">{{ link.label }}</a>
+        <ng-template #internalFooterLink>
+          <a [routerLink]="link.category ? ['/shop'] : link.path" [queryParams]="link.category ? { category: link.category } : null">{{ link.label }}</a>
+        </ng-template>
+      </ng-container>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span *ngFor="let line of site.footerBottom">{{ footerLine(line) }}</span>
+  </div>
+</footer>

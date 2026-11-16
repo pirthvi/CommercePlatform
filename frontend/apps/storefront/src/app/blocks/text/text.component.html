@@ -1,0 +1,8 @@
+<article class="reading-block">
+  @if (section.imageUrl) {
+    <figure><img [src]="section.imageUrl" [alt]="section.imageAlt || ''" loading="lazy">@if(section.imageCaption) { <figcaption>{{ section.imageCaption }}</figcaption> }</figure>
+  }
+  @if (section.eyebrow) { <span class="eyebrow">{{ section.eyebrow }}</span> }
+  @if (section.heading) { @if (primary) { <h1>{{ section.heading }}</h1> } @else { <h2>{{ section.heading }}</h2> } }
+  @if (section.body) { <div class="reading-copy">{{ section.body }}</div> }
+</article>

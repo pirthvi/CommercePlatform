@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="reactor-core-3.5.9">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/io/projectreactor/reactor-core/3.5.9/reactor-core-3.5.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

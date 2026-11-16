@@ -1,0 +1,21 @@
+<section class="home-collections">
+  <div class="home-section-heading">
+    <div>
+      <span class="home-kicker dark-kicker">{{ section.eyebrow }}</span>
+      <h2>{{ section.heading }}</h2>
+    </div>
+    <a class="home-view-all" [shopBlockLink]="section.linkPath || '/shop'">{{ section.linkLabel }} <span>↗</span></a>
+  </div>
+  <div class="collection-grid" *ngIf="!loading && collectionProducts(section).length">
+    <a class="collection-card" *ngFor="let product of collectionProducts(section)" [routerLink]="['/shop']" [queryParams]="{ category: product.categorySlug }">
+      <img [src]="product.imageUrl" [alt]="product.category" loading="lazy">
+      <span class="collection-overlay"></span>
+      <span class="collection-card-copy">
+        <small>{{ section.cardEyebrow }}</small>
+        <strong>{{ product.category }}</strong>
+        <i>{{ section.cardLinkLabel }}&nbsp; ↗</i>
+      </span>
+    </a>
+  </div>
+  <p class="home-loading" *ngIf="loading">{{ section.body }}</p>
+</section>

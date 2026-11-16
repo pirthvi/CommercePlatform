@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="spring-bridge-3.0.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/glassfish/hk2/spring-bridge/3.0.3/spring-bridge-3.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

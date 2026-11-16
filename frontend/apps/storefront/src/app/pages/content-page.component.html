@@ -1,0 +1,65 @@
+@if (page; as layout) {
+  <ng-container [storePageMeta]="layout.templateKey === 'product' && pdp.product ? {name: pdp.product.name, metaDescription: layout.metaDescription || pdp.product.description} : layout"></ng-container>
+  @if (layout.templateKey === 'product') {
+    <div class="breadcrumbs pdp-breadcrumbs">
+      <a routerLink="/">{{ ui.text('product-detail.home') }}</a><shop-product-icon slot="breadcrumb" />
+      <a routerLink="/shop">{{ ui.text('product-detail.shopAll') }}</a><shop-product-icon slot="breadcrumb" />
+      <span>{{ pdp.product?.name || ui.text('product-detail.product') }}</span>
+    </div>
+    @if (!pdp.product) {
+      <div class="loading-state detail-loading" role="status">{{ pdp.error || ui.text('product-detail.loadingProduct') }}
+        @if (pdp.error) { <a routerLink="/shop">{{ ui.text('product-detail.browseAllProducts') }}</a> }
+      </div>
+    }
+  }
+  @if (!layout.templateKey && !preview) { <div class="page-back"><a routerLink="/">{{ ui.text('content-page.backToTheShop') }}</a></div> }
+  <div [attr.inert]="preview ? '' : null">
+    @if (preview && !rows.length) { <p class="home-empty">{{ ui.text('builder.previewEmpty') }}</p> }
+    @for (row of rows; track row[0].id; let first = $first) {
+      <div class="component-row" [class.pdp-layout]="row.length === 2"
+           [class.pdp-single]="row.length === 1 && (row[0].type === 'product-gallery' || row[0].type === 'product-purchase')">
+        @for (section of row; track section.id) {
+          @if (layout.required.includes(section.type) && section.imageUrl) {
+            <img class="component-image" [class.utility-image]="section.type !== 'catalog'" [src]="section.imageUrl" [alt]="section.imageAlt || ''">
+          }
+          @switch (section.type) {
+            @case ('hero') { <shop-hero-section [section]="section" /> }
+            @case ('benefits') { <shop-benefits-section [section]="section" /> }
+            @case ('collections') { <shop-collections-section [section]="section" [products]="products" [loading]="catalogLoading" /> }
+            @case ('featured') { <shop-featured-section [section]="section" [products]="products" [loading]="catalogLoading" [error]="catalogError" (retry)="loadProducts()" /> }
+            @case ('story') { <shop-story-section [section]="section" /> }
+            @case ('values') { <shop-values-section [section]="section" /> }
+            @case ('banner') { <shop-banner-section [section]="section" /> }
+            @case ('editorial') { <shop-editorial-section [section]="section" /> }
+            @case ('text') { <shop-text-block [section]="section" [primary]="first" /> }
+            @case ('gallery') { <shop-gallery-block [section]="section" /> }
+            @case ('button') { <shop-button-block [section]="section" /> }
+            @case ('faq') { <shop-faq-block [section]="section" /> }
+            @case ('product-grid') {
+              @if (catalogLoading) { <p class="home-loading">{{ ui.text('shop.loadingProducts') }}</p> }
+              @else if (catalogError) { <p role="alert">{{ catalogError }} <button type="button" (click)="loadProducts()">{{ ui.text('featured.tryAgain') }}</button></p> }
+              @else { <shop-product-grid-block [section]="section" [products]="products" /> }
+            }
+            @case ('catalog') { <shop-catalog-block [section]="section" /> }
+            @case ('product-gallery') { <shop-product-gallery /> }
+            @case ('product-purchase') { <shop-product-purchase /> }
+            @case ('related-products') { <shop-related-products [section]="section" /> }
+            @case ('cart') { <shop-cart-block [section]="section" /> }
+            @case ('checkout') { <shop-checkout-block [section]="section" /> }
+            @case ('customer-form') { <shop-customer-form-block [section]="section" [registering]="layout.templateKey === 'register'" /> }
+            @case ('account') { @if (preview) { <shop-text-block [section]="section" /><p class="preview-data">{{ ui.text('builder.accountPreview') }}</p> } @else { <shop-account-block [section]="section" /> } }
+            @case ('receipt') { @if (preview) { <shop-text-block [section]="section" /><p class="preview-data">{{ ui.text('builder.receiptPreview') }}</p> } @else { <shop-receipt-block [section]="section" /> } }
+          }
+        }
+      </div>
+    }
+  </div>
+} @else {
+  <section class="page-heading content-error" [attr.role]="error ? 'alert' : 'status'">
+    <h1>{{ ui.text(error ? 'content-page.weCouldnTFindThatPage' : 'content-page.openingYourPage') }}</h1>
+    @if (error) {
+      <button class="text-link" type="button" (click)="retry()">{{ ui.text('home.tryAgain') }}</button>
+      <a routerLink="/">{{ ui.text('content-page.returnToTheHomepage') }}</a>
+    }
+  </section>
+}

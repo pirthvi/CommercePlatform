@@ -1,0 +1,402 @@
+{
+  "site": {
+    "brandName": "Everyday Apparel",
+    "brandMark": "EA",
+    "brandTagline": "Clothing for everyday wear",
+    "announcementText": "The everyday collection is here",
+    "announcementSecondary": "Cash on delivery",
+    "footerStory": "Cotton layers, relaxed shirts and trousers for everyday wear.",
+    "navigation": [
+      {
+        "label": "Shop all",
+        "path": "/shop"
+      },
+      {
+        "label": "Tops",
+        "path": "/shop",
+        "category": "Tops"
+      },
+      {
+        "label": "Trousers",
+        "path": "/shop",
+        "category": "Trousers"
+      },
+      {
+        "label": "About",
+        "path": "/pages/about"
+      }
+    ],
+    "footerColumns": [
+      {
+        "heading": "Shop",
+        "links": [
+          {
+            "label": "All clothing",
+            "path": "/shop"
+          },
+          {
+            "label": "Tops",
+            "path": "/shop",
+            "category": "Tops"
+          },
+          {
+            "label": "Trousers",
+            "path": "/shop",
+            "category": "Trousers"
+          }
+        ]
+      },
+      {
+        "heading": "Customer care",
+        "links": [
+          {
+            "label": "Delivery and returns",
+            "path": "/pages/shipping"
+          },
+          {
+            "label": "Order help",
+            "path": "/pages/contact"
+          },
+          {
+            "label": "My account",
+            "path": "/account"
+          }
+        ]
+      },
+      {
+        "heading": "Everyday Apparel",
+        "links": [
+          {
+            "label": "About the collection",
+            "path": "/pages/about"
+          }
+        ]
+      }
+    ]
+  },
+  "pages": {
+    "home": {
+      "title": "Everyday Apparel",
+      "body": "Discover cotton tees, Oxford shirts and easy trousers in the everyday collection.",
+      "blocks": [
+        {
+          "type": "hero",
+          "heading": "Clothes for the everyday",
+          "body": "Soft cotton shirts, easy tees and trousers you can wear all week.",
+          "buttonLabel": "Shop the collection",
+          "buttonPath": "/shop",
+          "photo": "weekend-look",
+          "imageAlt": "Sage Oxford shirt and sand linen trousers worn together in a sunlit courtyard"
+        },
+        {
+          "type": "benefits",
+          "items": [
+            {
+              "icon": "◇",
+              "title": "Pay on delivery"
+            },
+            {
+              "icon": "↗",
+              "title": "Guest checkout"
+            },
+            {
+              "icon": "☰",
+              "title": "Order history in your account"
+            }
+          ]
+        },
+        {
+          "type": "collections",
+          "heading": "Shop by category",
+          "body": "Loading categories…",
+          "linkLabel": "View all clothing",
+          "linkPath": "/shop",
+          "cardLinkLabel": "Shop category",
+          "items": [
+            {
+              "title": "Tops",
+              "category": "Tops"
+            },
+            {
+              "title": "Trousers",
+              "category": "Trousers"
+            }
+          ]
+        },
+        {
+          "type": "product-grid",
+          "heading": "The everyday edit",
+          "emptyMessage": "More styles are on their way.",
+          "selection": "starter-products"
+        },
+        {
+          "type": "story",
+          "heading": "A closer look at the collection",
+          "body": "From the weave of an Oxford shirt to the drape of linen, fabric makes the difference.",
+          "buttonLabel": "About the collection",
+          "buttonPath": "/pages/about",
+          "photo": "workroom",
+          "imageAlt": "Checking the cuff of a shirt beside fabric swatches in the workroom"
+        },
+        {
+          "type": "banner",
+          "heading": "Tops for every day",
+          "buttonLabel": "Shop tops",
+          "buttonPath": "/shop",
+          "buttonCategory": "Tops",
+          "photo": "city-look",
+          "imageAlt": "Ivory cotton crew tee worn with navy straight-leg chinos"
+        }
+      ]
+    },
+    "shop": {
+      "title": "Shop all clothing",
+      "body": "Browse tops and trousers by category and find the fabric and fit that suit you.",
+      "blocks": [
+        {
+          "type": "catalog",
+          "items": [{"title": "Tops", "category": "Tops"}, {"title": "Trousers", "category": "Trousers"}],
+          "photo": "clothing-rail",
+          "imageAlt": "Cotton tops and linen trousers on a clothing rail"
+        },
+        {
+          "type": "button",
+          "buttonLabel": "Delivery and returns",
+          "buttonPath": "/pages/shipping"
+        }
+      ]
+    },
+    "product": {
+      "title": "Product page",
+      "body": "",
+      "blocks": [
+        {
+          "type": "product-gallery"
+        },
+        {
+          "type": "product-purchase"
+        },
+        {
+          "type": "faq",
+          "heading": "Fit and care",
+          "items": [
+            {
+              "title": "Which size am I ordering?",
+              "body": "The size and fit are listed with each garment. Check those details before choosing a quantity."
+            },
+            {
+              "title": "How should I care for my garment?",
+              "body": "Open the product details for its fabric and care instructions and follow the sewn-in care label."
+            }
+          ]
+        },
+        {
+          "type": "related-products",
+          "items": [{"title": "Tops", "category": "Tops"}, {"title": "Trousers", "category": "Trousers"}]
+        },
+        {
+          "type": "editorial",
+          "heading": "Inside the workroom",
+          "body": "Take a closer look at the fabrics in our collection.",
+          "buttonLabel": "About the collection",
+          "buttonPath": "/pages/about",
+          "photo": "workroom",
+          "imageAlt": "Checking the cuff of a shirt beside fabric swatches in the workroom"
+        }
+      ]
+    },
+    "cart": {
+      "title": "Your cart",
+      "body": "Review your styles, quantities and delivery total before checkout.",
+      "blocks": [
+        {
+          "type": "cart",
+          "photo": "packing-table",
+          "imageAlt": "Folded clothing being wrapped in tissue for delivery"
+        },
+        {
+          "type": "faq",
+          "heading": "Before you check out",
+          "items": [
+            {
+              "title": "When is stock reserved?",
+              "body": "We check availability when you place the order. Adding an item to your cart does not reserve it."
+            },
+            {
+              "title": "Can I order as a guest?",
+              "body": "Yes. Continue to checkout and enter your delivery details."
+            }
+          ]
+        }
+      ]
+    },
+    "checkout": {
+      "title": "Checkout",
+      "body": "Enter your contact and delivery details to order your clothing.",
+      "blocks": [
+        {
+          "type": "checkout",
+          "photo": "packing-table",
+          "imageAlt": "Folded clothing being wrapped in tissue for delivery"
+        },
+        {
+          "type": "button",
+          "buttonLabel": "Edit your cart",
+          "buttonPath": "/cart"
+        }
+      ]
+    },
+    "order-success": {
+      "title": "Thank you for your order",
+      "body": "Your clothing order has been received.",
+      "blocks": [
+        {
+          "type": "receipt",
+          "photo": "packing-table",
+          "imageAlt": "Folded clothing being wrapped in tissue for delivery"
+        },
+        {
+          "type": "text",
+          "heading": "Keep your order number",
+          "body": "Use the number on your receipt when asking about this order."
+        }
+      ]
+    },
+    "login": {
+      "title": "Sign in",
+      "body": "Sign in to see your clothing orders and their status.",
+      "blocks": [
+        {
+          "type": "customer-form",
+          "photo": "clothing-rail",
+          "imageAlt": "Cotton tops and linen trousers on a clothing rail"
+        },
+        {
+          "type": "button",
+          "buttonLabel": "Continue shopping as a guest",
+          "buttonPath": "/shop"
+        }
+      ]
+    },
+    "register": {
+      "title": "Create an account",
+      "body": "Keep your orders together and check their status from your account.",
+      "blocks": [
+        {
+          "type": "customer-form",
+          "photo": "city-look",
+          "imageAlt": "Ivory cotton crew tee worn with navy straight-leg chinos"
+        },
+        {
+          "type": "button",
+          "buttonLabel": "Continue shopping as a guest",
+          "buttonPath": "/shop"
+        }
+      ]
+    },
+    "account": {
+      "title": "Your account",
+      "body": "View your profile and follow your clothing orders.",
+      "blocks": [
+        {
+          "type": "account",
+          "photo": "clothing-rail",
+          "imageAlt": "Cotton tops and linen trousers on a clothing rail"
+        },
+        {
+          "type": "button",
+          "buttonLabel": "Get help with an order",
+          "buttonPath": "/pages/contact"
+        }
+      ]
+    },
+    "about": {
+      "title": "About the collection",
+      "body": "Our everyday collection pairs cotton jersey and Oxford cloth with twill and linen. Discover the cut, fabric and care details on each product page.",
+      "blocks": [
+        {
+          "type": "text",
+          "photo": "workroom",
+          "imageAlt": "Checking the cuff of a shirt beside fabric swatches in the workroom"
+        },
+        {
+          "type": "button",
+          "buttonLabel": "Explore the collection",
+          "buttonPath": "/shop"
+        }
+      ]
+    },
+    "shipping": {
+      "title": "Delivery and returns",
+      "body": "Review your delivery charge in the cart. Keep your order number handy for delivery or return enquiries.",
+      "blocks": [
+        {
+          "type": "text",
+          "photo": "packing-table",
+          "imageAlt": "Folded clothing being wrapped in tissue for delivery"
+        },
+        {
+          "type": "faq",
+          "heading": "Delivery questions",
+          "items": [
+            {
+              "title": "Where can I see the delivery fee?",
+              "body": "Your cart and checkout show the charge for your order."
+            },
+            {
+              "title": "When do I pay?",
+              "body": "Pay the total shown on your receipt when your order is delivered."
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "buttonLabel": "Order help",
+          "buttonPath": "/pages/contact"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Order help",
+      "body": "Have your order number and the name of the garment ready when asking about an order.",
+      "blocks": [
+        {
+          "type": "text",
+          "photo": "workroom",
+          "imageAlt": "Checking the cuff of a shirt beside fabric swatches in the workroom"
+        },
+        {
+          "type": "faq",
+          "heading": "Find order details",
+          "items": [
+            {
+              "title": "Where is my order number?",
+              "body": "Your confirmation screen shows the number after checkout. For an order placed while signed in, you can also find it in your account."
+            },
+            {
+              "title": "Where can I check the status?",
+              "body": "Open your account to see the latest status of orders placed with that account."
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "buttonLabel": "View my account",
+          "buttonPath": "/account"
+        }
+      ]
+    }
+  },
+  "wording": {
+    "storefront.product-detail.materialsOrIngredients": ["Materials or ingredients", "Fabric"],
+    "storefront.product-detail.usage": ["Usage", "Garment care"],
+    "studio.products.materialsOrIngredients": ["Materials or ingredients", "Fabric"],
+    "studio.products.netWeight": ["Net weight", "Size and fit"],
+    "studio.products.sizeOrWeight": ["Size or weight", "Size and fit"],
+    "studio.products.usage": ["Usage", "Garment care"]
+  },
+  "customPageImage": {
+    "photo": "workroom",
+    "imageAlt": "Checking the cuff of a shirt beside fabric swatches in the workroom"
+  }
+}

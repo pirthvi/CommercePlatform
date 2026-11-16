@@ -1,0 +1,73 @@
+<div class="builder">
+  @if (!ui.config()?.pageLayoutVersion) {
+    <section role="alert" class="flash error-flash">{{ ui.text('builder.missing') || 'Restart the updated Spring Boot application to load the page builder.' }}</section>
+  } @else {
+    <a class="back" routerLink="/pages">← {{ ui.text('navigation.allPages') }}</a>
+    <header><div><p class="kicker">{{ ui.text('builder.name') }}</p><h1>{{ page?.title || ui.text('builder.newPage') }}</h1></div>
+      @if (page) { <button type="button" class="cms-button" (click)="preview = !preview">{{ ui.text(preview ? 'builder.closePreview' : 'builder.preview') }}</button> }
+    </header>
+    @if (error) { <div role="alert" class="flash error-flash">{{ error }}
+      @if (!page || conflict) { <button class="cms-text-action" type="button" (click)="reloadPage()">{{ ui.text('builder.reload') }}</button> }
+    </div> }
+    @if (notice) { <p role="status" class="flash success-flash">{{ notice }}</p> }
+    @if (loading) { <p role="status">{{ ui.text('pages.loadingPages') }}</p> }
+    @if (page; as model) {
+      @if (preview) {
+        <p>{{ ui.text('builder.previewHelp') }}</p>
+        <iframe #frame [src]="previewUrl" [title]="ui.text('builder.previewTitle')"></iframe>
+      } @else {
+        <fieldset class="workspace" [disabled]="saving">
+          <aside>
+            <details class="settings" [open]="!model.id">
+              <summary>{{ ui.text('builder.pageSettings') }}</summary>
+              <label>{{ ui.text('pages.pageTitle') }}<input [ngModel]="model.title" (ngModelChange)="editTitle($event)" maxlength="140" required></label>
+              <label>{{ ui.text('builder.slug') }}<input [(ngModel)]="model.slug" (ngModelChange)="editSlug()" [readOnly]="!!model.templateKey" maxlength="120" required></label>
+              <label>{{ ui.text('pages.searchDescription') }}<textarea rows="2" [(ngModel)]="model.metaDescription" (ngModelChange)="change()" maxlength="240"></textarea></label>
+              <label class="check"><input type="checkbox" [(ngModel)]="model.published" (ngModelChange)="change()">{{ ui.text('builder.visible') }}</label>
+            </details>
+            <section class="outline"><h2>{{ ui.text('builder.outline') }}</h2>
+              @for (block of model.sections; track block.id; let i = $index) {
+                <button type="button" class="outline-item" [attr.aria-pressed]="selected === block && !library" (click)="selected = block; library = false">
+                  <span class="position">{{ i+1 }}</span><span>{{ ui.text('builder.type.'+block.type) }}@if(block.heading){ <small>{{ block.heading }}</small> }</span>
+                  @if (!block.visible) { <small>{{ ui.text('builder.hidden') }}</small> }
+                </button>
+              }
+              <button type="button" class="cms-button add" (click)="library = true">＋ {{ ui.text('builder.add') }}</button>
+            </section>
+            @if (model.templateKey === 'product') { <a class="wording" routerLink="/pages/product-page/wording">{{ ui.text('builder.wording') }} →</a> }
+          </aside>
+          <section class="edit-panel">
+            @if (library || !selected) {
+              <h2>{{ ui.text('builder.library') }}</h2>
+              @if (!model.sections.length) { <p>{{ ui.text('builder.empty') }}</p> }
+              <div class="library">@for (type of available; track type) {
+                <button type="button" (click)="add(type)">{{ ui.text('builder.type.'+type) }} <span aria-hidden="true">＋</span></button>
+              }</div>
+            } @else {
+              @let index = model.sections.indexOf(selected);
+              <div class="panel-title"><h2>{{ ui.text('builder.type.'+selected.type) }}</h2>
+                @if (model.required.includes(selected.type)) { <small>{{ ui.text('builder.required') }}</small> }
+              </div>
+              <div class="commands">
+                <button type="button" (click)="move(index,-1)" [disabled]="index === 0">{{ ui.text('builder.up') }}</button>
+                <button type="button" (click)="move(index,1)" [disabled]="index === model.sections.length-1">{{ ui.text('builder.down') }}</button>
+                @if (!model.required.includes(selected.type)) {
+                  <label class="check"><input type="checkbox" [(ngModel)]="selected.visible" (ngModelChange)="change()">{{ ui.text('builder.show') }}</label>
+                  <button type="button" (click)="remove(selected)">{{ ui.text('pages.remove') }}</button>
+                }
+              </div>
+              @if (choicesFailed) { <p role="status">{{ ui.text('builder.productsFailed') }} <button type="button" (click)="loadChoices()">{{ ui.text('connection.retry') }}</button></p> }
+              <admin-block-editor [block]="selected" [products]="products" [categories]="categories" [previews]="previews"
+                (changed)="change()" (photo)="photo($event.entry,$event.file)" (removed)="dropFile($event)" />
+            }
+          </section>
+        </fieldset>
+      }
+      <footer><span role="status">{{ dirty ? ui.text('builder.dirty') : '' }}</span>
+        <button class="primary-button" type="button" (click)="save()" [disabled]="saving || !dirty || conflict">
+          {{ ui.text(saving ? 'pages.saving' : model.published ? 'builder.publish' : 'builder.saveDraft') }}
+        </button>
+      </footer>
+    }
+  }
+</div>

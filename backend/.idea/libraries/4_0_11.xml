@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="4.0.11">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/glassfish/jaxb/jaxb-runtime/4.0.9/jaxb-runtime-4.0.9-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/glassfish/jaxb/jaxb-runtime/4.0.9/jaxb-runtime-4.0.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

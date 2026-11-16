@@ -1,0 +1,54 @@
+<div class="announcement" *ngIf="site.announcementText || site.announcementSecondary">
+  <span>{{ site.announcementText }}</span>
+  <span class="announcement-right">{{ site.announcementSecondary }}</span>
+</div>
+<header class="site-header">
+  <button class="menu-toggle" (click)="menuOpen = !menuOpen" [attr.aria-expanded]="menuOpen" [attr.aria-label]="ui.text('header.toggleNavigation')">☰</button>
+  <shop-brand [site]="site" />
+  <nav class="main-nav" [attr.aria-label]="ui.text('header.mainNavigation')">
+    @for (item of site.navigation; track $index) {
+      @if (!item.category && isExternal(item.path)) {
+        <a [href]="item.path" (click)="menuOpen = false">{{ item.label }}</a>
+      } @else {
+        <a [routerLink]="item.category ? ['/shop'] : item.path" [queryParams]="item.category ? { category: item.category } : null" routerLinkActive="active">{{ item.label }}</a>
+      }
+    }
+  </nav>
+  <div class="header-actions">
+    <a class="search-link" routerLink="/shop" [attr.aria-label]="site.searchLabel + ui.text('header.products')">
+      <span>⌕</span>
+      <b>{{ site.searchLabel }}</b>
+    </a>
+    <a class="customer-link" *ngIf="customerAuth.customer$ | async; else signInLink" routerLink="/account">{{ site.accountLabel }}</a>
+    <ng-template #signInLink>
+      <a class="customer-link" routerLink="/login">{{ site.signInLabel }}</a>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="cartLink"></ng-container>
+  </div>
+</header>
+<nav class="mobile-nav" [class.open]="menuOpen" [attr.aria-label]="ui.text('header.mobileNavigation')">
+  @for (item of site.navigation; track $index) {
+    @if (!item.category && isExternal(item.path)) {
+      <a [href]="item.path" (click)="menuOpen = false">{{ item.label }}</a>
+    } @else {
+      <a [routerLink]="item.category ? ['/shop'] : item.path" [queryParams]="item.category ? { category: item.category } : null" (click)="menuOpen=false">{{ item.label }}</a>
+    }
+  }
+  <a *ngIf="customerAuth.customer$ | async" routerLink="/account" (click)="menuOpen=false">{{ site.accountLabel }}</a>
+  <a *ngIf="!(customerAuth.customer$ | async)" routerLink="/login" (click)="menuOpen=false">{{ site.signInLabel }}</a>
+  <ng-container *ngTemplateOutlet="cartLink"></ng-container>
+</nav>
+<ng-template #cartLink>
+  @let count = cart.count;
+  @let label = site.bagLabel || ui.text('checkout.backToYourCart');
+  <a class="bag-link" routerLink="/cart" (click)="menuOpen = false"
+     [attr.title]="label" [attr.aria-label]="label + ', ' + count + ' ' + ui.text(count === 1 ? 'cart.item' : 'cart.items')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M2 3.5h3l2.6 11.6a1.5 1.5 0 0 0 1.5 1.2H19M5.7 6.5h15.6l-2.1 6.6h-12"/>
+      <circle cx="9.5" cy="20" r="1.25"/>
+      <circle cx="18" cy="20" r="1.25"/>
+    </svg>
+    <span class="bag-count" aria-hidden="true">{{ count }}</span>
+  </a>
+</ng-template>

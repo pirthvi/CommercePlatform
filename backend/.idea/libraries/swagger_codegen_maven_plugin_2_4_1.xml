@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="swagger-codegen-maven-plugin-2.4.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/io/swagger/swagger-codegen-maven-plugin/2.4.1/swagger-codegen-maven-plugin-2.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="swagger2markup-maven-plugin-1.2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/io/github/swagger2markup/swagger2markup-maven-plugin/1.2.0/swagger2markup-maven-plugin-1.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

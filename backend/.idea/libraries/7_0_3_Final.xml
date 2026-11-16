@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="7.0.3.Final">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final-sources.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

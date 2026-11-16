@@ -1,0 +1,6 @@
+<section class="home-benefits" [attr.aria-label]="ui.text('benefits.ourPromises')">
+  <div *ngFor="let item of section.items">
+    <span class="benefit-icon">{{ item.icon }}</span>
+    <span>{{ item.title }}</span>
+  </div>
+</section>

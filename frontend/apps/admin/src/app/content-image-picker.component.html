@@ -1,0 +1,21 @@
+<div class="cms-upload" [class.dragging]="dragging"
+     (dragover)="$event.preventDefault(); dragging = true" (dragleave)="dragging = false" (drop)="drop($event)">
+  @if (preview) {
+    <img [src]="preview" [alt]="label + ui.text('content-image-picker.preview')">
+  }
+  <div>
+    <strong>{{ label }}</strong>
+    <p>{{ ui.text('content-image-picker.dropFile', { limit: limitMb }) }}</p>
+    <input #picker hidden type="file" accept="image/png,image/jpeg,image/webp" (change)="choose(picker)">
+    <button type="button" class="cms-button" (click)="picker.click()">{{ preview ? ui.text('content-image-picker.replaceImage') : ui.text('content-image-picker.chooseFile') }}</button>
+    @if (preview) {
+      <button type="button" class="cms-text-action" (click)="error = ''; fileChange.emit(null)">{{ ui.text('content-image-picker.remove') }}</button>
+    }
+    @if (preview.startsWith('blob:')) {
+      <small class="cms-photo-status">{{ ui.text('content-image-picker.readyToSave') }}</small>
+    }
+    @if (error) {
+      <p class="cms-error" role="alert">{{ error }}</p>
+    }
+  </div>
+</div>

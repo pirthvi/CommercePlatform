@@ -1,0 +1,163 @@
+<div class="home-builder">
+  <section class="cms-panel home-outline" aria-labelledby="outline-heading">
+    <div class="cms-panel-title">
+      <h2 id="outline-heading">{{ ui.text('home-editor.pageSections') }}</h2>
+      <span class="cms-count">{{ sections.length }}</span>
+    </div>
+    <ol class="outline-list">
+      @for (section of sections; track section; let i = $index) {
+        <li>
+          <button type="button" [class.selected]="section === current" [attr.aria-pressed]="section === current"
+                  (click)="selectedIndex = i">
+            <span class="outline-state" [class.hidden]="!section.visible" aria-hidden="true"></span>
+            <span>
+              <strong>{{ title(section) }}</strong>
+              <small>{{ ui.text(labels[section.type]) }}{{ section.visible ? '' : ui.text('home-editor.hidden') }}</small>
+            </span>
+          </button>
+        </li>
+      }
+    </ol>
+    @if (sections.length) {
+      <label class="cms-field mobile-section-picker">{{ ui.text('home-editor.selectedSection') }}
+        <select [ngModel]="sections.indexOf(current!)" (ngModelChange)="selectedIndex = $event">
+          @for (section of sections; track section; let i = $index) {
+            <option [ngValue]="i">{{ i + 1 }}. {{ title(section) }}{{ section.visible ? '' : ui.text('home-editor.hidden2') }}</option>
+          }
+        </select>
+      </label>
+    }
+    <div class="outline-add">
+      <label class="cms-field">{{ ui.text('home-editor.newSectionType') }}
+        <select [(ngModel)]="newLayout">
+          @for (layout of layouts; track layout) {
+            <option [value]="layout">{{ ui.text(labels[layout]) }}</option>
+          }
+        </select>
+      </label>
+      <button class="cms-button" type="button" (click)="add()">{{ ui.text('home-editor.addSection') }}</button>
+    </div>
+  </section>
+  @if (current; as section) {
+    <section class="cms-panel home-section-form" [attr.aria-label]="ui.text('home-editor.selectedSection')">
+      <div class="cms-panel-title">
+        <h2>{{ ui.text(labels[section.type]) }}</h2>
+        <div class="cms-actions">
+          <button class="cms-order-button" type="button" [attr.aria-label]="ui.text('home-editor.moveSectionUp')"
+                  [disabled]="section === sections[0]" (click)="moveSection(section, -1)">↑</button>
+          <button class="cms-order-button" type="button" [attr.aria-label]="ui.text('home-editor.moveSectionDown')"
+                  [disabled]="section === sections[sections.length-1]" (click)="moveSection(section, 1)">↓</button>
+          <button class="cms-text-action" type="button" (click)="remove(section)">{{ ui.text('home-editor.removeSection') }}</button>
+        </div>
+      </div>
+      <div class="cms-fields">
+        <label>{{ ui.text('home-editor.layout') }}<select [(ngModel)]="section.type">
+            @for (layout of layouts; track layout) {
+              <option [value]="layout">{{ ui.text(labels[layout]) }}</option>
+            }
+          </select></label>
+        <label class="cms-checkbox"><input type="checkbox" [(ngModel)]="section.visible"> {{ ui.text('home-editor.visibleOnHomePage') }}</label>
+        @if (section.type !== 'benefits' && section.type !== 'values') {
+          <label class="cms-wide">{{ ui.text('home-editor.smallHeading') }}<input [(ngModel)]="section.eyebrow" maxlength="180"></label>
+          <label class="cms-wide">{{ ui.text('home-editor.heading') }}<input [(ngModel)]="section.heading" maxlength="180"></label>
+          @if (section.type !== 'banner') {
+            <label class="cms-wide">{{ section.type === 'collections' || section.type === 'featured' ? ui.text('home-editor.loadingMessage') : ui.text('home-editor.bodyText') }}
+              <textarea [(ngModel)]="section.body" maxlength="1600" rows="3"></textarea>
+            </label>
+          }
+        }
+        @if (section.type === 'hero' || section.type === 'story' || section.type === 'banner' || section.type === 'editorial') {
+          <admin-content-image class="cms-wide" [label]="ui.text('home-editor.sectionPhoto')" [limitMb]="8"
+                               [preview]="drafts.homePhoto(section)" (fileChange)="drafts.setHomePhoto(section, $event)" />
+          @if (drafts.homePhoto(section)) {
+            <label class="cms-wide">{{ ui.text('home-editor.imageDescription') }}<input [(ngModel)]="section.imageAlt" maxlength="240"></label>
+          }
+          @if (section.type === 'hero' || section.type === 'story') {
+            <label class="cms-wide">{{ ui.text('home-editor.photoCaption') }}<input [(ngModel)]="section.imageCaption" maxlength="180"></label>
+          }
+          <label>{{ ui.text('home-editor.buttonText') }}<input [(ngModel)]="section.buttonLabel" maxlength="100"></label>
+          <label>{{ ui.text('home-editor.buttonDestination') }}<input [(ngModel)]="section.buttonPath" maxlength="240" [placeholder]="ui.text('home-editor.shop')"></label>
+          @if (section.buttonPath === '/shop' || section.buttonCategory) {
+            <label>{{ ui.text('home-editor.shopCategory') }} <small>{{ ui.text('home-editor.optional') }}</small><select [ngModel]="section.buttonCategory || ''" (ngModelChange)="section.buttonCategory = $event">
+                <option value="">{{ ui.text('home-editor.chooseCategory') }}</option>
+                @for (category of categories; track category.id) {
+                  <option [value]="category.slug">{{ category.name }}</option>
+                }
+              </select></label>
+          }
+        }
+        @if (section.type === 'collections' || section.type === 'featured') {
+          <label>{{ ui.text('home-editor.sectionLinkText') }}<input [(ngModel)]="section.linkLabel" maxlength="100"></label>
+          <label>{{ ui.text('home-editor.linkDestination') }}<input [(ngModel)]="section.linkPath" maxlength="240" [placeholder]="ui.text('home-editor.shop')"></label>
+        }
+        @if (section.type === 'collections') {
+          <label>{{ ui.text('home-editor.cardCaption') }}<input [(ngModel)]="section.cardEyebrow" maxlength="80"></label>
+          <label>{{ ui.text('home-editor.cardLinkText') }}<input [(ngModel)]="section.cardLinkLabel" maxlength="80"></label>
+        }
+        @if (section.type === 'featured') {
+          <label class="cms-wide">{{ ui.text('home-editor.messageWhenTheShopIsEmpty') }}<input [(ngModel)]="section.emptyMessage" maxlength="240"></label>
+          <label>{{ ui.text('home-editor.emptyShopLinkText') }}<input [(ngModel)]="section.emptyLinkLabel" maxlength="100"></label>
+        }
+      </div>
+      @if (section.type === 'benefits' || section.type === 'values' || section.type === 'collections' || section.type === 'featured') {
+        <div class="home-items">
+          <h3>{{ section.type === 'collections' ? ui.text('home-editor.categories') : section.type === 'featured' ? ui.text('home-editor.productTabs') : ui.text('home-editor.items') }}</h3>
+          @if (section.type === 'collections') {
+            <p class="cms-muted">{{ ui.text('home-editor.chooseUpToFourCategoriesInDisplayOrder') }}</p>
+          }
+          @for (item of section.items; track item; let i = $index) {
+            <div class="home-item">
+              <div class="cms-fields">
+                @switch (section.type) {
+                  @case ('collections') {
+                    <label>{{ ui.text('home-editor.category') }}<select [ngModel]="item.category || ''" (ngModelChange)="item.category = $event">
+                        <option value="">{{ ui.text('home-editor.chooseCategory') }}</option>
+                        @for (category of categories; track category.id) {
+                          <option [value]="category.slug">{{ category.name }}</option>
+                        }
+                      </select></label>
+                  }
+                  @case ('featured') {
+                    <label>{{ ui.text('home-editor.tabLabel') }}<input [(ngModel)]="item.title" maxlength="120"></label>
+                    <label>{{ ui.text('home-editor.productsToShow') }}<select [ngModel]="item.path || 'all'" (ngModelChange)="item.path = $event; item.category = undefined">
+                        <option value="all">{{ ui.text('home-editor.allProducts') }}</option>
+                        <option value="featured">{{ ui.text('home-editor.featuredProducts') }}</option>
+                        <option value="category">{{ ui.text('home-editor.productsInCategory') }}</option>
+                      </select></label>
+                    @if (item.path === 'category') {
+                      <label>{{ ui.text('home-editor.category') }}
+                        <select [(ngModel)]="item.category">
+                          <option value="">{{ ui.text('home-editor.chooseCategory') }}</option>
+                          @for (category of categories; track category.id) { <option [value]="category.slug">{{ category.name }}</option> }
+                        </select>
+                      </label>
+                    }
+                  }
+                  @default {
+                    <label>{{ ui.text('home-editor.iconOrNumber') }}<input [(ngModel)]="item.icon" maxlength="20"></label>
+                    <label>{{ ui.text('home-editor.title') }}<input [(ngModel)]="item.title" maxlength="120"></label>
+                    @if (section.type === 'values') {
+                      <label class="cms-wide">{{ ui.text('home-editor.description') }}<input [(ngModel)]="item.body" maxlength="300"></label>
+                    }
+                  }
+                }
+              </div>
+              <div class="cms-actions">
+                <button class="cms-order-button" type="button" [disabled]="i === 0" [attr.aria-label]="ui.text('home-editor.moveItemUp')" (click)="move(section.items, i, i - 1)">↑</button>
+                <button class="cms-order-button" type="button" [disabled]="i === section.items.length - 1" [attr.aria-label]="ui.text('home-editor.moveItemDown')" (click)="move(section.items, i, i + 1)">↓</button>
+                <button class="cms-text-action" type="button" (click)="section.items.splice(i, 1)">{{ ui.text('home-editor.removeItem') }}</button>
+              </div>
+            </div>
+          }
+          <button type="button" class="cms-button" (click)="addItem(section)" [disabled]="section.type === 'collections' && section.items.length >= 4">{{ ui.text('home-editor.addItem') }}</button>
+        </div>
+      }
+    </section>
+  }
+  @else {
+    <section class="cms-panel">
+      <h2>{{ ui.text('home-editor.noHomePageSections') }}</h2>
+      <p class="cms-muted">{{ ui.text('home-editor.chooseASectionTypeAndUseAddSection') }}</p>
+    </section>
+  }
+</div>

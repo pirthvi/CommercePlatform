@@ -1,0 +1,118 @@
+<div class="cms-workspace">
+  <div class="cms-heading">
+    <h1>{{ title }}</h1>
+    @if (area === 'home') {
+      <a class="cms-button" [href]="shopUrl" target="_blank" rel="noopener">{{ ui.text('site-content.viewHomePage') }}</a>
+    }
+  </div>
+  @if (area === 'navigation' || area === 'header') {
+    <nav class="cms-navigation-settings" [attr.aria-label]="ui.text('site-content.navigationSettings')">
+      <a routerLink="/site-content/navigation" routerLinkActive="selected" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">{{ ui.text('site-content.menuLinks') }}</a>
+      <a routerLink="/site-content/navigation/header" routerLinkActive="selected" ariaCurrentWhenActive="page">{{ ui.text('site-content.headerSettings') }}</a>
+    </nav>
+  }
+  @if (drafts.loadError) {
+    <div class="cms-panel" role="alert">
+      <p>{{ drafts.loadError }}</p>
+      <button type="button" class="cms-button" (click)="drafts.load()">{{ ui.text('site-content.tryAgain') }}</button>
+    </div>
+  }
+  @else if (drafts.draft; as site) {
+    <form ngNoForm ngNativeValidate (submit)="save($event)">
+      <fieldset class="cms-editor" [disabled]="drafts.saving === area" [attr.inert]="drafts.saving === area ? '' : null">
+        @switch (area) {
+          @case ('brand') {
+            <section class="cms-panel">
+              <admin-content-image [label]="ui.text('site-content.storeLogo')" [limitMb]="2" [preview]="drafts.logoPreview" (fileChange)="drafts.setLogo($event)" />
+            </section>
+            <section class="cms-panel">
+              <h2>{{ ui.text('site-content.storeIdentity') }}</h2>
+              <div class="cms-fields">
+                <label>{{ ui.text('site-content.brandName') }}<input [(ngModel)]="site.brandName" required pattern=".*\S.*" maxlength="120"></label>
+                <label>{{ ui.text('site-content.logoLetters') }}<input [(ngModel)]="site.brandMark" required pattern=".*\S.*" maxlength="32"></label>
+                <label class="cms-wide">{{ ui.text('site-content.tagline') }}<input [(ngModel)]="site.brandTagline" maxlength="160"></label>
+              </div>
+              <div class="cms-brand-preview">
+                @if (drafts.logoPreview) {
+                  <img [src]="drafts.logoPreview" alt="">
+                }
+                @else {
+                  <span class="cms-brand-initials">{{ site.brandMark }}</span>
+                }
+                <span>
+                  <strong>{{ site.brandName }}</strong>
+                  <small>{{ site.brandTagline }}</small>
+                </span>
+              </div>
+            </section>
+          }
+          @case ('header') {
+            <section class="cms-panel">
+              <h2>{{ ui.text('site-content.announcementBar') }}</h2>
+              <div class="cms-fields">
+                <label class="cms-wide">{{ ui.text('site-content.announcement') }}<input [(ngModel)]="site.announcementText" maxlength="240"></label>
+                <label class="cms-wide">{{ ui.text('site-content.secondaryAnnouncement') }}<input [(ngModel)]="site.announcementSecondary" maxlength="240"></label>
+              </div>
+            </section>
+            <section class="cms-panel">
+              <h2>{{ ui.text('site-content.headerActions') }}</h2>
+              <div class="cms-fields">
+                <label>{{ ui.text('site-content.searchLabel') }}<input [(ngModel)]="site.searchLabel" maxlength="40"></label>
+                <label>{{ ui.text('site-content.signInLabel') }}<input [(ngModel)]="site.signInLabel" maxlength="40"></label>
+                <label>{{ ui.text('site-content.accountLabel') }}<input [(ngModel)]="site.accountLabel" maxlength="40"></label>
+                <label>{{ ui.text('site-content.shoppingCartLabel') }}<input [(ngModel)]="site.bagLabel" maxlength="40"></label>
+              </div>
+            </section>
+          }
+          @case ('navigation') {
+            <section class="cms-panel">
+              <h2>{{ ui.text('site-content.mainMenu') }}</h2>
+              <p class="cms-muted">{{ ui.text('site-content.linksAppearInThisOrderOnDesktopAnd') }}</p>
+              <admin-content-links [links]="site.navigation" [categories]="(categories$ | async) || []" />
+            </section>
+          }
+          @case ('footer') {
+            <admin-content-footer [site]="site" [categories]="(categories$ | async) || []" />
+          }
+          @case ('home') {
+            <admin-home-editor [sections]="site.homeSections" [categories]="(categories$ | async) || []" />
+          }
+        }
+        @if (area === 'navigation' || area === 'footer') {
+          <datalist id="studio-page-paths">
+            @for (path of destinations$ | async; track path) {
+              <option [value]="path"></option>
+            }
+          </datalist>
+        }
+      </fieldset>
+      <div class="cms-savebar">
+        <div aria-live="polite">
+          @if (drafts.errors[area]) {
+            <span class="cms-error">{{ drafts.errors[area] }}</span>
+          }
+          @else if (drafts.saving === area) {
+            <span>{{ ui.text('site-content.saving') }}</span>
+          }
+          @else if (drafts.changed(area)) {
+            <span class="cms-unsaved">{{ ui.text('site-content.unsavedChanges') }}</span>
+          }
+          @else {
+            <span>{{ drafts.notices[area] || ui.text('site-content.noUnsavedChanges') }}</span>
+          }
+        </div>
+        <div class="cms-actions">
+          @if (drafts.changed(area)) {
+            <button class="cms-text-action" type="button" [disabled]="drafts.saving === area" (click)="drafts.discard(area)">{{ ui.text('site-content.discardChanges') }}</button>
+          }
+          <button class="primary-button cms-save" type="submit" [disabled]="!!drafts.saving || !drafts.changed(area)">
+            {{ drafts.saving === area ? ui.text('site-content.saving') : ui.text('site-content.saveChanges') }}
+          </button>
+        </div>
+      </div>
+    </form>
+  }
+  @else {
+    <div class="cms-panel cms-muted" role="status">{{ ui.text('site-content.loadingContent') }}</div>
+  }
+</div>

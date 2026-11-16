@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="2.0.18">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/slf4j/jul-to-slf4j/2.0.18/jul-to-slf4j-2.0.18.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/slf4j/jul-to-slf4j/2.0.18/jul-to-slf4j-2.0.18-sources.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

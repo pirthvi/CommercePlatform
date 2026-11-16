@@ -1,0 +1,80 @@
+<section class="checkout-heading">
+  <a class="text-link" routerLink="/cart">{{ ui.text('checkout.backToYourCart') }}</a>
+  <span class="eyebrow">{{ section.eyebrow }}</span>
+  <h1>{{ section.heading }}</h1>
+  <p>{{ section.body }}</p>
+  <p class="checkout-account-link">{{ ui.text('checkout.haveAnAccount') }} <a [routerLink]="['/login']" [queryParams]="{ returnUrl: '/checkout' }">{{ ui.text('checkout.signInToLinkThisOrderToIt') }}</a></p>
+</section>
+<p class="loading-state checkout-loading" *ngIf="!cart.isLoaded">{{ ui.text('checkout.loadingYourCart') }}</p>
+<ng-container *ngIf="cart.isLoaded">
+  <div class="checkout-layout" *ngIf="cart.lines.length; else checkoutEmpty">
+    <form #checkoutForm="ngForm" (ngSubmit)="submit(checkoutForm)" class="checkout-form">
+      <div class="form-section">
+        <span class="step-number">{{ ui.text('checkout.01') }}</span>
+        <div>
+          <h2>{{ ui.text('checkout.deliveryDetails') }}</h2>
+          <p>{{ ui.text('checkout.weLlUseTheseDetailsToBringYour') }}</p>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label class="field full-field">{{ ui.text('checkout.fullName') }}<input name="customerName" [(ngModel)]="form.customerName" required maxlength="140" autocomplete="name" [placeholder]="ui.text('checkout.yourName')"></label>
+        <label class="field">{{ ui.text('checkout.emailAddress') }}<input name="email" [(ngModel)]="form.email" required email maxlength="180" autocomplete="email" [placeholder]="ui.text('checkout.youExampleCom')"></label>
+        <label class="field">{{ ui.text('checkout.phoneNumber') }}<input name="phone" [(ngModel)]="form.phone" required maxlength="40" autocomplete="tel" [placeholder]="ui.text('checkout.phoneNumber')"></label>
+        <label class="field full-field">{{ ui.text('checkout.streetAddress') }}<input name="address" [(ngModel)]="form.address" required maxlength="300" autocomplete="street-address" [placeholder]="ui.text('checkout.houseStreetNeighbourhood')"></label>
+        <label class="field">{{ ui.text('checkout.city') }}<input name="city" [(ngModel)]="form.city" required maxlength="100" autocomplete="address-level2" [placeholder]="ui.text('checkout.city')"></label>
+        <label class="field">{{ ui.text('checkout.postalCode') }}<input name="postalCode" [(ngModel)]="form.postalCode" required maxlength="24" autocomplete="postal-code" [placeholder]="ui.text('checkout.postalCode')"></label>
+      </div>
+      <div class="form-section payment-section">
+        <span class="step-number">{{ ui.text('checkout.02') }}</span>
+        <div>
+          <h2>{{ ui.text('checkout.payment') }}</h2>
+          <p>{{ ui.text('checkout.chooseHowYouDLikeToPayFor') }}</p>
+        </div>
+      </div>
+      <div class="payment-choice">
+        <span class="payment-radio">●</span>
+        <div>
+          <strong>{{ ui.text('checkout.cashOnDelivery') }}</strong>
+          <small>{{ ui.text('checkout.payInCashWhenYourOrderArrives') }}</small>
+        </div>
+        <span>{{ ui.text('checkout.cod') }}</span>
+      </div>
+      <p class="checkout-error" *ngIf="error" role="alert">{{ error }}</p>
+      <button class="button button-dark place-order" type="submit" [disabled]="submitting || checkoutForm.invalid">{{ submitting ? ui.text('checkout.preparingYourOrder') : ui.text('checkout.placeOrder') }} <span>↗</span></button>
+      <small class="privacy-note">{{ ui.text('checkout.needDeliveryDetailsReadOur') }} <a routerLink="/pages/shipping">{{ ui.text('checkout.deliveryReturnsPolicy') }}</a>.</small>
+    </form>
+    <aside class="checkout-summary">
+      <span class="eyebrow">{{ ui.text('checkout.yourOrder') }}</span>
+      <h2>{{ ui.text('checkout.orderSummary') }}</h2>
+      <div class="checkout-item" *ngFor="let line of cart.lines">
+        <img [src]="line.product.imageUrl" [alt]="line.product.name">
+        <div>
+          <strong>{{ line.product.name }}</strong>
+          <span>{{ ui.text('checkout.quantity') }} {{ line.quantity }}</span>
+        </div>
+        <b>{{ line.product.price * line.quantity | storeMoney }}</b>
+      </div>
+      <div class="summary-row">
+        <span>{{ ui.text('checkout.subtotal') }}</span>
+        <strong>{{ cart.subtotal | storeMoney }}</strong>
+      </div>
+      <div class="summary-row">
+        <span>{{ ui.text('checkout.delivery') }}</span>
+        <strong>{{ ui.delivery(cart.subtotal) === 0 ? ui.text('checkout.free') : ui.money(ui.delivery(cart.subtotal)) }}</strong>
+      </div>
+      <div class="summary-row summary-total">
+        <span>{{ ui.text('checkout.total') }}</span>
+        <strong>{{ cart.subtotal + (ui.delivery(cart.subtotal)) | storeMoney }}</strong>
+      </div>
+      <p class="shipping-progress">{{ ui.delivery(cart.subtotal) === 0 ? ui.text('checkout.freeDelivery') : '' }}</p>
+    </aside>
+  </div>
+  <ng-template #checkoutEmpty>
+    <div class="empty-cart">
+      <span class="empty-bloom">✳</span>
+      <h2>{{ ui.text('checkout.yourCartIsEmpty') }}</h2>
+      <p>{{ ui.text('checkout.addAProductToYourCartToStart') }}</p>
+      <a class="button button-dark" routerLink="/shop">{{ ui.text('checkout.browseProducts') }} <span>↗</span></a>
+    </div>
+  </ng-template>
+</ng-container>

@@ -1,0 +1,51 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "apps",
+  "projects": {
+    "storefront": {
+      "projectType": "application",
+      "root": "apps/storefront",
+      "sourceRoot": "apps/storefront/src",
+      "prefix": "shop",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "apps/storefront/src/main.ts",
+            "polyfills": ["zone.js"],
+            "index": "apps/storefront/src/index.html",
+            "tsConfig": "apps/storefront/tsconfig.app.json",
+            "styles": ["apps/storefront/src/styles.css", "apps/storefront/src/site-content.css"],
+            "outputPath": "dist/storefront"
+          },
+          "configurations": { "production": { "optimization": { "scripts": true, "styles": true, "fonts": { "inline": false } }, "outputHashing": "all" }, "development": { "optimization": false, "sourceMap": true } },
+          "defaultConfiguration": "production"
+        },
+        "serve": { "builder": "@angular/build:dev-server", "configurations": { "production": { "buildTarget": "storefront:build:production" }, "development": { "buildTarget": "storefront:build:development", "proxyConfig": "proxy.conf.json", "poll": 1500 } }, "defaultConfiguration": "development" }
+      }
+    },
+    "admin": {
+      "projectType": "application",
+      "root": "apps/admin",
+      "sourceRoot": "apps/admin/src",
+      "prefix": "admin",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "apps/admin/src/main.ts",
+            "polyfills": ["zone.js"],
+            "index": "apps/admin/src/index.html",
+            "tsConfig": "apps/admin/tsconfig.app.json",
+            "styles": ["apps/admin/src/styles.css", "apps/admin/src/studio-polish.css"],
+            "outputPath": "dist/admin"
+          },
+          "configurations": { "production": { "optimization": { "scripts": true, "styles": true, "fonts": { "inline": false } }, "outputHashing": "all" }, "development": { "optimization": false, "sourceMap": true } },
+          "defaultConfiguration": "production"
+        },
+        "serve": { "builder": "@angular/build:dev-server", "configurations": { "production": { "buildTarget": "admin:build:production" }, "development": { "buildTarget": "admin:build:development", "proxyConfig": "proxy.conf.json", "poll": 1500 } }, "defaultConfiguration": "development" }
+      }
+    }
+  }
+}

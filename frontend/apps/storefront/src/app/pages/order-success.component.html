@@ -1,0 +1,43 @@
+<section class="success-page" *ngIf="receipt; else receiptState">
+  <span class="success-flower">✳</span>
+  <span class="eyebrow">{{ section.eyebrow }}</span>
+  <h1>{{ section.heading }}</h1>
+  <p>{{ section.body }}</p>
+  <div class="receipt-card">
+    <div class="receipt-top">
+      <div>
+        <span>{{ ui.text('order-success.orderNumber') }}</span>
+        <strong>#{{ receipt.orderNumber.slice(0, 8).toUpperCase() }}</strong>
+      </div>
+      <div>
+        <span>{{ ui.text('order-success.orderedOn') }}</span>
+        <strong>{{ receipt.createdAt | date:'d MMM y' }}</strong>
+      </div>
+      <div>
+        <span>{{ ui.text('order-success.payment') }}</span>
+        <strong>{{ ui.text('order-success.cashOnDelivery') }}</strong>
+      </div>
+    </div>
+    <div class="receipt-item" *ngFor="let item of receipt.items">
+      <span>{{ item.productName }} <small>× {{ item.quantity }}</small></span>
+      <strong>{{ item.unitPrice * item.quantity | storeMoney:receipt.currency }}</strong>
+    </div>
+    <div class="receipt-total">
+      <span>{{ ui.text('order-success.totalToPayOnDelivery') }}</span>
+      <strong>{{ receipt.total | storeMoney:receipt.currency }}</strong>
+    </div>
+  </div>
+  <div class="success-actions">
+    <a class="button button-dark" routerLink="/shop">{{ ui.text('order-success.continueShopping') }} <span>↗</span></a>
+    <a class="text-link" routerLink="/pages/contact">{{ ui.text('order-success.needAHandContactUs') }}</a>
+  </div>
+</section>
+<ng-template #receiptState>
+  <div class="success-page">
+    <span class="success-flower">✳</span>
+    <span class="eyebrow">{{ ui.text('order-success.orderDetails') }}</span>
+    <h1>{{ error ? ui.text('order-success.weCouldnTFindThisOrder') : ui.text('order-success.oneMoment') }}</h1>
+    <p>{{ error || ui.text('order-success.weReBringingUpYourOrderDetails') }}</p>
+    <a class="button button-dark" routerLink="/shop">{{ ui.text('order-success.continueShopping') }} <span>↗</span></a>
+  </div>
+</ng-template>

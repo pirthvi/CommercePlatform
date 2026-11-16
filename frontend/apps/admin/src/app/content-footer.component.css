@@ -1,0 +1,41 @@
+:host { display: block; min-width: 0; }
+
+.cms-inline-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cms-group {
+  margin-top: 12px;
+  border: 1px solid var(--cms-border);
+  border-radius: 7px;
+}
+.cms-group summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+.cms-group summary small {
+  margin-left: 8px;
+  color: var(--cms-muted);
+  font-weight: 400;
+}
+.cms-group[open] summary {
+  border-bottom: 1px solid var(--cms-border);
+}
+.cms-group-body {
+  padding: 14px;
+}
+.cms-group-body .cms-panel-title {
+  align-items: flex-end;
+}
+.cms-group-body .cms-field {
+  flex: 1 1 160px;
+}
+.cms-inline-row {
+  margin: 0 0 10px;
+}
+.cms-inline-row .cms-input {
+  margin-top: 0;
+}

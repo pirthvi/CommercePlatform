@@ -1,0 +1,10 @@
+node_modules/
+frontend/dist/
+frontend/out-tsc/
+frontend/.angular/
+backend/target/
+backend/data/*.mv.db
+backend/data/*.trace.db
+backend/data/.jwt-signing-key
+*.log
+.DS_Store

@@ -1,0 +1,10 @@
+<a class="brand" [class.footer-brand]="inFooter" routerLink="/" [attr.aria-label]="site.brandName + ui.text('brand.home')">
+  <img class="brand-logo" *ngIf="site.logoUrl; else textBrandMark" [src]="site.logoUrl" [alt]="site.brandName + ui.text('brand.logo')">
+  <ng-template #textBrandMark>
+    <span class="brand-mark">{{ site.brandMark }}</span>
+  </ng-template>
+  <span class="brand-copy">
+    <span>{{ site.brandName }}</span>
+    <small>{{ site.brandTagline }}</small>
+  </span>
+</a>

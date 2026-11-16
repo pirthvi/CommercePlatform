@@ -1,0 +1,51 @@
+<div class="manager-heading">
+  <div>
+    <span class="eyebrow">{{ ui.text('orders.fulfilment') }}</span>
+    <h1>{{ ui.text('orders.orders') }}<span>.</span></h1>
+    <p>{{ ui.text('orders.reviewOrdersAndUpdateTheirFulfilmentStatus') }}</p>
+  </div>
+  <button class="secondary-button" (click)="load()">{{ ui.text('orders.refreshOrders') }}</button>
+</div>
+<div class="flash error-flash" *ngIf="error">{{ error }}</div>
+<section class="panel order-manager">
+  <div class="table-caption">
+    <strong>{{ orders.length }} {{ orders.length === 1 ? ui.text('orders.order') : ui.text('orders.orders2') }}</strong>
+    <span>{{ ui.text('orders.orderActivity') }}</span>
+  </div>
+  <div class="order-list">
+    <article class="admin-order" *ngFor="let order of orders">
+      <div class="order-main">
+        <div class="order-number">
+          <span>{{ ui.text('orders.order2') }}</span>
+          <strong>#{{ order.orderNumber.slice(0,8).toUpperCase() }}</strong>
+          <small>{{ order.createdAt | date:'d MMM y · h:mm a' }}</small>
+        </div>
+        <div class="order-customer">
+          <strong>{{ order.customerName }}</strong>
+          <span>{{ order.email }} · {{ order.phone }}</span>
+          <small>{{ order.address }}, {{ order.city }} {{ order.postalCode }}</small>
+        </div>
+        <div class="order-amount">
+          <span>{{ order.items.length }} {{ order.items.length === 1 ? ui.text('orders.item') : ui.text('orders.items') }}</span>
+          <strong>{{ order.total | storeMoney:order.currency }}</strong>
+          <small>{{ order.subtotal | storeMoney:order.currency }} + {{ order.shipping ? (order.shipping | storeMoney:order.currency) : ui.text('orders.freeDelivery') }}</small>
+        </div>
+        <label class="status-select-label">
+          <span>{{ ui.text('orders.orderStatus') }}</span>
+          <select [(ngModel)]="order.status" (change)="changeStatus(order)" [ngClass]="'status-' + order.status.toLowerCase()">
+            <option value="PROCESSING">{{ ui.text('orders.processing') }}</option>
+            <option value="SHIPPED">{{ ui.text('orders.shipped') }}</option>
+            <option value="DELIVERED">{{ ui.text('orders.delivered') }}</option>
+            <option value="CANCELLED">{{ ui.text('orders.cancelled') }}</option>
+          </select>
+        </label>
+      </div>
+      <div class="order-items">
+        <span>{{ ui.text('orders.inThisParcel') }}</span>
+        <b *ngFor="let item of order.items">{{ item.productName }} <small>× {{ item.quantity }}</small></b>
+      </div>
+    </article>
+    <div class="table-empty" *ngIf="!loading && !orders.length">{{ ui.text('orders.ordersWillAppearHereAfterCheckout') }}</div>
+    <div class="table-empty" *ngIf="loading">{{ ui.text('orders.loadingOrders') }}</div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+:host { display:block; min-width:0; }
+.block-fields, .items { display:grid; gap:1rem; }
+label { display:grid; gap:.35rem; font-size:.87rem; font-weight:600; }
+input:not([type=checkbox]), select, textarea { width:100%; min-width:0; font:inherit; font-weight:400; padding:.65rem; border:1px solid #b8c0ae; border-radius:4px; background:white; color:inherit; }
+textarea { resize:vertical; }
+fieldset { min-width:0; margin:0; border:1px solid #d5d9cf; padding:.85rem; display:grid; gap:.65rem; }
+legend { font-weight:600; font-size:.85rem; padding-inline:.25rem; }
+.tools { display:flex; gap:1rem; flex-wrap:wrap; } .tools button { border:0; background:transparent; text-decoration:underline; cursor:pointer; }
+button:disabled { opacity:.45; cursor:default; }
+.product-picker { max-height:18rem; overflow:auto; } .product-picker label { display:flex; align-items:center; gap:.6rem; }
+.product-picker p,.commerce-help { color:#53604d; margin:0; }

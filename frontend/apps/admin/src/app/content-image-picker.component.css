@@ -1,0 +1,41 @@
+:host { display: block; min-width: 0; }
+
+.cms-upload {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px dashed #9fae95;
+  border-radius: 8px;
+  background: #f6f8f1;
+}
+.cms-upload.dragging {
+  border-color: var(--cms-olive);
+  background: #e9f0e1;
+}
+.cms-upload img {
+  width: 110px;
+  height: 88px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 5px;
+}
+.cms-upload > div {
+  flex: 1 1 190px;
+  min-width: 0;
+}
+.cms-upload p {
+  margin: 3px 0 9px;
+  color: var(--cms-muted);
+  font-size: 13px;
+}
+.cms-upload p.cms-error {
+  margin-top: 9px;
+  color: #953a2e;
+}
+.cms-photo-status {
+  display: block;
+  margin-top: 6px;
+  color: var(--cms-olive);
+}

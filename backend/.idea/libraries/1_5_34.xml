@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="1.5.34">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/ch/qos/logback/logback-core/1.5.34/logback-core-1.5.34.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/ch/qos/logback/logback-core/1.5.34/logback-core-1.5.34-sources.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

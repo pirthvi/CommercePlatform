@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="2.1.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

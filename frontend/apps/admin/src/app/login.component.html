@@ -1,0 +1,31 @@
+<main class="login-screen">
+  <aside class="login-art">
+    @if (signInPhoto(); as photo) { <img class="login-photo" [src]="photo" alt=""> }
+    <div class="login-art-note">
+      <strong>{{ ui.config()?.brandName }}</strong>
+      <p>{{ ui.config()?.brandTagline }}</p>
+    </div>
+  </aside>
+  <section class="login-panel">
+    <a class="admin-brand" [href]="shopUrl">
+      @if (ui.config()?.logoUrl; as logo) {
+        <img class="studio-logo" [src]="logo" alt="">
+      }
+      @else {
+        <span class="brand-mark">{{ ui.config()?.brandMark }}</span>
+      }
+      <span>{{ ui.config()?.brandName }}<small>{{ ui.text('login.studio') }}</small></span>
+    </a>
+    <div class="login-form">
+      <h1>{{ ui.text('login.signInToStudio') }}</h1>
+      <p>{{ ui.text('login.manageProductsOrdersAndStoreContent') }}</p>
+      <form (ngSubmit)="submit()">
+        <label>{{ ui.text('login.emailOrUsername') }}<input [(ngModel)]="username" name="username" required autocomplete="username" [placeholder]="ui.text('login.yourStudioUsername')"></label>
+        <label>{{ ui.text('login.password') }}<input [(ngModel)]="password" name="password" required type="password" autocomplete="current-password" [placeholder]="ui.text('login.yourPassword')"></label>
+        <p class="login-error" *ngIf="error">{{ error }}</p>
+        <button class="login-button" type="submit" [disabled]="busy">{{ busy ? ui.text('login.openingTheStudio') : ui.text('login.signInToTheStudio') }} <span>↗</span></button>
+      </form>
+    </div>
+    <a class="store-link" [href]="shopUrl">{{ ui.text('login.backToTheStorefront') }}</a>
+  </section>
+</main>

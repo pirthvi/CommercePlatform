@@ -1,0 +1,11 @@
+@if (pdp.product; as product) {
+<section class="pdp-gallery" [attr.aria-label]="ui.text('product-detail.productImages')">
+    <div class="pdp-main-image">
+      <img [src]="pdp.activeImage" [alt]="product.name" fetchpriority="high">
+      <span *ngIf="product.badge" class="pdp-badge">{{ product.badge }}</span>
+    </div>
+    <div class="pdp-thumbnails" *ngIf="pdp.images.length > 1" [attr.aria-label]="ui.text('product-detail.chooseProductImage')">
+      <button *ngFor="let image of pdp.images; let i = index" type="button" [class.selected]="pdp.activeImage === image" (click)="pdp.activeImage = image" [attr.aria-label]="ui.text('product-detail.showProductImage', { number: i + 1 })"><img [src]="image" [alt]="ui.text('product-detail.view', { name: product.name, number: i + 1 })" loading="lazy"></button>
+    </div>
+  </section>
+}

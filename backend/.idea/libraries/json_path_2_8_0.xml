@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="json-path-2.8.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/com/jayway/jsonpath/json-path/2.8.0/json-path-2.8.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Commerce Platform API" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="commerce-api" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.commerceplatform.CommerceApiApplication" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

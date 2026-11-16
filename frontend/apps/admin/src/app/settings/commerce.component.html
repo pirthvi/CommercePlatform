@@ -1,0 +1,16 @@
+<div class="cms-workspace">
+  <div class="cms-heading">
+    <h1>{{ ui.text('commerce.commerceSettings') }}</h1>
+  </div>
+  <form class="cms-panel" #settingsForm="ngForm" (ngSubmit)="save()">
+    <h2>{{ ui.text('commerce.pricingAndDelivery') }}</h2>
+    <div class="cms-fields">
+      <label>{{ ui.text('commerce.currencyCode') }}<input name="currency" [(ngModel)]="options.currency" required pattern="[A-Z]{3}" maxlength="3"></label>
+      <label>{{ ui.text('commerce.standardDeliveryFee') }}<input type="number" min="0" step="0.01" required name="fee" [(ngModel)]="options.deliveryFee"></label>
+      <label>{{ ui.text('commerce.freeDeliveryThreshold') }}<input type="number" min="0" step="0.01" name="threshold" [(ngModel)]="options.freeDeliveryFrom"></label>
+    </div>
+    <p>{{ ui.text('commerce.leaveTheThresholdEmptyToChargeTheStandard') }}</p>
+    <button class="cms-button" [disabled]="busy || settingsForm.invalid">{{ ui.text('commerce.saveSettings') }}</button>
+    <span role="status">{{ message }}</span>
+  </form>
+</div>

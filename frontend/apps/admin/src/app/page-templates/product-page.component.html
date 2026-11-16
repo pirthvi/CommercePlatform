@@ -1,0 +1,51 @@
+<div class="cms-workspace">
+  <div class="cms-heading">
+    <div><h1>{{ ui.text('navigation.productPage') }}</h1><p>{{ ui.text('pdpEditor.intro') }}</p></div>
+    @if (previewUrl) { <a class="cms-button" [href]="previewUrl" target="_blank" rel="noopener">{{ ui.text('pdpEditor.preview') }} ↗</a> }
+  </div>
+  @if (original) {
+    <div class="pdp-editor-layout">
+      <nav class="cms-panel section-list" [attr.aria-label]="ui.text('pdpEditor.sections')">
+        @for (tab of tabs; track tab) {
+          <button type="button" [attr.aria-pressed]="selected === tab" (click)="selected = tab">{{ ui.text('pdpGroups.' + tab) }}</button>
+        }
+      </nav>
+      <section class="cms-panel editor-fields">
+        <h2>{{ ui.text('pdpGroups.' + selected) }}</h2>
+        <fieldset [disabled]="saving">
+          @if (selected === 'icons') {
+            <p class="cms-muted">{{ ui.text('pdpEditor.iconHelp') }}</p>
+            @for (slot of iconSlots; track slot) {
+              <details class="icon-field">
+                <summary>
+                  <span class="preview-tile" aria-hidden="true">
+                    @if (preview(slot)) { <img [src]="preview(slot)" alt=""> } @else { {{ symbols[slot] }} }
+                  </span>
+                  <strong>{{ ui.text('pdpIcons.' + slot) }}</strong>
+                </summary>
+                <label>{{ ui.text('pdpEditor.symbol') }}<input [(ngModel)]="symbols[slot]" [attr.data-slot]="slot" maxlength="32"></label>
+                <admin-content-image [label]="ui.text('pdpEditor.upload')" [limitMb]="2" [preview]="preview(slot)" (fileChange)="pick(slot, $event)" />
+              </details>
+            }
+          } @else {
+            @for (key of groups[selected]; track key) {
+              <label class="cms-field">{{ ui.text('pdpFields.' + key) || key }}
+                <textarea rows="2" maxlength="2000" [(ngModel)]="texts[key]" [attr.data-field]="key"></textarea>
+              </label>
+            }
+            <small class="cms-muted">{{ ui.text('pdpEditor.templateValues') }}</small>
+          }
+        </fieldset>
+      </section>
+    </div>
+    <div class="cms-savebar">
+      <span role="status" [class.cms-error]="error">{{ error || (dirty ? ui.text('pdpEditor.unsaved') : message) }}</span>
+      <div class="cms-actions">
+        @if (dirty) { <button type="button" class="cms-text-action" (click)="discard()" [disabled]="saving">{{ ui.text('pdpEditor.restore') }}</button> }
+        <button type="button" class="primary-button" (click)="save()" [disabled]="saving || !dirty">{{ ui.text(saving ? 'pdpEditor.saving' : 'pdpEditor.save') }}</button>
+      </div>
+    </div>
+  } @else if (error) {
+    <section class="cms-panel" role="alert"><p>{{ error }}</p><button class="cms-button" (click)="load()">{{ ui.text('pdpEditor.retry') }}</button></section>
+  } @else { <p role="status">{{ ui.text('pdpEditor.loading') }}</p> }
+</div>

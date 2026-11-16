@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="3.5.21">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/springframework/boot/spring-boot-starter-json/3.5.16/spring-boot-starter-json-3.5.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/springframework/boot/spring-boot-starter-json/3.5.16/spring-boot-starter-json-3.5.16-sources.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,59 @@
+<section class="welcome-row">
+  <div>
+    <h1>{{ ui.text('dashboard.storeOverview') }}</h1>
+  </div>
+  <div class="date-stamp">
+    <strong>{{ today | date:'EEEE' }}</strong>
+    <small>{{ today | date:'d MMMM y' }}</small>
+  </div>
+</section>
+<div class="stat-grid">
+  <article class="stat-card">
+    <span>{{ ui.text('dashboard.liveProducts') }}</span>
+    <strong>{{ activeProducts }}</strong>
+  </article>
+  <article class="stat-card">
+    <span>{{ ui.text('dashboard.ordersProcessing') }}</span>
+    <strong>{{ processing }}</strong>
+  </article>
+  <article class="stat-card">
+    <span>{{ ui.text('dashboard.totalOrders') }}</span>
+    <strong>{{ orders.length }}</strong>
+  </article>
+  <article class="stat-card">
+    <span>{{ ui.text('dashboard.publishedPages') }}</span>
+    <strong>{{ publishedPages }}</strong>
+  </article>
+</div>
+<div class="dashboard-grid">
+  <section class="panel recent-panel">
+    <div class="panel-heading">
+      <div>
+        <span class="eyebrow">{{ ui.text('dashboard.recentActivity') }}</span>
+        <h2>{{ ui.text('dashboard.recentOrders') }}</h2>
+      </div>
+      <span class="panel-mark">{{ ui.text('dashboard.tn') }}</span>
+    </div>
+    <div class="mini-table-head">
+      <span>{{ ui.text('dashboard.order') }}</span>
+      <span>{{ ui.text('dashboard.date') }}</span>
+      <span>{{ ui.text('dashboard.status') }}</span>
+      <span>{{ ui.text('dashboard.total') }}</span>
+    </div>
+    <div class="mini-order" *ngFor="let order of orders.slice(0,5)">
+      <strong>#{{ order.orderNumber.slice(0,8).toUpperCase() }}</strong>
+      <span>{{ order.createdAt | date:'d MMM, h:mm a' }}</span>
+      <span class="status-pill" [ngClass]="'status-' + order.status.toLowerCase()">{{ ui.text('status.' + order.status) }}</span>
+      <b>{{ order.total | storeMoney:order.currency }}</b>
+    </div>
+    <div class="panel-empty" *ngIf="!orders.length">{{ ui.text('dashboard.yourFirstOrderWillBeRightHereGood') }}</div>
+  </section>
+  <section class="panel reminder-panel dashboard-shortcuts">
+    <h2>{{ ui.text('dashboard.quickActions') }}</h2>
+    <a routerLink="/products">{{ ui.text('dashboard.manageProducts') }} <span aria-hidden="true">→</span></a>
+    <a routerLink="/pages">{{ ui.text('dashboard.managePages') }} <span aria-hidden="true">→</span></a>
+    <a routerLink="/pages/home">{{ ui.text('dashboard.editHomePage') }} <span aria-hidden="true">→</span></a>
+    <a routerLink="/site-content/navigation">{{ ui.text('dashboard.editNavigation') }} <span aria-hidden="true">→</span></a>
+  </section>
+</div>
+<div class="dashboard-error" *ngIf="error">{{ ui.text('dashboard.weCouldNotLoadYourStudioOverview') }} {{ error }}</div>

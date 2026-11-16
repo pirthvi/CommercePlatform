@@ -1,0 +1,237 @@
+<div class="manager-heading product-heading">
+  <div>
+    <span class="eyebrow">{{ ui.text('products.catalog') }}</span>
+    <h1>{{ ui.text('products.products') }}<span>.</span></h1>
+    <p>{{ ui.text('products.manageYourProductsInventoryAndPhotos') }}</p>
+  </div>
+  <button class="primary-button" type="button" (click)="newProduct()"><span aria-hidden="true">＋</span> {{ ui.text('products.addAProduct') }}</button>
+</div>
+<div class="flash success-flash" role="status" *ngIf="success">{{ success }}</div>
+<div class="flash error-flash" role="alert" *ngIf="error">{{ error }}</div>
+<section class="product-toolbar" [attr.aria-label]="ui.text('products.productFilters')">
+  <label class="product-search">
+    <span aria-hidden="true">⌕</span>
+    <input [(ngModel)]="searchText" [placeholder]="ui.text('products.searchProducts')" [attr.aria-label]="ui.text('products.searchProducts')">
+  </label>
+  <div class="product-filter-tabs" role="group" [attr.aria-label]="ui.text('products.filterByVisibility')">
+    <button type="button" [class.active]="visibility === 'ALL'" (click)="visibility = 'ALL'">{{ ui.text('products.all') }} <span>{{ products.length }}</span></button>
+    <button type="button" [class.active]="visibility === 'LIVE'" (click)="visibility = 'LIVE'">{{ ui.text('products.live') }}</button>
+    <button type="button" [class.active]="visibility === 'HIDDEN'" (click)="visibility = 'HIDDEN'">{{ ui.text('products.hidden') }}</button>
+  </div>
+  <span class="product-count">{{ filteredProducts.length }} {{ ui.text('products.shown') }}</span>
+</section>
+<section class="panel product-manager">
+  <div class="table-caption">
+    <div>
+      <strong>{{ ui.text('products.productCatalog') }}</strong>
+      <small>{{ ui.text('products.changesAppearInYourStorefrontAsSoonAs') }}</small>
+    </div>
+    <span>{{ products.length }} {{ products.length === 1 ? ui.text('products.product') : ui.text('products.products2') }}</span>
+  </div>
+  <div class="product-table-wrap">
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>{{ ui.text('products.product2') }}</th>
+          <th>{{ ui.text('products.price') }}</th>
+          <th>{{ ui.text('products.stock') }}</th>
+          <th>{{ ui.text('products.visibility') }}</th>
+          <th>{{ ui.text('products.homePage') }}</th>
+          <th>
+            <span class="sr-only">{{ ui.text('products.actions') }}</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td>
+            <div class="product-cell">
+              <div class="product-thumb">
+                <img [src]="product.imageUrl" [alt]="product.name" loading="lazy">
+              </div>
+              <div>
+                <strong>{{ product.name }}</strong>
+                <small>{{ product.category }} · /{{ product.slug }}</small>
+              </div>
+            </div>
+          </td>
+          <td [attr.data-label]="ui.text('products.price')" class="product-price">{{ product.price | storeMoney }}</td>
+          <td [attr.data-label]="ui.text('products.stock')">
+            <span class="stock-value" [class.stock-low]="product.stock < 5">{{ product.stock }} <small>{{ ui.text('products.items') }}</small></span>
+          </td>
+          <td [attr.data-label]="ui.text('products.visibility')">
+            <span class="status-pill" [class.status-delivered]="product.active" [class.status-cancelled]="!product.active">{{ product.active ? ui.text('products.live') : ui.text('products.hidden') }}</span>
+          </td>
+          <td [attr.data-label]="ui.text('products.homePage')">
+            <span class="feature-mark" [class.featured]="product.featured">{{ product.featured ? ui.text('products.featured') : '—' }}</span>
+          </td>
+          <td>
+            <div class="row-actions">
+              <button type="button" (click)="editProduct(product)">{{ ui.text('products.edit') }}</button>
+              <button type="button" (click)="deleteProduct(product)">{{ ui.text('products.remove') }}</button>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="loading">
+          <td colspan="6" class="table-empty"><span class="loading-dot"></span> {{ ui.text('products.loadingProducts') }}</td>
+        </tr>
+        <tr *ngIf="!loading && !filteredProducts.length">
+          <td colspan="6" class="table-empty">
+            <strong>{{ products.length ? ui.text('products.noProductsMatchThisView') : ui.text('products.yourCatalogIsEmpty') }}</strong>
+            <span>{{ products.length ? ui.text('products.tryAnotherSearchOrVisibilityFilter') : ui.text('products.addYourFirstProductToStartBuildingYour') }}</span>
+            <button class="text-action" type="button" *ngIf="!products.length" (click)="newProduct()">{{ ui.text('products.addYourFirstProduct') }}</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<div class="modal-backdrop" *ngIf="editorOpen" (click)="closeEditor()" (keydown.escape)="closeEditor()">
+  <section class="editor-modal product-editor-modal" role="dialog" aria-modal="true" [attr.aria-label]="editingId ? ui.text('products.editProduct') : ui.text('products.addProduct')" (click)="$event.stopPropagation()">
+    <div class="editor-heading product-editor-heading">
+      <div>
+        <span class="eyebrow">{{ editingId ? ui.text('products.aLittleTuneUp') : ui.text('products.somethingNew') }}</span>
+        <h2>{{ editingId ? ui.text('products.editYourProduct') : ui.text('products.addAProduct') }}</h2>
+        <p>{{ ui.text('products.shareTheDetailsCustomersNeedToChooseTheir') }}</p>
+      </div>
+      <button class="close-button" type="button" (click)="closeEditor()" [attr.aria-label]="ui.text('products.closeProductEditor')">×</button>
+    </div>
+    <form #productForm="ngForm" (ngSubmit)="save(productForm)">
+      <section class="editor-section">
+        <div class="editor-section-heading">
+          <span>{{ ui.text('products.01') }}</span>
+          <div>
+            <h3>{{ ui.text('products.productDetails') }}</h3>
+            <p>{{ ui.text('products.nameDescriptionAndCategory') }}</p>
+          </div>
+        </div>
+        <div class="editor-grid">
+          <label class="admin-field full-field">{{ ui.text('products.productName') }}<input name="name" [(ngModel)]="form.name" (input)="syncSlug()" required maxlength="120" [placeholder]="ui.text('products.productName')"></label>
+          <label class="admin-field">{{ ui.text('products.urlSlug') }}<input name="slug" [(ngModel)]="form.slug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" maxlength="140" [placeholder]="ui.text('products.productName2')"><small>{{ ui.text('products.lowercaseWordsJoinedWithHyphens') }}</small></label>
+          <label class="admin-field">{{ ui.text('products.category') }}<select name="categoryId" [(ngModel)]="form.categoryId" required>
+              <option [ngValue]="null" disabled>{{ ui.text('products.chooseCategory') }}</option>
+              @for (category of categories; track category.id) {
+                <option [ngValue]="category.id">{{ category.name }}</option>
+              }
+            </select><a routerLink="/products/categories">{{ ui.text('products.manageCategories') }}</a></label>
+          <label class="admin-field full-field">{{ ui.text('products.productDescription') }}<textarea name="description" [(ngModel)]="form.description" required maxlength="2000" rows="4" [placeholder]="ui.text('products.describeThisProductAndItsFeatures')"></textarea></label>
+        </div>
+      </section>
+      <section class="editor-section image-editor-section">
+        <div class="editor-section-heading">
+          <span>{{ ui.text('products.02') }}</span>
+          <div>
+            <h3>{{ ui.text('products.productPhotography') }}</h3>
+            <p>{{ ui.text('products.uploadImagesFromYourDeviceTheyAreStored') }}</p>
+          </div>
+        </div>
+        <div class="upload-block">
+          <div class="upload-block-heading">
+            <div>
+              <strong>{{ ui.text('products.mainProductImage') }}</strong>
+              <span>{{ ui.text('products.shownFirstOnTheProductPageAndIn') }}</span>
+            </div>
+            <span class="required-note">{{ editingId ? (mainImageExternal ? ui.text('products.externalImageOptional') : ui.text('products.savedInDatabase')) : ui.text('products.required') }}</span>
+          </div>
+          <div class="upload-zone" [class.upload-zone-filled]="mainPreviewUrl" [class.upload-zone-error]="mainImageRequired && !mainImageFile" (dragover)="allowDrop($event)" (drop)="dropMainImage($event)">
+            <div class="upload-preview" *ngIf="mainPreviewUrl">
+              <img [src]="mainPreviewUrl" [alt]="form.name || ui.text('products.productImagePreview')">
+              <span class="image-storage-tag" [class.database-image]="isStoredImage(mainPreviewUrl)">{{ mainImageFile ? ui.text('products.readyToUpload') : (isStoredImage(mainPreviewUrl) ? ui.text('products.inYourDatabase') : ui.text('products.externalImage')) }}</span>
+            </div>
+            <div class="upload-copy">
+              <span class="upload-icon" aria-hidden="true">↥</span>
+              <strong>{{ mainImageFile ? mainImageFile.name : (mainPreviewUrl ? ui.text('products.replaceThisPhoto') : ui.text('products.dropTheMainPhotoHere')) }}</strong>
+              <span>{{ ui.text('products.jpegPngOrWebpUpTo8Mb') }}</span>
+              <label class="upload-pick" for="product-main-image">{{ mainPreviewUrl ? ui.text('products.chooseADifferentImage') : ui.text('products.chooseImage') }}</label>
+              <input id="product-main-image" type="file" accept="image/jpeg,image/png,image/webp" (change)="selectMainImage($event)">
+            </div>
+            <button class="clear-main-image" type="button" *ngIf="mainImageFile" (click)="discardMainImage()">{{ ui.text('products.undo') }}</button>
+          </div>
+          <p class="upload-help" *ngIf="mainImageRequired && !mainImageFile">{{ ui.text('products.uploadAMainImageToSaveThisNew') }}</p>
+          <p class="upload-help" *ngIf="mainImageExternal && !mainImageFile">{{ ui.text('products.thisPhotoIsStillHostedElsewhereUploadA') }}</p>
+        </div>
+        <div class="upload-block gallery-upload-block">
+          <div class="upload-block-heading">
+            <div>
+              <strong>{{ ui.text('products.galleryImages') }} <small>{{ ui.text('products.optional') }}</small></strong>
+              <span>{{ ui.text('products.giveShoppersACloserLookFromDifferentAngles') }}</span>
+            </div>
+            <button class="quiet-action" type="button" *ngIf="existingGalleryImages.length && !clearGalleryFlag" (click)="clearGallery()">{{ ui.text('products.clearGallery') }}</button>
+          </div>
+          <div class="gallery-preview-grid" *ngIf="existingGalleryImages.length && !clearGalleryFlag">
+            <figure *ngFor="let image of existingGalleryImages; let i = index">
+              <img [src]="image" [alt]="ui.text('products.currentProductGalleryImage') + (i + 1)">
+              <figcaption>{{ ui.text('products.currentImage') }} {{ i + 1 }}</figcaption>
+            </figure>
+          </div>
+          <div class="gallery-preview-grid pending-gallery" *ngIf="galleryPreviewUrls.length">
+            <figure *ngFor="let image of galleryPreviewUrls; let i = index">
+              <img [src]="image" [alt]="ui.text('products.newGalleryImage') + (i + 1)">
+              <button type="button" (click)="removeGalleryImage(i)" [attr.aria-label]="ui.text('products.removeSelectedGalleryImage') + (i + 1)">×</button>
+              <figcaption>{{ ui.text('products.newPhoto') }}</figcaption>
+            </figure>
+          </div>
+          <div class="gallery-picker-row">
+            <label class="upload-pick secondary-pick" for="product-gallery-images">{{ galleryPreviewUrls.length ? ui.text('products.chooseDifferentGalleryPhotos') : ui.text('products.addGalleryPhotos') }}</label>
+            <input id="product-gallery-images" type="file" multiple accept="image/jpeg,image/png,image/webp" (change)="selectGalleryImages($event)">
+            <span>{{ ui.text('products.upTo8Images8MbEach') }}</span>
+          </div>
+          <p class="upload-help" *ngIf="galleryPreviewUrls.length">{{ ui.text('products.savingThesePhotosWillReplaceTheCurrentGallery') }}</p>
+          <p class="upload-help" *ngIf="externalGalleryImageCount && !galleryPreviewUrls.length && !clearGalleryFlag">{{ externalGalleryImageCount }} {{ ui.text('products.currentGallery') }} {{ externalGalleryImageCount === 1 ? ui.text('products.photoIs') : ui.text('products.photosAre') }} {{ ui.text('products.stillHostedElsewhereAddReplacementPhotosOrClear') }}</p>
+          <p class="upload-help" *ngIf="clearGalleryFlag && !galleryPreviewUrls.length">{{ ui.text('products.theGalleryWillBeClearedWhenYouSave') }}</p>
+        </div>
+      </section>
+      <section class="editor-section">
+        <div class="editor-section-heading">
+          <span>{{ ui.text('products.03') }}</span>
+          <div>
+            <h3>{{ ui.text('products.priceAndAvailability') }}</h3>
+            <p>{{ ui.text('products.updateAvailableQuantitiesAndVisibility') }}</p>
+          </div>
+        </div>
+        <div class="editor-grid">
+          <label class="admin-field">{{ ui.text('products.priceIn', { currency: ui.config()?.commerce?.currency || '' }) }}<input name="price" [(ngModel)]="form.price" type="number" min="0.01" step="0.01" required></label>
+          <label class="admin-field">{{ ui.text('products.stockOnHand') }}<input name="stock" [(ngModel)]="form.stock" type="number" min="0" step="1" required></label>
+          <label class="admin-field">{{ ui.text('products.sizeOrWeight') }}<input name="weight" [(ngModel)]="form.weight" maxlength="120" [placeholder]="ui.text('products.250G')"></label>
+          <label class="admin-field">{{ ui.text('products.smallLabel') }} <small>{{ ui.text('products.optional') }}</small><input name="badge" [(ngModel)]="form.badge" maxlength="40" [placeholder]="ui.text('products.newArrival')"></label>
+        </div>
+      </section>
+      <section class="editor-section">
+        <div class="editor-section-heading">
+          <span>{{ ui.text('products.04') }}</span>
+          <div>
+            <h3>{{ ui.text('products.productSpecifications') }}</h3>
+            <p>{{ ui.text('products.smallDetailsThatHelpTheRightCustomerFind') }}</p>
+          </div>
+        </div>
+        <div class="editor-grid">
+          <label class="admin-field">{{ ui.text('products.origin') }}<input name="origin" [(ngModel)]="form.origin" maxlength="500" [placeholder]="ui.text('products.placeOfOrigin')"></label>
+          <label class="admin-field">{{ ui.text('products.productDetails') }}<textarea name="tastingNotes" [(ngModel)]="form.tastingNotes" maxlength="500" rows="2" [placeholder]="ui.text('products.keySpecifications')"></textarea></label>
+          <label class="admin-field">{{ ui.text('products.materialsOrIngredients') }}<textarea name="ingredients" [(ngModel)]="form.ingredients" maxlength="500" rows="2" [placeholder]="ui.text('products.materialsOrIngredients')"></textarea></label>
+          <label class="admin-field">{{ ui.text('products.usage') }}<textarea name="pairings" [(ngModel)]="form.pairings" maxlength="800" rows="2" [placeholder]="ui.text('products.howToUseTheProduct')"></textarea></label>
+          <label class="admin-field full-field">{{ ui.text('products.highlights') }}<textarea name="highlights" [(ngModel)]="form.highlights" maxlength="1200" rows="3" [placeholder]="ui.text('products.oneHighlightPerLine')"></textarea></label>
+        </div>
+      </section>
+      <div class="product-publish-options">
+        <label>
+          <input type="checkbox" name="featured" [(ngModel)]="form.featured">
+          <span>
+            <strong>{{ ui.text('products.featureOnTheHomePage') }}</strong>
+            <small>{{ ui.text('products.giveThisProductAPlaceInTheFirst') }}</small>
+          </span>
+        </label>
+        <label>
+          <input type="checkbox" name="active" [(ngModel)]="form.active">
+          <span>
+            <strong>{{ ui.text('products.visibleInTheShop') }}</strong>
+            <small>{{ ui.text('products.customersCanFindAndOrderThisProduct') }}</small>
+          </span>
+        </label>
+      </div>
+      <div class="editor-actions product-editor-actions">
+        <button class="secondary-button" type="button" (click)="closeEditor()">{{ ui.text('products.cancel') }}</button>
+        <button class="primary-button" type="submit" [disabled]="saving || productForm.invalid || !canSaveProduct">{{ saving ? ui.text('products.savingProduct') : (editingId ? ui.text('products.saveProductChanges') : ui.text('products.addProductToShop')) }} <span aria-hidden="true">↗</span></button>
+      </div>
+    </form>
+  </section>
+</div>

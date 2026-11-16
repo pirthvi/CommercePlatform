@@ -1,0 +1,8 @@
+<section class="home-bottom-banner">
+  <div>
+    <span class="home-kicker">{{ section.eyebrow }}</span>
+    <h2>{{ section.heading }}</h2>
+    <a class="home-cta" *ngIf="section.buttonLabel" [shopBlockLink]="section.buttonPath || '/shop'" [blockCategory]="section.buttonCategory">{{ section.buttonLabel }} <span>↗</span></a>
+  </div>
+  <img *ngIf="section.imageUrl" [src]="section.imageUrl" [alt]="section.imageAlt || section.heading || ''" loading="lazy">
+</section>

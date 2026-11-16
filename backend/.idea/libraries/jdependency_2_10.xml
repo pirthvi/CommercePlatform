@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jdependency-2.10">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/vafer/jdependency/2.10/jdependency-2.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

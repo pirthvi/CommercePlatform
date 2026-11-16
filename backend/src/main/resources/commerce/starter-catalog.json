@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Tops",
+    "description": "Cotton tees and easy shirts for everyday layering.",
+    "products": [
+      {
+        "name": "Ivory cotton crew tee",
+        "slug": "ivory-cotton-crew-tee",
+        "photo": "cotton-crew-tee",
+        "look": "city-look",
+        "price": 1890,
+        "stock": 30,
+        "size": "M · regular fit",
+        "description": "An ivory crewneck in soft cotton jersey, with an easy straight fit and a ribbed neckline.",
+        "materials": "100% cotton jersey",
+        "care": "Machine wash cold with similar colours. Reshape while damp.",
+        "featured": true
+      },
+      {
+        "name": "Sage Oxford shirt",
+        "slug": "sage-oxford-shirt",
+        "photo": "oxford-shirt",
+        "look": "weekend-look",
+        "price": 3490,
+        "stock": 18,
+        "size": "M · relaxed fit",
+        "description": "A sage long-sleeved Oxford with a button-down collar and chest pocket. Wear it open over a tee or buttoned for a cleaner line.",
+        "materials": "100% cotton Oxford",
+        "care": "Machine wash cold and hang to dry.",
+        "featured": true
+      }
+    ]
+  },
+  {
+    "name": "Trousers",
+    "description": "Straight chinos and relaxed linen trousers.",
+    "products": [
+      {
+        "name": "Navy straight chinos",
+        "slug": "navy-straight-chinos",
+        "photo": "straight-chinos",
+        "look": "city-look",
+        "price": 3990,
+        "stock": 20,
+        "size": "32 in · straight leg",
+        "description": "Navy cotton twill chinos with a straight leg, button waist and slanted pockets.",
+        "materials": "Cotton twill",
+        "care": "Wash inside out with similar colours and line dry.",
+        "featured": false
+      },
+      {
+        "name": "Sand linen trousers",
+        "slug": "sand-linen-trousers",
+        "photo": "linen-trousers",
+        "look": "weekend-look",
+        "price": 4290,
+        "stock": 16,
+        "size": "M · relaxed leg",
+        "description": "Sand linen trousers with an adjustable drawstring waist and an airy, relaxed leg.",
+        "materials": "100% linen",
+        "care": "Wash on a gentle cycle. Air dry to preserve the linen texture.",
+        "featured": true
+      }
+    ]
+  }
+]

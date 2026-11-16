@@ -1,0 +1,24 @@
+<section class="home-featured">
+  <div class="home-section-heading">
+    <div>
+      <span class="home-kicker dark-kicker">{{ section.eyebrow }}</span>
+      <h2>{{ section.heading }}</h2>
+    </div>
+    <a *ngIf="section.linkLabel" class="home-view-all" [shopBlockLink]="section.linkPath || '/shop'">{{ section.linkLabel }} <span>↗</span></a>
+  </div>
+  <div class="collection-tabs" role="tablist" [attr.aria-label]="ui.text('featured.productCollection')">
+    <button *ngFor="let tab of section.items; let index = index" role="tab" [attr.aria-selected]="activeTab === index" [class.active]="activeTab === index" (click)="activeTab = index">{{ tab.title }}</button>
+  </div>
+  <div class="product-grid home-product-grid" *ngIf="!loading && displayedProducts.length">
+    <shop-product-card *ngFor="let product of displayedProducts" [product]="product" />
+  </div>
+  <p class="home-loading" *ngIf="loading">{{ section.body }}</p>
+  <div class="home-empty" *ngIf="!loading && !error && !displayedProducts.length">
+    <p>{{ section.emptyMessage }}</p>
+    <a *ngIf="section.emptyLinkLabel" class="text-link" [shopBlockLink]="section.linkPath || '/pages/about'">{{ section.emptyLinkLabel }} →</a>
+  </div>
+  <div class="home-empty" *ngIf="error">
+    <p>{{ error }}</p>
+    <button class="text-link" type="button" (click)="retry.emit()">{{ ui.text('featured.tryAgain') }}</button>
+  </div>
+</section>

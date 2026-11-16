@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="2.0.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/eclipse/angus/angus-activation/2.0.3/angus-activation-2.0.3-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/eclipse/angus/angus-activation/2.0.3/angus-activation-2.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

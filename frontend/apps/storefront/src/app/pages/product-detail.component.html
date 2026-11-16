@@ -1,0 +1,66 @@
+@if (pdp.product; as product) {
+<section class="pdp-copy">
+    <span class="eyebrow">{{ product.category }}<ng-container *ngIf="product.weight"> <shop-product-icon slot="separator" /> {{ product.weight }}</ng-container></span>
+    <h1>{{ product.name }}</h1>
+    <div class="pdp-rating" *ngIf="product.origin">
+      <shop-product-icon slot="origin" />
+      <span>{{ product.origin }}</span>
+    </div>
+    <p class="pdp-description">{{ product.description }}</p>
+    <div class="pdp-price">{{ product.price | storeMoney }}</div>
+    <p class="pdp-stock" [class.sold-out]="product.stock < 1"><shop-product-icon class="stock-symbol" [slot]="product.stock > 0 ? 'available' : 'unavailable'" /> {{ product.stock > 0 ? ui.text('product-detail.inStock', {count: product.stock}) : ui.text('product-detail.outOfStock') }}</p>
+    <label class="pdp-quantity-label" for="pdp-quantity">{{ ui.text('product-detail.quantity') }}</label>
+    <div class="pdp-quantity" id="pdp-quantity">
+      <button type="button" (click)="pdp.quantity = Math.max(1, pdp.quantity - 1)" [attr.aria-label]="ui.text('product-detail.decreaseQuantity')"><shop-product-icon slot="decrease" /></button>
+      <span aria-live="polite">{{ pdp.quantity }}</span>
+      <button type="button" (click)="pdp.quantity = Math.min(product.stock || 1, pdp.quantity + 1)" [disabled]="pdp.quantity >= product.stock" [attr.aria-label]="ui.text('product-detail.increaseQuantity')"><shop-product-icon slot="increase" /></button>
+    </div>
+    <button class="pdp-add" type="button" (click)="pdp.add()" [disabled]="product.stock < 1">{{ pdp.added ? ui.text('product-detail.addedToYourCart') : ui.text('product-detail.addToCart') }} @if (pdp.added) { <shop-product-icon slot="added" /> }</button>
+    <button class="pdp-buy" type="button" (click)="pdp.buyNow()" [disabled]="product.stock < 1">{{ ui.text('product-detail.buyItNow') }} <shop-product-icon slot="buy" /></button>
+    <div class="pdp-service-row" [attr.aria-label]="ui.text('product-detail.deliveryAndProductPromises')">
+      <div>
+        <span><shop-product-icon slot="payment" /></span>
+        <strong>{{ ui.text('product-detail.cashOnDelivery') }}</strong>
+        <small>{{ ui.text('product-detail.payAtYourDoor') }}</small>
+      </div>
+      <div *ngIf="ui.config()?.commerce?.freeDeliveryFrom != null">
+        <span><shop-product-icon slot="delivery" /></span>
+        <strong>{{ ui.text('product-detail.freeDelivery') }}</strong>
+        <small>{{ ui.text('product-detail.deliveryThreshold', { amount: ui.money(ui.config()?.commerce?.freeDeliveryFrom ?? 0) }) }}</small>
+      </div>
+    </div>
+    <div class="pdp-accordions">
+      <details open>
+        <summary>{{ ui.text('product-detail.description') }} <shop-product-icon class="pdp-expand" slot="expand" /><shop-product-icon class="pdp-collapse" slot="collapse" /></summary>
+        <p>{{ product.description }}</p>
+        <p *ngIf="product.origin"><strong>{{ ui.text('product-detail.origin') }}</strong> {{ product.origin }}</p>
+      </details>
+      <details *ngIf="product.tastingNotes">
+        <summary>{{ ui.text('product-detail.productDetails') }} <shop-product-icon class="pdp-expand" slot="expand" /><shop-product-icon class="pdp-collapse" slot="collapse" /></summary>
+        <p>{{ product.tastingNotes }}</p>
+      </details>
+      <details *ngIf="product.ingredients">
+        <summary>{{ ui.text('product-detail.materialsOrIngredients') }} <shop-product-icon class="pdp-expand" slot="expand" /><shop-product-icon class="pdp-collapse" slot="collapse" /></summary>
+        <p>{{ product.ingredients }}</p>
+      </details>
+      <details *ngIf="product.pairings">
+        <summary>{{ ui.text('product-detail.usage') }} <shop-product-icon class="pdp-expand" slot="expand" /><shop-product-icon class="pdp-collapse" slot="collapse" /></summary>
+        <p>{{ product.pairings }}</p>
+      </details>
+      <details *ngIf="product.highlights">
+        <summary>{{ ui.text('product-detail.goodToKnow') }} <shop-product-icon class="pdp-expand" slot="expand" /><shop-product-icon class="pdp-collapse" slot="collapse" /></summary>
+        <ul>
+          <li *ngFor="let highlight of pdp.highlights">{{ highlight }}</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+<div class="pdp-sticky-buy">
+  <img [src]="product.imageUrl" [alt]="product.name">
+  <div class="pdp-sticky-info">
+    <strong>{{ product.name }}</strong>
+    <span>{{ product.price | storeMoney }}</span>
+  </div>
+  <button type="button" (click)="pdp.add()" [disabled]="product.stock < 1">{{ pdp.added ? ui.text('product-detail.added') : ui.text('product-detail.stickyAddToCart') }}</button>
+</div>
+}

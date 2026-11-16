@@ -1,0 +1,6 @@
+<section class="faq-block">
+  @if (section.heading) { <h2>{{ section.heading }}</h2> }
+  @for (item of section.items; track item.id) {
+    <details><summary>{{ item.title }}</summary><p>{{ item.body }}</p></details>
+  }
+</section>

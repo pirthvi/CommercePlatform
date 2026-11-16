@@ -1,0 +1,16 @@
+<section class="page-heading customer-auth-heading">
+  <span class="eyebrow">{{ section.eyebrow }}</span>
+  <h1>{{ section.heading }}</h1>
+  <p>{{ section.body }}</p>
+</section>
+<section class="customer-auth-wrap">
+  <form class="customer-auth-card" #authForm="ngForm" (ngSubmit)="submit(authForm)">
+    <label class="field" *ngIf="registering">{{ ui.text('customer-auth.fullName') }}<input name="fullName" [(ngModel)]="fullName" required maxlength="140" autocomplete="name" [placeholder]="ui.text('customer-auth.yourDeliveryName')"></label>
+    <label class="field">{{ ui.text('customer-auth.emailAddress') }}<input name="email" [(ngModel)]="email" required email maxlength="180" autocomplete="email" [placeholder]="ui.text('customer-auth.youExampleCom')"></label>
+    <label class="field">{{ ui.text('customer-auth.password') }}<input name="password" [(ngModel)]="password" required [minlength]="registering ? 8 : 1" maxlength="72" type="password" [autocomplete]="registering ? 'new-password' : 'current-password'" placeholder="{{ ui.text(registering ? 'customer-auth.newPasswordHint' : 'customer-auth.password') }}"></label>
+    <p class="customer-auth-error" role="alert" *ngIf="error">{{ error }}</p>
+    <button class="button button-dark customer-auth-submit" type="submit" [disabled]="busy || authForm.invalid">{{ busy ? ui.text('customer-auth.justAMoment') : (registering ? ui.text('customer-auth.createMyAccount') : ui.text('customer-auth.signInToMyAccount')) }} <span>↗</span></button>
+    <p class="customer-auth-switch" *ngIf="!registering">{{ ui.text('customer-auth.newCustomer') }} <a routerLink="/register">{{ ui.text('customer-auth.createYourAccount') }}</a></p>
+    <p class="customer-auth-switch" *ngIf="registering">{{ ui.text('customer-auth.alreadyHaveAnAccount') }} <a routerLink="/login">{{ ui.text('customer-auth.signInHere') }}</a></p>
+  </form>
+</section>

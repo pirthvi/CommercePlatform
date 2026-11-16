@@ -1,0 +1,5 @@
+@if (ui.productIcons()[slot]; as image) {
+  <img [src]="image" alt="">
+} @else {
+  {{ ui.text('product-icons.' + slot) }}
+}

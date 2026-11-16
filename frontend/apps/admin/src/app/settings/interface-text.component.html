@@ -1,0 +1,34 @@
+<div class="cms-workspace">
+  <div class="cms-heading">
+    <h1>{{ ui.text('interface-text.interfaceText') }}</h1>
+  </div>
+  <section class="cms-panel">
+    <div class="cms-actions">
+      <button class="cms-button" [attr.aria-pressed]="surface==='storefront'" [disabled]="busy" (click)="load('storefront')">{{ ui.text('interface-text.storefront') }}</button>
+      <button class="cms-button" [attr.aria-pressed]="surface==='studio'" [disabled]="busy" (click)="load('studio')">{{ ui.text('interface-text.studio') }}</button>
+    </div>
+    <div class="cms-fields">
+      <label>{{ ui.text('interface-text.component') }}<select [(ngModel)]="group">
+          @for (name of groups; track name) {
+            <option [value]="name">{{ ui.text('groups.' + name) }}</option>
+          }
+        </select></label>
+      <label>{{ ui.text('interface-text.searchThisComponent') }}<input type="search" [(ngModel)]="query"></label>
+    </div>
+  </section>
+  <section class="cms-panel">
+    <p class="cms-muted">{{ ui.text('interface-text.keepPlaceholders') }}</p>
+    <fieldset [disabled]="busy">
+      @for (key of keys; track key) {
+        <label class="cms-field"><span>{{ original[key] || key }}</span><small>{{ key }}</small><textarea rows="2" maxlength="2000" [(ngModel)]="values[key]"></textarea></label>
+      }
+      @empty {
+        <p>{{ ui.text('interface-text.noMatchingText') }}</p>
+      }
+    </fieldset>
+  </section>
+  <div class="cms-savebar">
+    <span role="status">{{ message }}</span>
+    <button class="cms-button" [disabled]="busy || !dirty" (click)="save()">{{ ui.text('interface-text.saveText') }}</button>
+  </div>
+</div>

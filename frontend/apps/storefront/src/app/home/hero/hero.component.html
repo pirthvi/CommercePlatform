@@ -1,0 +1,11 @@
+<section class="home-hero">
+  <img class="home-hero-image" *ngIf="section.imageUrl" [src]="section.imageUrl" [alt]="section.imageAlt || section.heading || ''" fetchpriority="high">
+  <div class="home-hero-shade"></div>
+  <div class="home-hero-copy">
+    <span class="home-kicker">{{ section.eyebrow }}</span>
+    <h1>{{ section.heading }}</h1>
+    <p>{{ section.body }}</p>
+    <a class="home-cta" *ngIf="section.buttonLabel" [shopBlockLink]="section.buttonPath || '/shop'" [blockCategory]="section.buttonCategory">{{ section.buttonLabel }} <span>↗</span></a>
+  </div>
+  <div class="home-hero-index" *ngIf="section.imageCaption">{{ section.imageCaption }}</div>
+</section>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="json-schema-core-1.2.8">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/com/github/java-json-tools/json-schema-core/1.2.8/json-schema-core-1.2.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mxparser-1.2.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sisu-guice-3.2.3-no_aop">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3-no_aop.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,80 @@
+<div class="studio-shell">
+  <aside class="sidebar" (keydown.escape)="menuOpen = false; menuButton.focus()">
+    <div class="side-heading">
+      <a routerLink="/" class="admin-brand sidebar-brand" [attr.aria-label]="ui.text('shell.studioOverview')">
+        @if (ui.config()?.logoUrl; as logo) {
+          <img class="studio-logo" [src]="logo" alt="">
+        }
+        @else {
+          <span class="brand-mark">{{ ui.config()?.brandMark }}</span>
+        }
+        <span>{{ ui.config()?.brandName }}<small>{{ ui.text('shell.studio') }}</small></span>
+      </a>
+      <button #menuButton class="mobile-menu" type="button" aria-controls="studio-navigation"
+              [attr.aria-expanded]="menuOpen" (click)="menuOpen = !menuOpen">
+        {{ menuOpen ? ui.text('shell.close') : ui.text('shell.menu') }} <span aria-hidden="true">{{ menuOpen ? '×' : '☰' }}</span>
+      </button>
+    </div>
+    <nav id="studio-navigation" class="studio-menu" [class.expanded]="menuOpen" [attr.aria-label]="ui.text('shell.studio')">
+      @for (item of destinations; track item.path; let i = $index) {
+        <a class="menu-item" [id]="'studio-nav-' + i" [routerLink]="item.path" [class.current]="group === item"
+           [attr.aria-current]="group === item && !item.children.length ? 'page' : null"
+           (click)="menuOpen = false">
+          <span class="menu-icon" aria-hidden="true">{{ item.icon }}</span>{{ ui.text(item.label) }}
+          @if (item.path === '/orders' && pendingCount) {
+            <small>{{ pendingCount }}</small>
+          }
+        </a>
+        @if (item.children.length) {
+          <div class="menu-children" role="group" [attr.aria-labelledby]="'studio-nav-' + i">
+            @for (tab of item.children; track tab.path) {
+              <a [routerLink]="tab.path" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: tab.path === item.path}"
+                 [ariaCurrentWhenActive]="path === tab.path ? 'page' : 'location'" (click)="menuOpen = false">{{ ui.text(tab.label) }}</a>
+            }
+          </div>
+        }
+      }
+      <button class="mobile-signout" type="button" (click)="logout()">{{ ui.text('shell.signOut') }}</button>
+    </nav>
+    <div class="team">
+      <span class="team-mark" aria-hidden="true">{{ ui.config()?.brandMark }}</span>
+      <span>{{ ui.text('shell.studioTeam') }}</span>
+      <button type="button" (click)="logout()">{{ ui.text('shell.signOut') }}</button>
+    </div>
+  </aside>
+  <main class="studio-main">
+    <header class="studio-topbar">
+      <nav class="breadcrumbs" [attr.aria-label]="ui.text('shell.breadcrumb')">
+        <a routerLink="/">{{ ui.text('shell.studio') }}</a>
+        <span aria-hidden="true">/</span>
+        @if (currentTab; as tab) {
+          <a [routerLink]="group.path">{{ ui.text(group.label) }}</a>
+          <span aria-hidden="true">/</span>
+          @if (path === tab.path) {
+            <strong aria-current="page">{{ ui.text(tab.label) }}</strong>
+          }
+          @else {
+            <a [routerLink]="tab.path">{{ ui.text(tab.label) }}</a>
+            <span aria-hidden="true">/</span>
+            <strong aria-current="page">{{ ui.text(group.path === '/pages' ? 'builder.wording' : headerSettingsLabel) }}</strong>
+          }
+        }
+        @else {
+          <strong aria-current="page">{{ ui.text(group.label) }}</strong>
+        }
+      </nav>
+      <a class="storefront-shortcut" [href]="shopUrl" target="_blank" rel="noopener">{{ ui.text('shell.viewStorefront') }}</a>
+    </header>
+    @if (group.children.length) {
+      <nav class="compact-subnav" [attr.aria-label]="ui.text(group.label)">
+        @for (tab of group.children; track tab.path) {
+          <a [routerLink]="tab.path" routerLinkActive="selected" [ariaCurrentWhenActive]="path === tab.path ? 'page' : 'location'"
+             [routerLinkActiveOptions]="{exact: tab.path === group.path}">{{ ui.text(tab.label) }}</a>
+        }
+      </nav>
+    }
+    <div class="studio-content">
+      <router-outlet />
+    </div>
+  </main>
+</div>

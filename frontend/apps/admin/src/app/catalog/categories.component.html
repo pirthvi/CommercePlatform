@@ -1,0 +1,41 @@
+<div class="cms-workspace">
+  <div class="cms-heading">
+    <h1>{{ ui.text('categories.categories') }}</h1>
+  </div>
+  @if (error) {
+    <p class="cms-error" role="alert">{{ error }}</p>
+  }
+  <div class="category-workspace">
+    <section class="cms-panel">
+      <h2>{{ ui.text('categories.productCategories') }}</h2>
+      @for (row of rows; track row.id) {
+        <div class="category-row">
+          <div>
+            <strong>{{ row.name }}</strong>
+            <small>{{ row.description }}</small>
+          </div>
+          <div class="cms-actions">
+            <button class="cms-button" (click)="edit(row)">{{ ui.text('categories.edit') }}</button>
+            <button class="cms-text-action" [disabled]="pending" (click)="remove(row)">{{ ui.text('categories.remove') }}</button>
+          </div>
+        </div>
+      }
+      @empty {
+        <p>{{ loading ? ui.text('categories.loadingCategories') : ui.text('categories.createACategoryToOrganiseYourProducts') }}</p>
+      }
+    </section>
+    <form class="cms-panel" (ngSubmit)="save()" #categoryForm="ngForm">
+      <h2>{{ editing === null ? ui.text('categories.createCategory') : ui.text('categories.editCategory') }}</h2>
+      <div class="cms-fields">
+        <label class="cms-wide">{{ ui.text('categories.name') }}<input name="name" [(ngModel)]="form.name" required maxlength="80"></label>
+        <label class="cms-wide">{{ ui.text('categories.description') }}<textarea name="description" [(ngModel)]="form.description" maxlength="500" rows="3"></textarea></label>
+      </div>
+      <div class="cms-actions">
+        <button class="cms-button" [disabled]="pending || categoryForm.invalid">{{ ui.text('categories.saveCategory') }}</button>
+        @if (editing !== null) {
+          <button class="cms-text-action" type="button" (click)="edit()">{{ ui.text('categories.cancel') }}</button>
+        }
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+:host { display: block; min-width: 0; }
+.category-workspace { display:grid; grid-template-columns:minmax(0, 1.4fr) minmax(0, 1fr); gap:16px; align-items:start; }
+.category-row { padding:14px 0; border-bottom:1px solid var(--cms-border); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.category-row small { display:block; color:var(--cms-muted); }
+form .cms-actions { margin-top:16px; }
+@media(max-width:900px){ .category-workspace { grid-template-columns:1fr; } }

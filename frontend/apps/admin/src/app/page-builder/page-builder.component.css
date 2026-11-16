@@ -1,0 +1,29 @@
+:host { display:block; min-width:0; }
+.builder { max-width:85rem; margin:auto; padding-bottom:1rem; }
+header, footer, .panel-title, .commands { display:flex; align-items:center; flex-wrap:wrap; gap:.75rem; }
+header, footer, .panel-title { justify-content:space-between; }
+header { margin:.8rem 0 1.5rem; }
+h1 { font:500 clamp(1.9rem,4vw,3rem)/1.1 var(--serif); margin:0; overflow-wrap:anywhere; }
+h2 { margin:0 0 .8rem; font-size:1.1rem; }
+.kicker { margin:0 0 .35rem; color:#5b6855; font-size:.8rem; }
+.back,.wording { display:inline-block; color:#455a3e; font-weight:600; }
+.workspace { display:grid; grid-template-columns:minmax(13rem, .72fr) minmax(0,1.75fr); gap:1rem; align-items:start; border:0; padding:0; margin:0; min-width:0; }
+aside { display:grid; gap:.85rem; min-width:0; }
+.settings,.outline,.edit-panel { background:#fffefa; border:1px solid #d9ddcf; border-radius:7px; padding:1rem; min-width:0; }
+summary { font-weight:650; cursor:pointer; }
+.settings label { display:grid; gap:.3rem; font-size:.85rem; margin-top:.75rem; }
+.settings input:not([type=checkbox]),textarea { width:100%; padding:.55rem; border:1px solid #b8c0ae; border-radius:4px; font:inherit; }
+.outline-item { display:flex; align-items:center; gap:.55rem; text-align:left; width:100%; border:0; border-radius:4px; background:transparent; padding:.65rem .5rem; color:inherit; font:inherit; cursor:pointer; }
+.outline-item[aria-pressed=true] { background:#e7eddf; font-weight:650; }
+.outline-item small { display:block; font-weight:400; color:#535d4f; overflow-wrap:anywhere; }
+.position { color:#64725a; font-variant-numeric:tabular-nums; }
+.add { width:100%; margin-top:.65rem; }
+.library { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr)); gap:.6rem; }
+.library button { display:flex; justify-content:space-between; align-items:center; text-align:left; min-height:3rem; border:1px solid #c7cebd; border-radius:4px; background:#fafbf6; padding:.65rem .8rem; cursor:pointer; font:inherit; }
+.library button:hover,.outline-item:hover { background:#eef2e8; }
+.commands { margin-bottom:1rem; padding-bottom:.75rem; border-bottom:1px solid #d9ddcf; }
+.commands button { border:0; background:transparent; text-decoration:underline; color:inherit; cursor:pointer; } button:disabled { opacity:.5; cursor:default; }
+.settings .check,.check { display:inline-flex; align-items:center; gap:.4rem; }
+footer { position:sticky; bottom:0; background:#fafaf5; border-top:1px solid #d7dcca; padding:.75rem .25rem; margin-top:1rem; }
+iframe { display:block; width:100%; height:65vh; border:1px solid #d7dcca; background:white; }
+@media(max-width:760px) { .workspace { grid-template-columns:minmax(0,1fr); } .outline-item,.commands button { min-height:2.65rem; } }

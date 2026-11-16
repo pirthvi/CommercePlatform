@@ -1,0 +1,29 @@
+@for (link of links; track link; let i = $index) {
+  <div class="cms-link-row">
+    <div class="cms-fields">
+      <label>{{ ui.text('content-links.linkText') }}<input [(ngModel)]="link.label" required maxlength="80" [placeholder]="ui.text('content-links.ourStory')"></label>
+      <label>{{ ui.text('content-links.destination') }}<input [(ngModel)]="link.path" [required]="!link.category" maxlength="240"
+                               list="studio-page-paths" [placeholder]="ui.text('content-links.pagesAbout')"></label>
+      @if (link.path === '/shop' || link.category) {
+        <label>{{ ui.text('content-links.shopCategory') }} <small>{{ ui.text('content-links.optional') }}</small><select [ngModel]="link.category || ''" (ngModelChange)="link.category = $event">
+            <option value="">{{ ui.text('content-links.chooseCategory') }}</option>
+            @for (category of categories; track category.id) {
+              <option [value]="category.slug">{{ category.name }}</option>
+            }
+          </select></label>
+      }
+    </div>
+    <div class="cms-actions">
+      <button type="button" class="cms-order-button" [disabled]="i === 0"
+              [attr.aria-label]="ui.text('content-links.moveLink') + (i + 1) + ui.text('content-links.up')" (click)="move(links, i, i - 1)">↑</button>
+      <button type="button" class="cms-order-button" [disabled]="i === links.length - 1"
+              [attr.aria-label]="ui.text('content-links.moveLink') + (i + 1) + ui.text('content-links.down')" (click)="move(links, i, i + 1)">↓</button>
+      <button type="button" class="cms-text-action" [attr.aria-label]="ui.text('content-links.removeLink') + (i + 1)"
+              (click)="links.splice(i, 1)">{{ ui.text('content-links.remove') }}</button>
+    </div>
+  </div>
+}
+@empty {
+  <p class="cms-muted">{{ ui.text('content-links.noLinksInThisMenuYet') }}</p>
+}
+<button type="button" class="cms-button" (click)="links.push({ label: '', path: '/shop', category: '' })">{{ ui.text('content-links.addLink') }}</button>

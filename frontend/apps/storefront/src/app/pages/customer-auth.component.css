@@ -1,0 +1,76 @@
+:host { display: block; min-width: 0; }
+
+.customer-auth-switch {
+  font-size: 13px;
+}
+.customer-auth-error {
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width:680px) {
+  .customer-auth-switch, .customer-auth-error {
+    font-size: 12px;
+  }
+}
+.customer-auth-heading {
+  padding-top: 56px;
+  padding-bottom: 42px;
+}
+.customer-auth-wrap {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 38px 20px 90px;
+  display: flex;
+  justify-content: center;
+}
+.customer-auth-card {
+  width: min(100%,440px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #fff;
+  padding: 32px;
+  border: 1px solid #e7e3dc;
+}
+.customer-auth-submit {
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 3px;
+}
+.customer-auth-switch {
+  text-align: center;
+  color: #77736b;
+  font-size: 11px;
+  margin: 3px 0 0;
+}
+.customer-auth-switch a {
+  font-weight: 700;
+  color: #765a31;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.customer-auth-error {
+  background: #f8e9e5;
+  color: #8d3f33;
+  padding: 10px 12px;
+  font-size: 11px;
+  margin: 0;
+}
+@media (max-width:680px) {
+  .customer-auth-heading {
+    padding: 42px 17px 34px;
+  }
+  .customer-auth-heading h1 {
+    font-size: 33px;
+  }
+  .customer-auth-wrap {
+    padding: 25px 15px 62px;
+  }
+  .customer-auth-card {
+    padding: 23px 18px;
+    gap: 15px;
+  }
+  .customer-auth-switch, .customer-auth-error {
+    font-size: 13px;
+  }
+}

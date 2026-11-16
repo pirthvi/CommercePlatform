@@ -1,0 +1,67 @@
+<div class="block-fields" (input)="changed.emit()" (change)="changed.emit()">
+  @for (field of fields[block.type]; track field) {
+    @if (field === 'imageAlt') {
+      <admin-content-image [label]="ui.text('builder.image')" [limitMb]="8" [preview]="previews[block.id] || block.imageUrl || ''" (fileChange)="photo.emit({entry:block, file:$event})" />
+    }
+    <label>{{ ui.text('builder.field.' + field) }}
+      @if (field === 'body') { <textarea [(ngModel)]="block[field]" rows="5" maxlength="12000"></textarea> }
+      @else if (field === 'buttonCategory') {
+        <select [(ngModel)]="block.buttonCategory"><option value="">{{ ui.text('builder.none') }}</option>
+          @for (c of categories; track c.id) { <option [value]="c.slug">{{ c.name }}</option> }
+        </select>
+      } @else { <input [(ngModel)]="block[field]" maxlength="1000"> }
+    </label>
+  }
+  @if (block.type === 'product-grid') {
+    <label>{{ ui.text('builder.category') }}<select [(ngModel)]="block.categoryId">
+      <option [ngValue]="null">{{ ui.text('navigation.allProducts') }}</option>
+      @for (c of categories; track c.id) { <option [ngValue]="c.id">{{ c.name }}</option> }
+    </select></label>
+    <fieldset class="product-picker"><legend>{{ ui.text('builder.pickProducts') }}</legend>
+      <p>{{ ui.text('builder.allWhenEmpty') }}</p>
+      @for (product of products; track product.id) {
+        <label><input type="checkbox" #choice [checked]="block.productIds?.includes(product.id)" (change)="selectProduct(product.id, choice.checked)">{{ product.name }}</label>
+      }
+    </fieldset>
+  }
+  @if (hasItems) {
+    <div class="items">
+      @if (categoryList) {
+        <h3>{{ ui.text('builder.catalogCategories') }}</h3><p>{{ ui.text('builder.catalogCategoriesHelp') }}</p>
+      }
+      @for (item of block.items; track item.id; let i = $index) {
+        <fieldset><legend>{{ ui.text('builder.entry', {number:i+1}) }}</legend>
+          @if (block.type === 'gallery') {
+            <admin-content-image [label]="ui.text('builder.image')" [preview]="previews[item.id] || item.imageUrl || ''" [limitMb]="8" (fileChange)="photo.emit({entry:item, file:$event})" />
+            <label>{{ ui.text('builder.field.imageAlt') }}<input [(ngModel)]="item.imageAlt" maxlength="1000"></label>
+          }
+          @if (block.type !== 'collections' && !categoryList) {
+            <label>{{ ui.text(block.type === 'faq' ? 'builder.question' : block.type === 'gallery' ? 'builder.field.imageCaption' : 'builder.field.heading') }}<input [(ngModel)]="item.title" maxlength="1000"></label>
+          }
+          @if (block.type === 'faq' || block.type === 'values') {
+            <label>{{ ui.text(block.type === 'faq' ? 'builder.answer' : 'builder.field.body') }}<textarea [(ngModel)]="item.body" rows="3" maxlength="12000"></textarea></label>
+          }
+          @if (block.type === 'benefits' || block.type === 'values') {
+            <label>{{ ui.text('builder.symbol') }}<input [(ngModel)]="item.icon" maxlength="50"></label>
+          }
+          @if (block.type === 'featured') {
+            <label>{{ ui.text('builder.source') }}<select [(ngModel)]="item.path">
+              @for (value of ['all','featured','category']; track value) { <option [value]="value">{{ ui.text('builder.source.'+value) }}</option> }
+            </select></label>
+          }
+          @if (categoryList || block.type === 'collections' || (block.type === 'featured' && item.path === 'category')) {
+            <label>{{ ui.text('builder.category') }}<select [(ngModel)]="item.category">
+              <option value="">{{ ui.text('builder.selectCategory') }}</option>
+              @for (c of categories; track c.id) { <option [value]="c.slug">{{ c.name }}</option> }
+            </select></label>
+          }
+          <div class="tools"><button type="button" (click)="move(i,-1)" [disabled]="$first">{{ ui.text('builder.up') }}</button>
+            <button type="button" (click)="move(i,1)" [disabled]="$last">{{ ui.text('builder.down') }}</button>
+            <button type="button" (click)="removeItem(i)">{{ ui.text('pages.remove') }}</button></div>
+        </fieldset>
+      }
+      <button class="cms-button" type="button" (click)="addItem()">{{ ui.text('builder.addEntry') }}</button>
+    </div>
+  }
+  @if (!hasItems && !fields[block.type].length) { <p class="commerce-help">{{ ui.text('builder.liveData') }}</p> }
+</div>

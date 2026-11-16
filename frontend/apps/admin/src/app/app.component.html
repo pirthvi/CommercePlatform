@@ -1,0 +1,14 @@
+@if (ui.failed()) {
+  <main class="connection-error" role="alert">
+    <p>{{ ui.recovery().message }}</p>
+    <form (submit)="$event.preventDefault(); ui.load()"><input type="submit" [attr.value]="ui.recovery().retry || null"></form>
+  </main>
+}
+@else {
+  <admin-login *ngIf="!(auth.loggedIn$ | async) && !checking" />
+  <div class="auth-check" *ngIf="checking">
+    <span class="auth-mark">{{ ui.config()?.brandMark }}</span>
+    <p>{{ ui.text('app.openingYourStudio') }}</p>
+  </div>
+  <admin-shell *ngIf="auth.loggedIn$ | async" />
+}

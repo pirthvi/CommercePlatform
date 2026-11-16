@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="spring-cloud-starter-4.0.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/springframework/cloud/spring-cloud-starter/4.0.4/spring-cloud-starter-4.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

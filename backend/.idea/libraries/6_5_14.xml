@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="6.5.14">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/springframework/security/spring-security-oauth2-jose/6.5.11/spring-security-oauth2-jose-6.5.11-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/maven-repository/org/springframework/security/spring-security-oauth2-jose/6.5.11/spring-security-oauth2-jose-6.5.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

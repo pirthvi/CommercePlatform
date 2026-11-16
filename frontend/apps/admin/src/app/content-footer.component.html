@@ -1,0 +1,40 @@
+<section class="cms-panel">
+  <h2>{{ ui.text('content-footer.footerNote') }}</h2>
+  <label class="cms-field">{{ ui.text('content-footer.textBelowTheLogo') }}<textarea [(ngModel)]="site.footerStory" maxlength="1200" rows="3"></textarea></label>
+</section>
+<section class="cms-panel">
+  <div class="cms-panel-title">
+    <h2>{{ ui.text('content-footer.linkGroups') }}</h2>
+    <button class="cms-button" type="button" (click)="addGroup()">{{ ui.text('content-footer.addGroup') }}</button>
+  </div>
+  @for (group of site.footerColumns; track group; let i = $index) {
+    <details class="cms-group" [open]="group === newGroup">
+      <summary>{{ group.heading || ui.text('content-footer.untitledGroup') }} <small>{{ group.links.length }} {{ group.links.length === 1 ? ui.text('content-footer.link') : ui.text('content-footer.links') }}</small></summary>
+      <div class="cms-group-body">
+        <div class="cms-panel-title">
+          <label class="cms-field">{{ ui.text('content-footer.groupHeading') }}<input maxlength="80" [(ngModel)]="group.heading"></label>
+          <div class="cms-actions">
+            <button type="button" class="cms-order-button" [disabled]="i === 0" [attr.aria-label]="ui.text('content-footer.moveGroupUp')" (click)="move(site.footerColumns, i, i-1)">↑</button>
+            <button type="button" class="cms-order-button" [disabled]="i === site.footerColumns.length-1" [attr.aria-label]="ui.text('content-footer.moveGroupDown')" (click)="move(site.footerColumns, i, i+1)">↓</button>
+            <button type="button" class="cms-text-action" (click)="site.footerColumns.splice(i, 1)">{{ ui.text('content-footer.removeGroup') }}</button>
+          </div>
+        </div>
+        <admin-content-links [links]="group.links" [categories]="categories" />
+      </div>
+    </details>
+  }
+  @empty {
+    <p class="cms-muted">{{ ui.text('content-footer.noFooterLinkGroupsYet') }}</p>
+  }
+</section>
+<section class="cms-panel">
+  <h2>{{ ui.text('content-footer.closingLines') }}</h2>
+  <p class="cms-muted">{{ ui.text('content-footer.use') }} <code>{{ yearPlaceholder }}</code> {{ ui.text('content-footer.toDisplayTheCurrentYear') }}</p>
+  @for (line of site.footerBottom; track $index; let i = $index) {
+    <div class="cms-inline-row">
+      <input class="cms-input" [attr.aria-label]="ui.text('content-footer.closingLine') + (i + 1)" maxlength="140" [(ngModel)]="site.footerBottom[i]">
+      <button type="button" class="cms-text-action" [attr.aria-label]="ui.text('content-footer.removeClosingLine') + (i+1)" (click)="site.footerBottom.splice(i, 1)">{{ ui.text('content-footer.remove') }}</button>
+    </div>
+  }
+  <button class="cms-button" type="button" (click)="site.footerBottom.push('')">{{ ui.text('content-footer.addLine') }}</button>
+</section>
