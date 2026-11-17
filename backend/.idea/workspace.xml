@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c7c106-d868-46e0-a8af-97ef9e0ff672" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/PageLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/PageLayoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/config/ApparelStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/config/ApparelStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/service/PageLayouts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/service/PageLayouts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/StoreConfigurationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/StoreConfigurationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/commerce/interface-text.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/commerce/interface-text.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/page-builder.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/page-builder.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/legacy-page-layout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/legacy-page-layout.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/shared/page-layout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/shared/page-layout.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/admin-api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/admin-api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/studio-content-drafts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/studio-content-drafts.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

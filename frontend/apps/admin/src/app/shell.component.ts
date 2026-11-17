@@ -37,6 +37,7 @@ export class AdminShellComponent implements OnInit {
     ] },
   ];
   path = this.router.url.split(/[?#]/)[0];
+  readonly groupExpansion: Record<string, boolean> = {};
   menuOpen = false;
   pendingCount = 0;
 
@@ -59,6 +60,14 @@ export class AdminShellComponent implements OnInit {
     const group = this.group;
     return group.children.find(tab => tab.path === this.path ||
       (tab.path !== group.path && this.path.startsWith(tab.path + '/')));
+  }
+
+  isGroupExpanded(item: { path: string }): boolean {
+    return this.groupExpansion[item.path] ?? this.group.path === item.path;
+  }
+
+  toggleGroup(item: { path: string }): void {
+    this.groupExpansion[item.path] = !this.isGroupExpanded(item);
   }
 
   ngOnInit(): void {

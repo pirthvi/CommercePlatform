@@ -3,6 +3,11 @@
     <h1>{{ ui.text('commerce.commerceSettings') }}</h1>
   </div>
   <form class="cms-panel" #settingsForm="ngForm" (ngSubmit)="save()">
+    <h2>{{ ui.text('commerce.storeIdentity') }}</h2>
+    <div class="cms-fields">
+      <label>{{ ui.text('commerce.storeName') }}<input name="storeName" [(ngModel)]="storeName" required pattern=".*\S.*" maxlength="120"></label>
+    </div>
+    <p>{{ ui.text('commerce.storeNameHelp') }}</p>
     <h2>{{ ui.text('commerce.pricingAndDelivery') }}</h2>
     <div class="cms-fields">
       <label>{{ ui.text('commerce.currencyCode') }}<input name="currency" [(ngModel)]="options.currency" required pattern="[A-Z]{3}" maxlength="3"></label>

@@ -35,7 +35,8 @@ public class StoreConfigurationController {
                            @PositiveOrZero @Digits(integer = 10, fraction = 2) BigDecimal freeDeliveryFrom,
                            @Pattern(regexp = "^#[0-9a-fA-F]{6}$") String themeColor,
                            @Pattern(regexp = "^#[0-9a-fA-F]{6}$") String componentColor,
-                           @Pattern(regexp = "^(brand|dm-sans|playfair-display|georgia|arial)$") String fontFamily) {}
+                           @Pattern(regexp = "^(brand|dm-sans|playfair-display|georgia|arial)$") String fontFamily,
+                           @Size(max = 120) String storeName) {}
 
     private String prefix(String surface) {
         if (!surface.equals("storefront") && !surface.equals("studio")) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -67,6 +68,11 @@ public class StoreConfigurationController {
             input.themeColor() == null ? settings.getThemeColor() : input.themeColor(),
             input.componentColor() == null ? settings.getComponentColor() : input.componentColor(),
             input.fontFamily() == null ? settings.getFontFamily() : input.fontFamily());
+        if (input.storeName() != null) {
+            String storeName = input.storeName().trim();
+            if (storeName.isEmpty()) throw new StoreProblem(HttpStatus.BAD_REQUEST, "storeNameIsRequired");
+            sites.findForEditing().orElseThrow().setBrandName(storeName);
+        }
         return settings;
     }
 }

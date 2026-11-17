@@ -28,7 +28,7 @@ export class AdminApiService {
   stockHistory(id: number) { return this.http.get<StockMovement[]>(this.base + '/inventory/' + id + '/movements'); }
   interfaceConfig(surface: Surface) { return this.http.get<InterfaceConfig>('/api/content/interface/' + surface); }
   saveTexts(surface: Surface, values: Record<string, string>) { return this.http.patch<void>(this.base + '/interface/' + surface, { values }); }
-  saveCommerce(options: CommerceOptions) { return this.http.put<CommerceOptions>(this.base + '/commerce', options); }
+  saveCommerce(options: CommerceOptions, storeName?: string) { return this.http.put<CommerceOptions>(this.base + '/commerce', { ...options, ...(storeName === undefined ? {} : { storeName }) }); }
   saveProductPage(texts: Record<string, string>, symbols: Record<string, string>, uploads: Record<string, File | null>) {
     const form = new FormData();
     const removeImages = Object.keys(uploads).filter(slot => uploads[slot] === null);

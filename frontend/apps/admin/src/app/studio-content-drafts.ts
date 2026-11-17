@@ -53,6 +53,11 @@ export class StudioContentDrafts implements OnDestroy {
     });
   }
 
+  syncBrandName(brandName: string): void {
+    if (this.published) this.published.brandName = brandName;
+    if (this.draft) this.draft.brandName = brandName;
+  }
+
   changed(area: ContentArea): boolean {
     if (!this.draft || !this.published) return false;
     if (area === 'brand' && (this.clearLogo || this.uploads.has('logoImage'))) return true;
