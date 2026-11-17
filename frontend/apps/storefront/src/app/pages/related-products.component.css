@@ -13,7 +13,7 @@
   letter-spacing: -.025em;
 }
 .pdp-related-heading h2 em {
-  color: #a57a3f;
+  color: var(--commerce-component-color);
 }
 @media (max-width:700px) {
   .pdp-related {

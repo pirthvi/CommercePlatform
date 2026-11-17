@@ -7,6 +7,7 @@ import { StudioContentDrafts } from './studio-content-drafts';
 
 type Layout = SiteHomeSection['type'];
 const layoutLabels: Record<Layout, string> = {
+  announcement: 'layouts.announcement',
   hero: 'layouts.hero', benefits: 'layouts.benefits', collections: 'layouts.collections', featured: 'layouts.featured',
   story: 'layouts.story', values: 'layouts.values', banner: 'layouts.banner', editorial: 'layouts.editorial',
 };
@@ -65,5 +66,10 @@ export class HomeEditorComponent {
     if (section.type === 'featured') item.path = 'all';
     section.items ??= [];
     section.items.push(item);
+  }
+  toggleColorOverride(section: SiteHomeSection, event: Event): void {
+    const enabled = (event.target as HTMLInputElement).checked;
+    if (enabled) section.color = this.ui.config()?.commerce.componentColor || '#536344';
+    else delete section.color;
   }
 }

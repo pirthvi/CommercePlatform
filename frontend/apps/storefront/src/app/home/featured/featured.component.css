@@ -36,7 +36,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #a57a3f;
+  background: var(--commerce-theme-color);
 }
 .home-product-grid {
   grid-template-columns: repeat(4,minmax(0,1fr));

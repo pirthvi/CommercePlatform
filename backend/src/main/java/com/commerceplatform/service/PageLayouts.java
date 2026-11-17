@@ -22,7 +22,7 @@ import java.util.UUID;
 @Service
 public class PageLayouts {
     public static final List<String> SYSTEM_PAGES = List.of("home", "shop", "cart", "checkout", "login", "register", "account", "order-success");
-    public static final Set<String> CONTENT_TYPES = Set.of("hero", "benefits", "collections", "featured", "story", "values",
+    public static final Set<String> CONTENT_TYPES = Set.of("announcement", "hero", "benefits", "collections", "featured", "story", "values",
         "banner", "editorial", "text", "gallery", "button", "faq", "product-grid");
     private final ObjectMapper json;
     private final ContentPageRepository pages;
@@ -198,7 +198,7 @@ public class PageLayouts {
             // An older editor only understands the original home section types.
             var sections = read(locked);
             for (var section : sections) {
-                if (!Set.of("hero","benefits","collections","featured","story","values","banner","editorial").contains(section.path("type").asText())) {
+                if (!Set.of("announcement","hero","benefits","collections","featured","story","values","banner","editorial").contains(section.path("type").asText())) {
                     throw new StoreProblem(HttpStatus.CONFLICT, "usePageBuilder");
                 }
             }

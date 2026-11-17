@@ -32,7 +32,10 @@ public class StoreConfigurationController {
     public record TextEdit(@NotEmpty @Size(max = 1500) Map<@NotBlank String, @NotNull @Size(max = 2000) String> values) {}
     public record ShopEdit(@NotBlank @Pattern(regexp = "[A-Z]{3}") String currency,
                            @NotNull @PositiveOrZero @Digits(integer = 10, fraction = 2) BigDecimal deliveryFee,
-                           @PositiveOrZero @Digits(integer = 10, fraction = 2) BigDecimal freeDeliveryFrom) {}
+                           @PositiveOrZero @Digits(integer = 10, fraction = 2) BigDecimal freeDeliveryFrom,
+                           @Pattern(regexp = "^#[0-9a-fA-F]{6}$") String themeColor,
+                           @Pattern(regexp = "^#[0-9a-fA-F]{6}$") String componentColor,
+                           @Pattern(regexp = "^(brand|dm-sans|playfair-display|georgia|arial)$") String fontFamily) {}
 
     private String prefix(String surface) {
         if (!surface.equals("storefront") && !surface.equals("studio")) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -60,7 +63,10 @@ public class StoreConfigurationController {
         try { Currency.getInstance(input.currency()); }
         catch (IllegalArgumentException invalid) { throw new StoreProblem(HttpStatus.BAD_REQUEST, "chooseAValidIsoCurrencyCode"); }
         var settings = commerce.findById(1L).orElseThrow();
-        settings.configure(input.currency(), input.deliveryFee(), input.freeDeliveryFrom());
+        settings.configure(input.currency(), input.deliveryFee(), input.freeDeliveryFrom(),
+            input.themeColor() == null ? settings.getThemeColor() : input.themeColor(),
+            input.componentColor() == null ? settings.getComponentColor() : input.componentColor(),
+            input.fontFamily() == null ? settings.getFontFamily() : input.fontFamily());
         return settings;
     }
 }

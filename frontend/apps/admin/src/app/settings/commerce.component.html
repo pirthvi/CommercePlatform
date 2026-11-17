@@ -10,6 +10,19 @@
       <label>{{ ui.text('commerce.freeDeliveryThreshold') }}<input type="number" min="0" step="0.01" name="threshold" [(ngModel)]="options.freeDeliveryFrom"></label>
     </div>
     <p>{{ ui.text('commerce.leaveTheThresholdEmptyToChargeTheStandard') }}</p>
+    <h2>{{ ui.text('commerce.storeAppearance') }}</h2>
+    <div class="cms-fields">
+      <label>{{ ui.text('commerce.themeColor') }}<input type="color" name="themeColor" [(ngModel)]="options.themeColor" required><small>{{ options.themeColor }}</small></label>
+      <label>{{ ui.text('commerce.componentColor') }}<input type="color" name="componentColor" [(ngModel)]="options.componentColor" required><small>{{ options.componentColor }}</small></label>
+      <label>{{ ui.text('commerce.fontFamily') }}
+        <select name="fontFamily" [(ngModel)]="options.fontFamily" required>
+          @for (font of fontFamilies; track font.value) {
+            <option [ngValue]="font.value">{{ ui.text(font.label) }}</option>
+          }
+        </select>
+      </label>
+    </div>
+    <p>{{ ui.text('commerce.appearanceAppliesToStorefront') }}</p>
     <button class="cms-button" [disabled]="busy || settingsForm.invalid">{{ ui.text('commerce.saveSettings') }}</button>
     <span role="status">{{ message }}</span>
   </form>

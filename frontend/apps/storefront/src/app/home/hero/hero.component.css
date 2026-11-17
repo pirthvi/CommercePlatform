@@ -7,7 +7,7 @@
   margin: 0;
   position: relative;
   overflow: hidden;
-  background: #6d5736;
+  background: var(--commerce-component-dark);
 }
 .home-hero-image, .home-hero-shade {
   position: absolute;
@@ -38,7 +38,7 @@
 }
 .home-hero-copy h1 em {
   font-style: normal;
-  color: #f1d49c;
+  color: var(--commerce-component-soft);
 }
 .home-hero-copy>p {
   max-width: 410px;
@@ -70,7 +70,7 @@
 }
 .home-hero-copy h1 em {
   font-style: italic;
-  color: #f1d49c;
+  color: var(--commerce-component-soft);
 }
 .home-hero-copy>p {
   max-width: 450px;

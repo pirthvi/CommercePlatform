@@ -57,6 +57,14 @@
             }
           </select></label>
         <label class="cms-checkbox"><input type="checkbox" [(ngModel)]="section.visible"> {{ ui.text('home-editor.visibleOnHomePage') }}</label>
+        <fieldset class="section-color cms-wide">
+          <legend>{{ ui.text('builder.componentColor') }}</legend>
+          <label class="cms-checkbox"><input type="checkbox" [checked]="!!section.color" (change)="toggleColorOverride(section, $event)">{{ ui.text('builder.useCustomColor') }}</label>
+          @if (section.color) {
+            <label>{{ ui.text('builder.componentColor') }}<input type="color" [(ngModel)]="section.color"></label>
+            <button type="button" class="cms-text-action" (click)="section.color = undefined">{{ ui.text('builder.inheritStoreColors') }}</button>
+          }
+        </fieldset>
         @if (section.type !== 'benefits' && section.type !== 'values') {
           <label class="cms-wide">{{ ui.text('home-editor.smallHeading') }}<input [(ngModel)]="section.eyebrow" maxlength="180"></label>
           <label class="cms-wide">{{ ui.text('home-editor.heading') }}<input [(ngModel)]="section.heading" maxlength="180"></label>

@@ -11,7 +11,7 @@
   line-height: 1.7;
 }
 .account-heading h1 span {
-  color: #a57a3f;
+  color: var(--commerce-component-color);
 }
 .account-content {
   max-width: 1060px;
@@ -40,8 +40,8 @@
   cursor: pointer;
 }
 .account-signout:hover {
-  border-color: #a57a3f;
-  color: #765a31;
+  border-color: var(--commerce-theme-color);
+  color: var(--commerce-theme-color);
 }
 .account-order {
   border: 1px solid #e7e3dc;
@@ -69,7 +69,7 @@
   font-size: 10px;
 }
 .account-order-status {
-  color: #8a6c3f;
+  color: var(--commerce-component-dark);
 }
 .account-order-total {
   font-size: 13px;

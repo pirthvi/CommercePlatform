@@ -45,6 +45,10 @@
 .home-builder .cms-panel {
   margin-bottom: 0;
 }
+.section-color { min-width:0; margin:0; padding:.9rem; border:1px solid var(--cms-border); border-radius:7px; }
+.section-color legend { padding-inline:.35rem; font-size:13px; font-weight:650; }
+.section-color label:not(.cms-checkbox) { display:grid; gap:.35rem; max-width:12rem; font-size:13px; font-weight:650; }
+.section-color input[type=color] { width:4rem; height:2.5rem; padding:.2rem; cursor:pointer; }
 .home-outline {
   position: sticky;
   top: 75px;

@@ -80,6 +80,11 @@
       "body": "Discover cotton tees, Oxford shirts and easy trousers in the everyday collection.",
       "blocks": [
         {
+          "type": "announcement",
+          "heading": "Free delivery on qualifying orders",
+          "body": "Discover everyday essentials"
+        },
+        {
           "type": "hero",
           "heading": "Clothes for the everyday",
           "body": "Soft cotton shirts, easy tees and trousers you can wear all week.",

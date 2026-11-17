@@ -7,7 +7,7 @@
 }
 .shop-intro h1 em {
   font-weight: 500;
-  color: #8c9a72;
+  color: var(--commerce-component-color);
 }
 .shop-intro {
   text-align: center;
@@ -49,9 +49,9 @@
   cursor: pointer;
 }
 .category-filters button.selected {
-  border-color: #a7a995;
-  color: #45533b;
-  background: #eeede3;
+  border-color: var(--commerce-theme-color);
+  color: var(--commerce-theme-foreground);
+  background: var(--commerce-theme-color);
 }
 .search-box {
   display: flex;
@@ -77,7 +77,7 @@
   padding: 65px 10px;
 }
 .empty-state>span {
-  color: #c3944a;
+  color: var(--commerce-component-color);
   font-size: 28px;
 }
 .empty-state h2 {
@@ -125,7 +125,7 @@
   }
 }
 .shop-intro {
-  background: #f4f2ed;
+  background: var(--commerce-component-soft);
 }
 .shop-intro h1 {
   font-family: var(--serif);
@@ -133,13 +133,13 @@
   letter-spacing: -.035em;
 }
 .shop-intro h1 em {
-  color: #a57a3f;
+  color: var(--commerce-component-color);
   font-style: italic;
 }
 .category-filters button.selected {
-  border-color: #a57a3f;
-  background: #f4f1ea;
-  color: #171717;
+  border-color: var(--commerce-theme-color);
+  background: var(--commerce-theme-color);
+  color: var(--commerce-theme-foreground);
 }
 .shop-intro>p {
   font-size: 16px;

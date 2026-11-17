@@ -51,7 +51,7 @@
   color: #79776b;
 }
 .search-link span {
-  color: var(--olive);
+  color: var(--commerce-theme-color);
   font-size: 15px;
 }
 .bag-link {
@@ -72,7 +72,8 @@
   display: grid;
   place-items: center;
   border-radius: 999px;
-  background: #f1eee8;
+  background: var(--commerce-theme-color);
+  color: var(--commerce-theme-foreground);
   font-size: 10px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -148,7 +149,7 @@
 .announcement {
   height: 31px;
   padding-inline: 24px;
-  background: #161616;
+  background: var(--commerce-theme-dark);
   color: #fff;
   justify-content: center;
   gap: 30px;
@@ -162,7 +163,7 @@
   height: 76px;
   padding-inline: max(calc((100% - var(--content))/2),28px);
   grid-template-columns: 220px 1fr 200px;
-  background: #fff;
+  background: var(--commerce-theme-dark);
   border-bottom: 1px solid #eee;
   position: sticky;
   top: 0;
@@ -174,10 +175,10 @@
   font-size: 10px;
   font-weight: 700;
   letter-spacing: .08em;
-  color: #292929;
+  color: #fff;
 }
 .main-nav a:hover {
-  color: #a57b3d;
+  color: var(--commerce-theme-color);
 }
 .header-actions {
   gap: 23px;
@@ -188,12 +189,12 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  color: #333;
+  color: #fff;
 }
 .search-link span {
   font-size: 21px;
   line-height: 1;
-  color: #333;
+  color: #fff;
 }
 .search-link b {
   font-size: 9px;
@@ -204,7 +205,8 @@
 }
 .mobile-nav {
   top: 107px;
-  background: #fff;
+  background: var(--commerce-theme-dark);
+  color: #fff;
   padding: 18px 22px;
   border-bottom: 1px solid var(--line);
   box-shadow: 0 8px 18px #0000000b;
@@ -316,7 +318,7 @@
   white-space: nowrap;
 }
 .customer-link:hover {
-  color: #a57a3f;
+  color: var(--commerce-theme-color);
 }
 @media (max-width:680px) {
   .site-header {

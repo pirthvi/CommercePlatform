@@ -45,7 +45,7 @@
 }
 .customer-auth-switch a {
   font-weight: 700;
-  color: #765a31;
+  color: var(--commerce-component-dark);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

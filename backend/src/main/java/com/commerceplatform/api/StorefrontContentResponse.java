@@ -28,6 +28,7 @@ public record StorefrontContentResponse(
     public record HomeSection(
         String type,
         boolean visible,
+        String color,
         String imageKey,
         boolean clearImage,
         String eyebrow,

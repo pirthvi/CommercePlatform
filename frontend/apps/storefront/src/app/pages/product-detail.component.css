@@ -18,7 +18,7 @@
   margin: 0 0 18px;
 }
 .pdp-rating>span:first-child {
-  color: #a98041;
+  color: var(--commerce-component-color);
   font-size: 16px;
 }
 .pdp-description {
@@ -47,7 +47,7 @@
   gap: 8px;
   margin: 8px 0 20px;
   font-size: 12px;
-  color: #65714f;
+  color: var(--commerce-component-dark);
 }
 .pdp-stock.sold-out {
   color: #9c4f41;
@@ -90,13 +90,14 @@
   transition: background .2s,color .2s,transform .2s;
 }
 .pdp-add {
-  border: 1.5px solid #262724;
-  background: #fffefa;
-  color: #292a26;
+  border: 1.5px solid var(--commerce-theme-color);
+  background: var(--commerce-theme-color);
+  color: var(--commerce-theme-foreground);
   box-shadow: 0 3px 7px #0002;
 }
 .pdp-add:hover:not(:disabled) {
-  background: #f2f0eb;
+  background: var(--commerce-theme-dark);
+  color: #fff;
   transform: translateY(-1px);
 }
 .pdp-buy {
@@ -104,14 +105,15 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  border: 1px solid #171816;
-  background: #181917;
-  color: #fffefa;
+  border: 1px solid var(--commerce-theme-color);
+  background: var(--commerce-theme-color);
+  color: var(--commerce-theme-foreground);
   font-weight: 600;
   box-shadow: 0 3px 7px #0002;
 }
 .pdp-buy:hover:not(:disabled) {
-  background: #4d5b42;
+  background: var(--commerce-theme-dark);
+  color: #fff;
 }
 .pdp-add:disabled, .pdp-buy:disabled {
   opacity: .5;
@@ -135,7 +137,7 @@
 .pdp-service-row>div>span {
   font-size: 24px;
   line-height: 1.1;
-  color: #505b44;
+  color: var(--commerce-component-color);
 }
 .pdp-service-row strong {
   font-size: 12px;
@@ -215,10 +217,14 @@
   padding: 0 24px;
   border: 0;
   border-radius: 5px;
-  background: #181917;
-  color: #fff;
+  background: var(--commerce-theme-color);
+  color: var(--commerce-theme-foreground);
   font-weight: 600;
   cursor: pointer;
+}
+.pdp-sticky-buy>button:hover:not(:disabled) {
+  background: var(--commerce-theme-dark);
+  color: #fff;
 }
 .pdp-sticky-buy>button:disabled {
   opacity: .5;
@@ -323,7 +329,7 @@ main:has(.pdp-sticky-buy) {
   padding-bottom: 80px;
 }
 
-.stock-symbol { font-size: .75em; color: #466947; }
+.stock-symbol { font-size: .75em; color: var(--commerce-component-color); }
 .sold-out .stock-symbol { color: #986047; }
 .pdp-expand, .pdp-collapse { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); }
 .pdp-collapse, details[open] .pdp-expand { display: none; }

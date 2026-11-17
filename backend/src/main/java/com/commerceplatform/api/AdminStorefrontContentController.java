@@ -130,6 +130,9 @@ public class AdminStorefrontContentController {
         List<StorefrontContentResponse.HomeSection> saved = new ArrayList<>();
         Set<String> keys = new HashSet<>();
         for (StorefrontContentResponse.HomeSection section : sections) {
+            if (section.color() != null && !section.color().matches("^#[0-9a-fA-F]{6}$")) {
+                throw new StoreProblem(HttpStatus.BAD_REQUEST, "invalidLayout");
+            }
             String key = section.imageKey() == null ? "" : section.imageKey().trim();
             String imageUrl = section.imageUrl();
             if (!key.isEmpty()) {
@@ -152,7 +155,7 @@ public class AdminStorefrontContentController {
             } else if (section.clearImage()) {
                 imageUrl = null;
             }
-            saved.add(new StorefrontContentResponse.HomeSection(section.type(), section.visible(), key, false,
+            saved.add(new StorefrontContentResponse.HomeSection(section.type(), section.visible(), section.color(), key, false,
                 section.eyebrow(), section.heading(), section.body(), imageUrl, section.imageAlt(), section.imageCaption(),
                 section.buttonLabel(), section.buttonPath(), section.buttonCategory(), section.linkLabel(), section.linkPath(),
                 section.cardEyebrow(), section.cardLinkLabel(), section.emptyMessage(), section.emptyLinkLabel(), section.items()));

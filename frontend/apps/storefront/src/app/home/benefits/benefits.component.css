@@ -22,7 +22,7 @@
 }
 .benefit-icon {
   font-size: 16px;
-  color: #a57a3f;
+  color: var(--commerce-component-color);
 }
 .home-benefits>div {
   font-size: 12px;

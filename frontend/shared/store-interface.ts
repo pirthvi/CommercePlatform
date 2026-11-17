@@ -6,8 +6,28 @@ import { firstValueFrom } from 'rxjs';
 export function isExternalLink(path: string): boolean { return /^(https?:|mailto:|tel:)/i.test(path); }
 
 export type Surface = 'storefront' | 'studio';
+export type StoreFontFamily = 'brand' | 'dm-sans' | 'playfair-display' | 'georgia' | 'arial';
 export interface Category { id: number; name: string; slug: string; description: string; }
-export interface CommerceOptions { currency: string; deliveryFee: number; freeDeliveryFrom: number | null; }
+export interface CommerceOptions {
+  currency: string;
+  deliveryFee: number;
+  freeDeliveryFrom: number | null;
+  themeColor: string;
+  componentColor: string;
+  fontFamily: StoreFontFamily;
+}
+export function commerceColorPalette(value: string | null | undefined, fallback: string) {
+  const color = typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value) ? value : fallback;
+  const channels = [1, 3, 5].map(offset => Number.parseInt(color.slice(offset, offset + 2), 16));
+  const dark = '#' + channels.map(channel => Math.round(channel * .4).toString(16).padStart(2, '0')).join('');
+  const soft = '#' + channels.map(channel => Math.round(channel * .14 + 255 * .86).toString(16).padStart(2, '0')).join('');
+  const linear = channels.map(channel => {
+    const value = channel / 255;
+    return value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4;
+  });
+  const luminance = .2126 * linear[0] + .7152 * linear[1] + .0722 * linear[2];
+  return { color, dark, soft, foreground: luminance > .179 ? '#171717' : '#ffffff' };
+}
 export interface ProductPageContent {
   texts: Record<string, string>;
   symbols: Record<string, string>;
@@ -36,6 +56,7 @@ export class StoreInterface {
     try {
       const response = await firstValueFrom(this.http.get<InterfaceConfig>('/api/content/interface/' + this.surface));
       this.config.set(response);
+      if (this.surface === 'storefront') this.applyCommerceAppearance(response.commerce);
       this.failed.set(false);
       this.document.title = response.brandName;
       this.updateIcon(response);
@@ -69,6 +90,31 @@ export class StoreInterface {
     context.textBaseline = 'middle';
     context.fillText(config.brandMark || config.brandName.slice(0, 1), 32, 33, 54);
     icon.href = canvas.toDataURL('image/png');
+  }
+  private applyCommerceAppearance(options: CommerceOptions): void {
+    const root = this.document.documentElement;
+    const theme = commerceColorPalette(options.themeColor, '#9A7540');
+    const component = commerceColorPalette(options.componentColor, '#536344');
+    const fonts: Record<StoreFontFamily, { sans: string; serif: string }> = {
+      brand: { sans: "'DM Sans', Arial, sans-serif", serif: "'Playfair Display', Georgia, serif" },
+      'dm-sans': { sans: "'DM Sans', Arial, sans-serif", serif: "'DM Sans', Arial, sans-serif" },
+      'playfair-display': { sans: "'Playfair Display', Georgia, serif", serif: "'Playfair Display', Georgia, serif" },
+      georgia: { sans: 'Georgia, serif', serif: 'Georgia, serif' },
+      arial: { sans: 'Arial, sans-serif', serif: 'Arial, sans-serif' },
+    };
+    const font = fonts[options.fontFamily] ?? fonts.brand;
+    root.style.setProperty('--commerce-theme-color', theme.color);
+    root.style.setProperty('--commerce-theme-dark', theme.dark);
+    root.style.setProperty('--commerce-theme-foreground', theme.foreground);
+    root.style.setProperty('--commerce-component-color', component.color);
+    root.style.setProperty('--commerce-component-dark', component.dark);
+    root.style.setProperty('--commerce-component-soft', component.soft);
+    root.style.setProperty('--commerce-component-foreground', component.foreground);
+    root.style.setProperty('--olive', component.color);
+    root.style.setProperty('--olive-dark', component.dark);
+    root.style.setProperty('--honey', component.color);
+    root.style.setProperty('--sans', font.sans);
+    root.style.setProperty('--serif', font.serif);
   }
   text(key: string, values: Record<string, string | number> = {}): string {
     const value = this.config()?.texts[key] ?? '';

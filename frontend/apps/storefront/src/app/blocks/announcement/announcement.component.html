@@ -1,0 +1,6 @@
+@if (section.heading || section.body) {
+  <aside class="home-announcement">
+    @if (section.heading) { <strong>{{ section.heading }}</strong> }
+    @if (section.body) { <span>{{ section.body }}</span> }
+  </aside>
+}

@@ -8,11 +8,11 @@
 }
 .home-bottom-banner h2 em {
   font-style: normal;
-  color: #aa8149;
+  color: var(--commerce-component-soft);
 }
 .home-bottom-banner {
   min-height: 310px;
-  background: #22221e;
+  background: var(--commerce-component-dark);
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: #fff;
@@ -28,7 +28,7 @@
   margin-top: 13px;
 }
 .home-bottom-banner h2 em {
-  color: #e2be82;
+  color: var(--commerce-component-soft);
 }
 .home-bottom-banner .home-cta {
   margin-top: 20px;

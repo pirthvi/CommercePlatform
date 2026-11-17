@@ -1,2 +1,3 @@
 :host { display: block; min-width: 0; }
 form p {color:var(--cms-muted);max-width:65ch;} [role=status] {margin-inline:12px;}
+.cms-fields input[type="color"] { min-height: 2.7rem; padding: .25rem; cursor: pointer; }

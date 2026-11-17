@@ -1,4 +1,4 @@
-import { CommerceOptions, StoreInterface } from '@commerce/store';
+import { CommerceOptions, StoreFontFamily, StoreInterface } from '@commerce/store';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AdminApiService } from '../admin-api.service';
@@ -11,6 +11,13 @@ export class CommerceSettingsComponent implements OnInit {
   private readonly api = inject(AdminApiService);
   readonly ui = inject(StoreInterface);
   options!: CommerceOptions;
+  readonly fontFamilies: { value: StoreFontFamily; label: string }[] = [
+    { value: 'brand', label: 'commerce.brandFontPairing' },
+    { value: 'dm-sans', label: 'commerce.fontDmSans' },
+    { value: 'playfair-display', label: 'commerce.fontPlayfairDisplay' },
+    { value: 'georgia', label: 'commerce.fontGeorgia' },
+    { value: 'arial', label: 'commerce.fontArial' },
+  ];
   message = '';
   busy = false;
   ngOnInit(): void { this.options = { ...this.ui.config()!.commerce }; }

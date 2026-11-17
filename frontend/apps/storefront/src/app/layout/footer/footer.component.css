@@ -1,7 +1,7 @@
 :host { display: contents; }
 
 .site-footer {
-  background: #45513b;
+  background: var(--commerce-theme-dark);
   color: #f6f3e8;
   padding: 0 max(calc((100% - var(--content))/2),32px);
 }
@@ -70,7 +70,7 @@
   }
 }
 .site-footer {
-  background: #171715;
+  background: var(--commerce-theme-dark);
   color: #f7f5f0;
   padding: 0 max(calc((100% - var(--content))/2),30px);
 }

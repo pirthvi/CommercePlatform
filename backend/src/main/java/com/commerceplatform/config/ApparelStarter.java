@@ -27,7 +27,7 @@ import java.util.Set;
 @Component
 @Order(1)
 class ApparelStarter implements ApplicationRunner {
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
     private static final Set<String> PHOTO_BLOCKS = Set.of("text", "hero", "banner", "story", "editorial",
         "catalog", "cart", "checkout", "customer-form", "account", "receipt");
     private final StorefrontSettingsRepository sites;
@@ -124,7 +124,9 @@ class ApparelStarter implements ApplicationRunner {
     private boolean isInitialLayout(String key, ArrayNode sections) {
         if (sections.isEmpty()) return true;
         if ("home".equals(key)) {
-            return sections.findValuesAsText("type").equals(List.of("hero","benefits","collections","featured","story","values","banner"));
+            var types = sections.findValuesAsText("type");
+            return types.equals(List.of("hero","benefits","collections","featured","story","values","banner"))
+                || types.equals(List.of("announcement","hero","benefits","collections","product-grid","story","banner"));
         }
         if ("product".equals(key)) {
             return sections.findValuesAsText("type").equals(List.of("product-gallery","product-purchase","related-products"));

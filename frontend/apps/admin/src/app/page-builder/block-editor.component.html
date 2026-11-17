@@ -1,4 +1,12 @@
 <div class="block-fields" (input)="changed.emit()" (change)="changed.emit()">
+  <fieldset class="component-color">
+    <legend>{{ ui.text('builder.componentColor') }}</legend>
+    <label class="color-toggle"><input type="checkbox" [checked]="!!block.color" (change)="toggleColorOverride($event)">{{ ui.text('builder.useCustomColor') }}</label>
+    @if (block.color) {
+      <label>{{ ui.text('builder.componentColor') }}<input type="color" [(ngModel)]="block.color"></label>
+      <button type="button" class="reset-color" (click)="clearColorOverride()">{{ ui.text('builder.inheritStoreColors') }}</button>
+    }
+  </fieldset>
   @for (field of fields[block.type]; track field) {
     @if (field === 'imageAlt') {
       <admin-content-image [label]="ui.text('builder.image')" [limitMb]="8" [preview]="previews[block.id] || block.imageUrl || ''" (fileChange)="photo.emit({entry:block, file:$event})" />

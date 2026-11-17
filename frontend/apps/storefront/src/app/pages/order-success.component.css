@@ -7,7 +7,7 @@
 }
 .success-page h1 em {
   font-weight: 500;
-  color: #8c9a72;
+  color: var(--commerce-component-color);
 }
 .success-page {
   text-align: center;
@@ -17,7 +17,7 @@
 }
 .success-flower {
   font-size: 36px;
-  color: #ba904f;
+  color: var(--commerce-component-color);
 }
 .success-page .eyebrow {
   margin-top: 10px;
@@ -35,7 +35,7 @@
 }
 .receipt-card {
   text-align: left;
-  background: #f0eee5;
+  background: var(--commerce-component-soft);
   margin: 28px 0 25px;
   padding: 22px 25px;
 }
@@ -119,7 +119,7 @@
   letter-spacing: -.035em;
 }
 .success-page h1 em {
-  color: #a57a3f;
+  color: var(--commerce-component-color);
   font-style: italic;
 }
 .success-page>p {

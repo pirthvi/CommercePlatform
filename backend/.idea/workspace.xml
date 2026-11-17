@@ -1,5 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c9c7c106-d868-46e0-a8af-97ef9e0ff672" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/CommerceApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/CommerceApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/AdminStorefrontContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/AdminStorefrontContentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/PageLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/PageLayoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/StoreConfigurationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/StoreConfigurationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/StorefrontContentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/api/StorefrontContentResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/config/ApparelStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/config/ApparelStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/domain/CommerceSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/domain/CommerceSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/service/PageLayouts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/service/PageLayouts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/commerce/interface-text.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/commerce/interface-text.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/commerce/starter-pages.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/commerce/starter-pages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/storefront-content.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/storefront-content.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/banner/banner.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/banner/banner.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/benefits/benefits.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/benefits/benefits.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/featured/featured.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/featured/featured.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/hero/hero.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/hero/hero.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/story/story.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/story/story.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/values/values.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/values/values.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/layout/brand/brand.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/layout/brand/brand.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/layout/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/layout/footer/footer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/layout/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/layout/header/header.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/cart.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/cart.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/checkout.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/checkout.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-account.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-account.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-auth.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-auth.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/order-success.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/order-success.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-detail.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-detail.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-gallery.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-gallery.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/related-products.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/related-products.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/shop.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/shop.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/product-card.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/product-card.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/shared/page-layout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/shared/page-layout.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/shared/store-interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/shared/store-interface.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.4217939298049982E-4" />
+      <entry key="MS500" value="0.17256349450091038" />
+      <entry key="S2" value="0.8661469372502186" />
+      <entry key="S5" value="1.3872943546976382" />
+      <entry key="S10" value="1.6566136927057422" />
+      <entry key="S30" value="1.8759728194238" />
+      <entry key="S60" value="1.936695666104778" />
+      <entry key="M2" value="1.9680175259916952" />
+      <entry key="M5" value="1.9871267395588503" />
+      <entry key="M10" value="1.9935499072926472" />
+      <entry key="M15" value="1.9956969402750608" />
+      <entry key="M30" value="1.9978469696102406" />
+      <entry key="H1" value="1.9989231093791342" />
+      <entry key="H2" value="1.9994614607962742" />
+      <entry key="H4" value="1.9997307069202124" />
+      <entry key="D1" value="1.9999551145588224" />
+      <entry key="W1" value="1.9999935877142458" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0" />
+      <entry key="M5" value="1.0" />
+      <entry key="M10" value="1.0" />
+      <entry key="M15" value="1.0" />
+      <entry key="M30" value="1.0" />
+      <entry key="H1" value="1.0" />
+      <entry key="H2" value="1.0" />
+      <entry key="H4" value="1.0" />
+      <entry key="D1" value="1.0" />
+      <entry key="W1" value="1.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.876073722782305E-4" />
+      <entry key="MS500" value="0.19388762695146025" />
+      <entry key="S2" value="1.1041720898124048" />
+      <entry key="S5" value="1.907002561099806" />
+      <entry key="S10" value="2.3675637574877113" />
+      <entry key="S30" value="2.765794449691567" />
+      <entry key="S60" value="2.8796508123566023" />
+      <entry key="M2" value="2.938987275737867" />
+      <entry key="M5" value="2.9753902562336942" />
+      <entry key="M10" value="2.9876607226183203" />
+      <entry key="M15" value="2.9917661472844683" />
+      <entry key="M30" value="2.9958792341969436" />
+      <entry key="H1" value="2.9979386561953727" />
+      <entry key="H2" value="2.998969087741558" />
+      <entry key="H4" value="2.9994844837654444" />
+      <entry key="D1" value="2.9999140722782274" />
+      <entry key="W1" value="2.9999877244066835" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0,
+  "fromUser": false
+}]]></component>
   <component name="ProjectId" id="3MCCxNahXgbTV4sGu9nrOAGy2zR" />
-  <component name="PropertiesComponent">{}</component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.Commerce Platform API.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c9c7c106-d868-46e0-a8af-97ef9e0ff672" name="Changes" comment="" />
+      <created>1794845410298</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1794845410298</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
 </project>

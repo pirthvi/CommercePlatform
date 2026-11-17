@@ -21,7 +21,7 @@
   left: 18px;
   padding: 7px 11px;
   background: #fffefa;
-  color: #4f5b43;
+  color: var(--commerce-component-dark);
   font-size: 11px;
   letter-spacing: .04em;
 }
@@ -42,7 +42,7 @@
   cursor: pointer;
 }
 .pdp-thumbnails button.selected {
-  border-color: #565f49;
+  border-color: var(--commerce-theme-color);
 }
 .pdp-thumbnails img {
   width: 100%;

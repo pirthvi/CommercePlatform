@@ -33,7 +33,7 @@ public class PageLayoutController {
     private static final Set<String> COPY = Set.of("eyebrow", "heading", "body", "imageAlt", "imageCaption", "buttonLabel",
         "buttonPath", "buttonCategory", "linkLabel", "linkPath", "cardEyebrow", "cardLinkLabel", "emptyMessage", "emptyLinkLabel");
 
-    private static final Set<String> STRUCTURE = Set.of("type", "id", "visible", "imageKey", "clearImage", "imageUrl", "items", "productIds", "categoryId");
+    private static final Set<String> STRUCTURE = Set.of("type", "id", "visible", "color", "imageKey", "clearImage", "imageUrl", "items", "productIds", "categoryId");
     private static final Set<String> ITEM_FIELDS = Set.of("id", "icon", "title", "body", "category", "path", "imageAlt", "imageUrl");
 
     public PageLayoutController(ContentPageRepository pages, StorefrontContentAssetRepository assets, PageLayouts layouts,
@@ -105,6 +105,8 @@ public class PageLayoutController {
             section.fieldNames().forEachRemaining(key -> { if (!STRUCTURE.contains(key) && !COPY.contains(key)) throw invalid(); });
             String kind = section.path("type").asText();
             if (!section.path("visible").isBoolean()) throw invalid();
+            var color = section.get("color");
+            if (color != null && !color.isNull() && (!color.isTextual() || !color.textValue().matches("^#[0-9a-fA-F]{6}$"))) throw invalid();
             if (!PageLayouts.CONTENT_TYPES.contains(kind)) {
                 boolean optional = "product".equals(page.getTemplateKey()) && kind.equals("related-products");
                 if ((!required.contains(kind) && !optional) || !functional.add(kind) || (!optional && !section.path("visible").asBoolean())) throw invalid();

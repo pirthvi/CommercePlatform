@@ -23,32 +23,33 @@
             <img class="component-image" [class.utility-image]="section.type !== 'catalog'" [src]="section.imageUrl" [alt]="section.imageAlt || ''">
           }
           @switch (section.type) {
-            @case ('hero') { <shop-hero-section [section]="section" /> }
-            @case ('benefits') { <shop-benefits-section [section]="section" /> }
-            @case ('collections') { <shop-collections-section [section]="section" [products]="products" [loading]="catalogLoading" /> }
-            @case ('featured') { <shop-featured-section [section]="section" [products]="products" [loading]="catalogLoading" [error]="catalogError" (retry)="loadProducts()" /> }
-            @case ('story') { <shop-story-section [section]="section" /> }
-            @case ('values') { <shop-values-section [section]="section" /> }
-            @case ('banner') { <shop-banner-section [section]="section" /> }
-            @case ('editorial') { <shop-editorial-section [section]="section" /> }
-            @case ('text') { <shop-text-block [section]="section" [primary]="first" /> }
-            @case ('gallery') { <shop-gallery-block [section]="section" /> }
-            @case ('button') { <shop-button-block [section]="section" /> }
-            @case ('faq') { <shop-faq-block [section]="section" /> }
+            @case ('announcement') { <shop-announcement-block [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('hero') { <shop-hero-section [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('benefits') { <shop-benefits-section [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('collections') { <shop-collections-section [shopBlockColor]="section.color" [section]="section" [products]="products" [loading]="catalogLoading" /> }
+            @case ('featured') { <shop-featured-section [shopBlockColor]="section.color" [section]="section" [products]="products" [loading]="catalogLoading" [error]="catalogError" (retry)="loadProducts()" /> }
+            @case ('story') { <shop-story-section [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('values') { <shop-values-section [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('banner') { <shop-banner-section [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('editorial') { <shop-editorial-section [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('text') { <shop-text-block [shopBlockColor]="section.color" [section]="section" [primary]="first" /> }
+            @case ('gallery') { <shop-gallery-block [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('button') { <shop-button-block [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('faq') { <shop-faq-block [shopBlockColor]="section.color" [section]="section" /> }
             @case ('product-grid') {
               @if (catalogLoading) { <p class="home-loading">{{ ui.text('shop.loadingProducts') }}</p> }
               @else if (catalogError) { <p role="alert">{{ catalogError }} <button type="button" (click)="loadProducts()">{{ ui.text('featured.tryAgain') }}</button></p> }
-              @else { <shop-product-grid-block [section]="section" [products]="products" /> }
+              @else { <shop-product-grid-block [shopBlockColor]="section.color" [section]="section" [products]="products" /> }
             }
-            @case ('catalog') { <shop-catalog-block [section]="section" /> }
-            @case ('product-gallery') { <shop-product-gallery /> }
-            @case ('product-purchase') { <shop-product-purchase /> }
-            @case ('related-products') { <shop-related-products [section]="section" /> }
-            @case ('cart') { <shop-cart-block [section]="section" /> }
-            @case ('checkout') { <shop-checkout-block [section]="section" /> }
-            @case ('customer-form') { <shop-customer-form-block [section]="section" [registering]="layout.templateKey === 'register'" /> }
-            @case ('account') { @if (preview) { <shop-text-block [section]="section" /><p class="preview-data">{{ ui.text('builder.accountPreview') }}</p> } @else { <shop-account-block [section]="section" /> } }
-            @case ('receipt') { @if (preview) { <shop-text-block [section]="section" /><p class="preview-data">{{ ui.text('builder.receiptPreview') }}</p> } @else { <shop-receipt-block [section]="section" /> } }
+            @case ('catalog') { <shop-catalog-block [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('product-gallery') { <shop-product-gallery [shopBlockColor]="section.color" /> }
+            @case ('product-purchase') { <shop-product-purchase [shopBlockColor]="section.color" /> }
+            @case ('related-products') { <shop-related-products [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('cart') { <shop-cart-block [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('checkout') { <shop-checkout-block [shopBlockColor]="section.color" [section]="section" /> }
+            @case ('customer-form') { <shop-customer-form-block [shopBlockColor]="section.color" [section]="section" [registering]="layout.templateKey === 'register'" /> }
+            @case ('account') { @if (preview) { <shop-text-block [shopBlockColor]="section.color" [section]="section" /><p class="preview-data">{{ ui.text('builder.accountPreview') }}</p> } @else { <shop-account-block [shopBlockColor]="section.color" [section]="section" /> } }
+            @case ('receipt') { @if (preview) { <shop-text-block [shopBlockColor]="section.color" [section]="section" /><p class="preview-data">{{ ui.text('builder.receiptPreview') }}</p> } @else { <shop-receipt-block [shopBlockColor]="section.color" [section]="section" /> } }
           }
         }
       </div>

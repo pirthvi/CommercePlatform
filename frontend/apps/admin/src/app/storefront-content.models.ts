@@ -20,8 +20,9 @@ export interface SiteHomeItem {
 }
 
 export interface SiteHomeSection {
-  type: 'hero' | 'benefits' | 'collections' | 'featured' | 'story' | 'values' | 'banner' | 'editorial';
+  type: 'announcement' | 'hero' | 'benefits' | 'collections' | 'featured' | 'story' | 'values' | 'banner' | 'editorial';
   visible: boolean;
+  color?: string;
   imageKey?: string;
   clearImage?: boolean;
   eyebrow?: string;

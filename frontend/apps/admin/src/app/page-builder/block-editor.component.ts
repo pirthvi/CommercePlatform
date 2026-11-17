@@ -41,4 +41,14 @@ export class BlockEditorComponent {
     this.block.productIds = selected ? [...ids, id] : ids.filter(other => other !== id);
     this.changed.emit();
   }
+  toggleColorOverride(event: Event): void {
+    const enabled = (event.target as HTMLInputElement).checked;
+    if (enabled) this.block.color = this.ui.config()?.commerce.componentColor || '#536344';
+    else delete this.block.color;
+    this.changed.emit();
+  }
+  clearColorOverride(): void {
+    delete this.block.color;
+    this.changed.emit();
+  }
 }

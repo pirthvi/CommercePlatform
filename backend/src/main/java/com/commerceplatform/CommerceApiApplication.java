@@ -15,5 +15,7 @@ public class CommerceApiApplication {
             application.setDefaultProperties(Map.of("commerce.local-database", "thar-nectar"));
         }
         application.run(args);
+        System.out.println("The server started \n\n\n ********** Apllication Started *************** ");
+
     }
 }

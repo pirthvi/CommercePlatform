@@ -7,7 +7,7 @@
   background: rgba(248,246,239,.94);
   padding: 6px 9px;
   font-size: 9px;
-  color: #586246;
+  color: var(--commerce-component-dark);
 }
 .card-arrow {
   position: absolute;
@@ -32,7 +32,7 @@
   padding: 9px 0 0;
   border: 0;
   background: none;
-  color: #586447;
+  color: var(--commerce-theme-color);
   font-size: 10px;
   cursor: pointer;
 }
@@ -54,7 +54,7 @@
   top: 10px;
   left: 10px;
   background: #fff;
-  color: #28251f;
+  color: var(--commerce-component-dark);
   padding: 6px 8px;
   font-size: 8px;
   font-weight: 700;
@@ -71,14 +71,14 @@
 }
 .add-small {
   padding-top: 9px;
-  color: #332f28;
+  color: var(--commerce-theme-color);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: .04em;
   text-transform: uppercase;
 }
 .add-small:hover {
-  color: #a57a3f;
+  color: var(--commerce-theme-dark);
 }
 .add-small {
   font-size: 11px;

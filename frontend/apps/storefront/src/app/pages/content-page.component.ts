@@ -33,12 +33,14 @@ import { ProductGalleryComponent } from './product-gallery.component';
 import { ProductDetailComponent } from './product-detail.component';
 import { RelatedProductsComponent } from './related-products.component';
 import { ProductIconComponent } from './product-icon/product-icon.component';
+import { BlockColorDirective } from '../block-color.directive';
+import { AnnouncementBlockComponent } from '../blocks/announcement/announcement.component';
 
 @Component({
   standalone: true, providers: [ProductPageState],
   imports: [CommonModule, RouterLink, PageMetaDirective, HeroSectionComponent, BannerSectionComponent, StorySectionComponent,
     EditorialSectionComponent, BenefitsSectionComponent, ValuesSectionComponent, FeaturedSectionComponent, CollectionsSectionComponent,
-    TextBlockComponent, ButtonBlockComponent, GalleryBlockComponent, FaqBlockComponent, ProductGridBlockComponent,
+    BlockColorDirective, AnnouncementBlockComponent, TextBlockComponent, ButtonBlockComponent, GalleryBlockComponent, FaqBlockComponent, ProductGridBlockComponent,
     ShopComponent, CartComponent, CheckoutComponent, CustomerAuthComponent, CustomerAccountComponent, OrderSuccessComponent,
     ProductGalleryComponent, ProductDetailComponent, RelatedProductsComponent, ProductIconComponent],
   templateUrl: './content-page.component.html', styleUrl: './content-page.component.css',

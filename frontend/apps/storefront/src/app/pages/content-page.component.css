@@ -7,7 +7,7 @@
 }
 .content-article h1 em {
   font-weight: 500;
-  color: #8c9a72;
+  color: var(--commerce-component-color);
 }
 .content-page {
   max-width: var(--content);
@@ -21,7 +21,7 @@
 .content-image {
   height: 490px;
   position: relative;
-  background: #e8e2d3;
+  background: var(--commerce-component-soft);
 }
 .content-image img {
   width: 100%;
@@ -97,7 +97,7 @@
   letter-spacing: -.035em;
 }
 .content-article h1 em {
-  color: #a57a3f;
+  color: var(--commerce-component-color);
   font-style: italic;
 }
 .content-image img {
@@ -146,7 +146,7 @@
   }
 }
 .breadcrumbs a:hover {
-  color: #a57a3f;
+  color: var(--commerce-component-color);
 }
 .breadcrumbs {
   font-size: 12px;

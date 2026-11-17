@@ -84,7 +84,7 @@
   margin-top: 22px;
 }
 .cart-summary {
-  background: #f0eee5;
+  background: var(--commerce-component-soft);
   padding: 27px 26px;
   align-self: start;
 }
@@ -106,8 +106,8 @@
   font-weight: 600;
 }
 .shipping-progress.free-note {
-  background: #e5eadc;
-  color: #526343;
+  background: var(--commerce-component-soft);
+  color: var(--commerce-component-dark);
 }
 .cart-summary .cart-total {
   display: flex;
@@ -188,14 +188,14 @@
   }
 }
 .cart-thumb {
-  background: #f3f1ed;
+  background: var(--commerce-component-soft);
 }
 .cart-summary {
-  background: #f4f2ed;
+  background: var(--commerce-component-soft);
 }
 .shipping-progress.free-note {
-  background: #eee9df;
-  color: #78613e;
+  background: var(--commerce-component-soft);
+  color: var(--commerce-component-dark);
 }
 .cart-line-info>span, .cart-line-info>small {
   font-size: 11px;

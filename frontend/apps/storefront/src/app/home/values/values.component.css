@@ -14,7 +14,7 @@
 }
 .home-values>div>span {
   font-size: 8px;
-  color: #a47a40;
+  color: var(--commerce-component-color);
   font-weight: 700;
   letter-spacing: .1em;
 }

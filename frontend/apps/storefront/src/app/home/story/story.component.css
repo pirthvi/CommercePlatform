@@ -8,7 +8,7 @@
 }
 .home-story-copy h2 em {
   font-style: normal;
-  color: #aa8149;
+  color: var(--commerce-component-color);
 }
 .home-story {
   display: grid;

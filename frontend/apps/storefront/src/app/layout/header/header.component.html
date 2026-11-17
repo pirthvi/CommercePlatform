@@ -1,7 +1,3 @@
-<div class="announcement" *ngIf="site.announcementText || site.announcementSecondary">
-  <span>{{ site.announcementText }}</span>
-  <span class="announcement-right">{{ site.announcementSecondary }}</span>
-</div>
 <header class="site-header">
   <button class="menu-toggle" (click)="menuOpen = !menuOpen" [attr.aria-expanded]="menuOpen" [attr.aria-label]="ui.text('header.toggleNavigation')">☰</button>
   <shop-brand [site]="site" />
