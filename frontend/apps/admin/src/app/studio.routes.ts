@@ -1,17 +1,17 @@
-import { PageBuilderComponent } from './page-builder/page-builder.component';
-import { ProductPageComponent } from './page-templates/product-page.component';
+import { PageBuilderComponent } from './page-builder/page-builder/page-builder.component';
+import { ProductPageComponent } from './page-templates/product-page/product-page.component';
 import { StoreInterface } from '@commerce/store';
 import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
-import { OrdersComponent } from './orders.component';
-import { PagesComponent } from './pages.component';
-import { CategoriesComponent } from './catalog/categories.component';
-import { InventoryComponent } from './catalog/inventory.component';
-import { CommerceSettingsComponent } from './settings/commerce.component';
-import { InterfaceTextComponent } from './settings/interface-text.component';
-import { ProductsComponent } from './products.component';
-import { SiteContentComponent } from './site-content.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { OrdersComponent } from './orders/orders.component';
+import { PagesComponent } from './pages/pages.component';
+import { CategoriesComponent } from './catalog/categories/categories.component';
+import { InventoryComponent } from './catalog/inventory/inventory.component';
+import { CommerceSettingsComponent } from './settings/commerce/commerce.component';
+import { InterfaceTextComponent } from './settings/interface-text/interface-text.component';
+import { ProductsComponent } from './products/products.component';
+import { SiteContentComponent } from './site-content/site-content.component';
 import { editorLabels, siteEditors } from './studio-navigation';
 
 function pageTitle(key: string) {

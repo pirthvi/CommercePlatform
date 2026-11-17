@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ContentPageComponent } from './pages/content-page.component';
+import { ContentPageComponent } from './pages/content-page/content-page.component';
 import { customerAuthGuard } from './customer-auth.guard';
 
 export const routes: Routes = [

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PageBlock } from '@commerce/layout';
 import { Product } from '../../models';
-import { ProductCardComponent } from '../../product-card.component';
+import { ProductCardComponent } from '../../product-card/product-card.component';
 @Component({
   selector: 'shop-product-grid-block', standalone: true, imports: [ProductCardComponent],
   templateUrl: './product-grid.component.html', styleUrl: './product-grid.component.css',

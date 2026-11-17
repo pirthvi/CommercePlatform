@@ -3,7 +3,7 @@ import { StoreInterface } from '@commerce/store';
 import { inject, Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProductCardComponent } from '../../product-card.component';
+import { ProductCardComponent } from '../../product-card/product-card.component';
 import { Product } from '../../models';
 import { PageBlock } from '@commerce/layout';
 
