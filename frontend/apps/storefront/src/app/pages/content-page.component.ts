@@ -7,7 +7,7 @@ import { PageBlock, PageLayout } from '@commerce/layout';
 import { StoreInterface } from '@commerce/store';
 import { ApiService } from '../api.service';
 import { legacyPageLayout } from '../legacy-page-layout';
-import { Product } from '../models';
+import { Product, StorefrontContent } from '../models';
 import { PageMetaDirective } from '../page-meta.directive';
 import { HeroSectionComponent } from '../home/hero/hero.component';
 import { BannerSectionComponent } from '../home/banner/banner.component';
@@ -35,12 +35,14 @@ import { RelatedProductsComponent } from './related-products.component';
 import { ProductIconComponent } from './product-icon/product-icon.component';
 import { BlockColorDirective } from '../block-color.directive';
 import { AnnouncementBlockComponent } from '../blocks/announcement/announcement.component';
+import { HeaderComponent } from '../layout/header/header.component';
+import { FooterComponent } from '../layout/footer/footer.component';
 
 @Component({
   standalone: true, providers: [ProductPageState],
   imports: [CommonModule, RouterLink, PageMetaDirective, HeroSectionComponent, BannerSectionComponent, StorySectionComponent,
     EditorialSectionComponent, BenefitsSectionComponent, ValuesSectionComponent, FeaturedSectionComponent, CollectionsSectionComponent,
-    BlockColorDirective, AnnouncementBlockComponent, TextBlockComponent, ButtonBlockComponent, GalleryBlockComponent, FaqBlockComponent, ProductGridBlockComponent,
+    BlockColorDirective, HeaderComponent, FooterComponent, AnnouncementBlockComponent, TextBlockComponent, ButtonBlockComponent, GalleryBlockComponent, FaqBlockComponent, ProductGridBlockComponent,
     ShopComponent, CartComponent, CheckoutComponent, CustomerAuthComponent, CustomerAccountComponent, OrderSuccessComponent,
     ProductGalleryComponent, ProductDetailComponent, RelatedProductsComponent, ProductIconComponent],
   templateUrl: './content-page.component.html', styleUrl: './content-page.component.css',
@@ -58,12 +60,18 @@ export class ContentPageComponent implements OnInit, OnDestroy {
   page?: PageLayout;
   rows: PageBlock[][] = [];
   error = false;
+  site?: StorefrontContent;
+  siteError = false;
   products: Product[] = [];
   catalogLoading = false;
   catalogError = '';
   private catalogRequested = false;
 
   ngOnInit(): void {
+    this.api.siteContent().pipe(takeUntilDestroyed(this.destroy)).subscribe({
+      next: site => this.site = site,
+      error: () => this.siteError = true,
+    });
     if (this.preview) {
       if (this.studioOrigin.port === '4200') this.studioOrigin.port = '4201';
       if (window.parent !== window) window.parent.postMessage({type: 'page-preview-ready'}, this.studioOrigin.origin);
@@ -119,6 +127,11 @@ export class ContentPageComponent implements OnInit, OnDestroy {
     }
     this.rows = rows;
     if (!this.catalogRequested && sections.some(s => ['collections', 'featured', 'product-grid'].includes(s.type))) this.loadProducts();
+  }
+
+  hasBlock(layout: PageLayout, type: string): boolean { return layout.sections.some(section => section.type === type); }
+  isPrimaryText(layout: PageLayout, block: PageBlock): boolean {
+    return layout.sections.find(section => !['header', 'footer', 'announcement'].includes(section.type)) === block;
   }
 
   retry(): void { this.reload.next(); }

@@ -71,5 +71,7 @@
       <button class="cms-button" type="button" (click)="addItem()">{{ ui.text('builder.addEntry') }}</button>
     </div>
   }
-  @if (!hasItems && !fields[block.type].length) { <p class="commerce-help">{{ ui.text('builder.liveData') }}</p> }
+  @if (block.type === 'header') { <p class="commerce-help">{{ ui.text('builder.headerHelp') }}</p> }
+  @else if (block.type === 'footer') { <p class="commerce-help">{{ ui.text('builder.footerHelp') }}</p> }
+  @else if (!hasItems && !fields[block.type].length) { <p class="commerce-help">{{ ui.text('builder.liveData') }}</p> }
 </div>

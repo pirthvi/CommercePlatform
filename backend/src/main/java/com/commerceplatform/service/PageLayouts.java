@@ -22,7 +22,7 @@ import java.util.UUID;
 @Service
 public class PageLayouts {
     public static final List<String> SYSTEM_PAGES = List.of("home", "shop", "cart", "checkout", "login", "register", "account", "order-success");
-    public static final Set<String> CONTENT_TYPES = Set.of("announcement", "hero", "benefits", "collections", "featured", "story", "values",
+    public static final Set<String> CONTENT_TYPES = Set.of("header", "footer", "announcement", "hero", "benefits", "collections", "featured", "story", "values",
         "banner", "editorial", "text", "gallery", "button", "faq", "product-grid");
     private final ObjectMapper json;
     private final ContentPageRepository pages;
@@ -85,7 +85,32 @@ public class PageLayouts {
                 button.put("buttonPath", page.getButtonLink());
             }
         }
+        ensureSiteFrame(sections);
         replace(page, sections);
+    }
+
+    /** Adds missing page-shell blocks once while keeping saved customizations and their ordering. */
+    public boolean ensureSiteFrame(ArrayNode sections) {
+        boolean changed = false;
+        if (sections.findValuesAsText("type").stream().noneMatch("header"::equals)) {
+            sections.insert(0, frame("header"));
+            changed = true;
+        }
+        if (sections.findValuesAsText("type").stream().noneMatch("footer"::equals)) {
+            sections.add(frame("footer"));
+            changed = true;
+        }
+        return changed;
+    }
+
+    /** The older storefront-content endpoint only stores home-page content blocks. */
+    public ArrayNode legacyHomeSections(ArrayNode sections) {
+        ArrayNode home = json.createArrayNode();
+        for (var section : sections) {
+            String type = section.path("type").asText();
+            if (!"header".equals(type) && !"footer".equals(type)) home.add(section.deepCopy());
+        }
+        return home;
     }
 
     public boolean referencesCategory(long id, String slug) {
@@ -196,19 +221,37 @@ public class PageLayouts {
         pages.findByTemplateKey("home").ifPresent(page -> {
             var locked = pages.findForEditing(page.getId()).orElseThrow();
             // An older editor only understands the original home section types.
-            var sections = read(locked);
-            for (var section : sections) {
+            var previous = read(locked);
+            for (var section : previous) {
                 if (!Set.of("announcement","hero","benefits","collections","featured","story","values","banner","editorial").contains(section.path("type").asText())) {
-                    throw new StoreProblem(HttpStatus.CONFLICT, "usePageBuilder");
+                    if (!Set.of("header", "footer").contains(section.path("type").asText())) throw new StoreProblem(HttpStatus.CONFLICT, "usePageBuilder");
                 }
             }
-            replace(locked, instantiate(json.valueToTree(home)));
+            var sections = instantiate(json.valueToTree(home));
+            for (String type : List.of("header", "footer")) {
+                for (var section : previous) {
+                    if (type.equals(section.path("type").asText())) {
+                        if ("header".equals(type)) sections.insert(0, section.deepCopy());
+                        else sections.add(section.deepCopy());
+                        break;
+                    }
+                }
+            }
+            ensureSiteFrame(sections);
+            replace(locked, sections);
         });
     }
 
     private ObjectNode add(ArrayNode sections, String kind) {
         var section = sections.addObject();
         section.put("id", UUID.randomUUID().toString()).put("type", kind).put("visible", true).putArray("items");
+        return section;
+    }
+
+    private ObjectNode frame(String type) {
+        ObjectNode section = json.createObjectNode();
+        section.put("id", UUID.randomUUID().toString()).put("type", type).put("visible", true);
+        section.set("items", json.createArrayNode());
         return section;
     }
 }

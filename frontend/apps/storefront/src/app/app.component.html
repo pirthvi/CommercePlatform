@@ -5,12 +5,7 @@
   </main>
 }
 @else {
-  <ng-container *ngIf="siteContent$ | async as site">
-    <shop-header [site]="site" [attr.inert]="preview ? '' : null" />
-    <main>
-      <router-outlet />
-    </main>
-    <shop-footer [site]="site" [attr.inert]="preview ? '' : null" />
-  </ng-container>
-  <main class="content-loading" *ngIf="siteContentError">{{ ui.text('app.storefrontContentCouldNotBeLoadedPleaseRefresh') }}</main>
+  <main>
+    <router-outlet />
+  </main>
 }

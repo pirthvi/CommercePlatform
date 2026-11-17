@@ -1,21 +1,28 @@
+<ng-template #productBreadcrumbs>
+  <div class="breadcrumbs pdp-breadcrumbs">
+    <a routerLink="/">{{ ui.text('product-detail.home') }}</a><shop-product-icon slot="breadcrumb" />
+    <a routerLink="/shop">{{ ui.text('product-detail.shopAll') }}</a><shop-product-icon slot="breadcrumb" />
+    <span>{{ pdp.product?.name || ui.text('product-detail.product') }}</span>
+  </div>
+</ng-template>
+<ng-template #productLoading>
+  <div class="loading-state detail-loading" role="status">{{ pdp.error || ui.text('product-detail.loadingProduct') }}
+    @if (pdp.error) { <a routerLink="/shop">{{ ui.text('product-detail.browseAllProducts') }}</a> }
+  </div>
+</ng-template>
 @if (page; as layout) {
-  <ng-container [storePageMeta]="layout.templateKey === 'product' && pdp.product ? {name: pdp.product.name, metaDescription: layout.metaDescription || pdp.product.description} : layout"></ng-container>
-  @if (layout.templateKey === 'product') {
-    <div class="breadcrumbs pdp-breadcrumbs">
-      <a routerLink="/">{{ ui.text('product-detail.home') }}</a><shop-product-icon slot="breadcrumb" />
-      <a routerLink="/shop">{{ ui.text('product-detail.shopAll') }}</a><shop-product-icon slot="breadcrumb" />
-      <span>{{ pdp.product?.name || ui.text('product-detail.product') }}</span>
+  @if (!site) {
+    <div class="content-loading" [attr.role]="siteError ? 'alert' : 'status'">
+      {{ ui.text(siteError ? 'app.storefrontContentCouldNotBeLoadedPleaseRefresh' : 'app.loadingStorefrontContent') }}
     </div>
-    @if (!pdp.product) {
-      <div class="loading-state detail-loading" role="status">{{ pdp.error || ui.text('product-detail.loadingProduct') }}
-        @if (pdp.error) { <a routerLink="/shop">{{ ui.text('product-detail.browseAllProducts') }}</a> }
-      </div>
-    }
-  }
-  @if (!layout.templateKey && !preview) { <div class="page-back"><a routerLink="/">{{ ui.text('content-page.backToTheShop') }}</a></div> }
-  <div [attr.inert]="preview ? '' : null">
-    @if (preview && !rows.length) { <p class="home-empty">{{ ui.text('builder.previewEmpty') }}</p> }
-    @for (row of rows; track row[0].id; let first = $first) {
+  } @else {
+    <ng-container [storePageMeta]="layout.templateKey === 'product' && pdp.product ? {name: pdp.product.name, metaDescription: layout.metaDescription || pdp.product.description} : layout"></ng-container>
+    @if (layout.templateKey === 'product' && !hasBlock(layout, 'header')) { <ng-container *ngTemplateOutlet="productBreadcrumbs" /> }
+    @if (!layout.templateKey && !preview && !hasBlock(layout, 'header')) { <div class="page-back"><a routerLink="/">{{ ui.text('content-page.backToTheShop') }}</a></div> }
+    @if (layout.templateKey === 'product' && !pdp.product && !hasBlock(layout, 'header')) { <ng-container *ngTemplateOutlet="productLoading" /> }
+    <div [attr.inert]="preview ? '' : null">
+      @if (preview && !rows.length) { <p class="home-empty">{{ ui.text('builder.previewEmpty') }}</p> }
+      @for (row of rows; track row[0].id) {
       <div class="component-row" [class.pdp-layout]="row.length === 2"
            [class.pdp-single]="row.length === 1 && (row[0].type === 'product-gallery' || row[0].type === 'product-purchase')">
         @for (section of row; track section.id) {
@@ -23,6 +30,15 @@
             <img class="component-image" [class.utility-image]="section.type !== 'catalog'" [src]="section.imageUrl" [alt]="section.imageAlt || ''">
           }
           @switch (section.type) {
+            @case ('header') {
+              <shop-header [site]="site" [shopBlockColor]="section.color" />
+              @if (layout.templateKey === 'product') {
+                <ng-container *ngTemplateOutlet="productBreadcrumbs" />
+                @if (!pdp.product) { <ng-container *ngTemplateOutlet="productLoading" /> }
+              }
+              @if (!layout.templateKey && !preview) { <div class="page-back"><a routerLink="/">{{ ui.text('content-page.backToTheShop') }}</a></div> }
+            }
+            @case ('footer') { <shop-footer [site]="site" [shopBlockColor]="section.color" /> }
             @case ('announcement') { <shop-announcement-block [shopBlockColor]="section.color" [section]="section" /> }
             @case ('hero') { <shop-hero-section [shopBlockColor]="section.color" [section]="section" /> }
             @case ('benefits') { <shop-benefits-section [shopBlockColor]="section.color" [section]="section" /> }
@@ -32,7 +48,7 @@
             @case ('values') { <shop-values-section [shopBlockColor]="section.color" [section]="section" /> }
             @case ('banner') { <shop-banner-section [shopBlockColor]="section.color" [section]="section" /> }
             @case ('editorial') { <shop-editorial-section [shopBlockColor]="section.color" [section]="section" /> }
-            @case ('text') { <shop-text-block [shopBlockColor]="section.color" [section]="section" [primary]="first" /> }
+            @case ('text') { <shop-text-block [shopBlockColor]="section.color" [section]="section" [primary]="isPrimaryText(layout, section)" /> }
             @case ('gallery') { <shop-gallery-block [shopBlockColor]="section.color" [section]="section" /> }
             @case ('button') { <shop-button-block [shopBlockColor]="section.color" [section]="section" /> }
             @case ('faq') { <shop-faq-block [shopBlockColor]="section.color" [section]="section" /> }
@@ -53,8 +69,9 @@
           }
         }
       </div>
-    }
-  </div>
+      }
+    </div>
+  }
 } @else {
   <section class="page-heading content-error" [attr.role]="error ? 'alert' : 'status'">
     <h1>{{ ui.text(error ? 'content-page.weCouldnTFindThatPage' : 'content-page.openingYourPage') }}</h1>

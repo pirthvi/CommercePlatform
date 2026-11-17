@@ -46,8 +46,8 @@ export interface PageLayout {
   sections: PageBlock[];
 }
 
-export const contentTypes = ['announcement', 'text', 'hero', 'gallery', 'story', 'button', 'faq', 'collections', 'product-grid',
-  'featured', 'banner', 'benefits', 'values', 'editorial'] as const;
+export const contentTypes = ['header', 'announcement', 'text', 'hero', 'gallery', 'story', 'button', 'faq', 'collections', 'product-grid',
+  'featured', 'banner', 'benefits', 'values', 'editorial', 'footer'] as const;
 export type CommerceBlock = 'catalog' | 'product-gallery' | 'product-purchase' | 'related-products' | 'cart' | 'checkout' | 'customer-form' | 'account' | 'receipt';
 export type BlockType = (typeof contentTypes)[number] | CommerceBlock;
 export function includesBlockCategory(block: PageBlock | undefined, slug: string | null | undefined): boolean {
@@ -61,6 +61,7 @@ const copy: TextField[] = ['eyebrow', 'heading', 'body'];
 const action: TextField[] = ['buttonLabel', 'buttonPath', 'buttonCategory'];
 const photo: TextField[] = ['imageAlt', 'imageCaption'];
 export const blockFields: Record<BlockType, TextField[]> = {
+  header: [], footer: [],
   announcement: ['heading', 'body'],
   text: [...copy, ...photo],
   hero: [...copy, ...photo, ...action],

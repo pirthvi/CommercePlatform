@@ -27,7 +27,7 @@ import java.util.Set;
 @Component
 @Order(1)
 class ApparelStarter implements ApplicationRunner {
-    private static final int VERSION = 2;
+    private static final int VERSION = 3;
     private static final Set<String> PHOTO_BLOCKS = Set.of("text", "hero", "banner", "story", "editorial",
         "catalog", "cart", "checkout", "customer-form", "account", "receipt");
     private final StorefrontSettingsRepository sites;
@@ -94,10 +94,12 @@ class ApparelStarter implements ApplicationRunner {
                     String eyebrow = defaultText(page.getEyebrow(), original, old, "eyebrow", "");
                     main.put("eyebrow", eyebrow);
                     if (!current.isEmpty()) {
-                        var first = current.get(0);
-                        if (first.path("imageUrl").asText("").startsWith("/api/")) {
-                            main.set("imageUrl", first.get("imageUrl"));
-                            main.put("imageAlt", first.path("imageAlt").asText(page.getTitle()));
+                        for (var saved : current) {
+                            if (requiredMain(key).equals(saved.path("type").asText()) && saved.path("imageUrl").asText("").startsWith("/api/")) {
+                                main.set("imageUrl", saved.get("imageUrl"));
+                                main.put("imageAlt", saved.path("imageAlt").asText(page.getTitle()));
+                                break;
+                            }
                         }
                         for (var block : current) if ("button".equals(block.path("type").asText())) composed.add(block);
                     }
@@ -106,6 +108,8 @@ class ApparelStarter implements ApplicationRunner {
             } else if (supplyMissingPhoto(current, spec, starter.path("customPageImage"))) {
                 saveLayout(site, page, current);
             }
+            current = layouts.read(page);
+            if (layouts.ensureSiteFrame(current)) saveLayout(site, page, current);
         }
         site.recordApparelStarter(VERSION);
     }
@@ -123,23 +127,29 @@ class ApparelStarter implements ApplicationRunner {
 
     private boolean isInitialLayout(String key, ArrayNode sections) {
         if (sections.isEmpty()) return true;
+        var types = sections.findValuesAsText("type").stream().filter(type -> !Set.of("header", "footer").contains(type)).toList();
         if ("home".equals(key)) {
-            var types = sections.findValuesAsText("type");
             return types.equals(List.of("hero","benefits","collections","featured","story","values","banner"))
                 || types.equals(List.of("announcement","hero","benefits","collections","product-grid","story","banner"));
         }
         if ("product".equals(key)) {
-            return sections.findValuesAsText("type").equals(List.of("product-gallery","product-purchase","related-products"));
+            return types.equals(List.of("product-gallery","product-purchase","related-products"));
         }
         var required = PageLayouts.required(key);
         String main = required.isEmpty() ? "text" : required.get(0);
-        return main.equals(sections.get(0).path("type").asText()) && (sections.size() == 1 ||
-            (sections.size() == 2 && "button".equals(sections.get(1).path("type").asText())));
+        return !types.isEmpty() && main.equals(types.get(0)) && (types.size() == 1 ||
+            (types.size() == 2 && "button".equals(types.get(1))));
+    }
+
+    private String requiredMain(String key) {
+        var required = PageLayouts.required(key);
+        return required.isEmpty() ? "text" : required.get(0);
     }
 
     private void preserveHomeEdits(ArrayNode previous, ArrayNode next, JsonNode defaults, JsonNode legacy) {
         for (var old : previous) {
             String type = old.path("type").asText();
+            if (Set.of("header", "footer").contains(type)) continue;
             var original = by(defaults, "type", type);
             var previousDefault = by(legacy, "type", type);
             var target = by(next, "type", "featured".equals(type) ? "product-grid" : type);
@@ -196,7 +206,7 @@ class ApparelStarter implements ApplicationRunner {
 
     private void saveLayout(StorefrontSettings site, ContentPage page, ArrayNode blocks) {
         layouts.replace(page, blocks);
-        if ("home".equals(page.getTemplateKey())) site.setHomeSectionsJson(blocks.toString());
+        if ("home".equals(page.getTemplateKey())) site.setHomeSectionsJson(layouts.legacyHomeSections(blocks).toString());
         else if (!"product".equals(page.getTemplateKey())) layouts.updateLegacyFields(page, blocks);
     }
 

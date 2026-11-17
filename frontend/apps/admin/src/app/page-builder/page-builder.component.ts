@@ -46,8 +46,11 @@ export class PageBuilderComponent implements OnInit, OnDestroy {
   private uploads: Record<string, File> = {};
   private customSlug = false;
   get available(): readonly BlockType[] {
-    return this.page?.templateKey === 'product' && !this.page.sections.some(b => b.type === 'related-products')
-      ? [...contentTypes, 'related-products'] : contentTypes;
+    const sections = this.page?.sections || [];
+    const available = contentTypes.filter(type =>
+      !(['header', 'footer'] as BlockType[]).includes(type) || !sections.some(block => block.type === type));
+    return this.page?.templateKey === 'product' && !sections.some(b => b.type === 'related-products')
+      ? [...available, 'related-products'] : available;
   }
 
   ngOnInit(): void {
@@ -75,7 +78,9 @@ export class PageBuilderComponent implements OnInit, OnDestroy {
     });
   }
   private blank(): PageLayout {
-    return { id: null, title: '', slug: '', metaDescription: '', templateKey: null, published: false, revision: 0, required: [], sections: [] };
+    const frame = (type: BlockType): PageBlock => ({ id: newBlockId(), type, visible: true, items: [] });
+    return { id: null, title: '', slug: '', metaDescription: '', templateKey: null, published: false, revision: 0, required: [],
+      sections: [frame('header'), frame('footer')] };
   }
   private open(page: PageLayout): void {
     const selection = this.selected?.id;

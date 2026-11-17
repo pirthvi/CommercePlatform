@@ -98,13 +98,14 @@ public class PageLayoutController {
 
         var sections = edit.sections();
         var required = PageLayouts.required(page.getTemplateKey());
-        Set<String> ids = new HashSet<>(), functional = new HashSet<>();
+        Set<String> ids = new HashSet<>(), functional = new HashSet<>(), siteFrame = new HashSet<>();
         if (sections.size() > 80 || sections.toString().length() > 512000) throw invalid();
         for (var node : sections) {
             if (!(node instanceof ObjectNode section)) throw invalid();
             section.fieldNames().forEachRemaining(key -> { if (!STRUCTURE.contains(key) && !COPY.contains(key)) throw invalid(); });
             String kind = section.path("type").asText();
             if (!section.path("visible").isBoolean()) throw invalid();
+            if ((kind.equals("header") || kind.equals("footer")) && !siteFrame.add(kind)) throw invalid();
             var color = section.get("color");
             if (color != null && !color.isNull() && (!color.isTextual() || !color.textValue().matches("^#[0-9a-fA-F]{6}$"))) throw invalid();
             if (!PageLayouts.CONTENT_TYPES.contains(kind)) {
@@ -133,7 +134,7 @@ public class PageLayoutController {
         layouts.checkSelections(sections, previous);
         page.setTitle(edit.title()); page.setSlug(edit.slug()); page.setMetaDescription(edit.metaDescription()); page.setPublished(edit.published());
         layouts.replace(page, sections);
-        if ("home".equals(page.getTemplateKey())) settings.findById(1L).orElseThrow().setHomeSectionsJson(sections.toString());
+        if ("home".equals(page.getTemplateKey())) settings.findById(1L).orElseThrow().setHomeSectionsJson(layouts.legacyHomeSections(sections).toString());
         else layouts.updateLegacyFields(page, sections);
         // Retire only blobs owned by this page and removed from its published composition.
         var retained = new HashSet<String>();
