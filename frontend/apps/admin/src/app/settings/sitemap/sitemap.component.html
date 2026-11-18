@@ -1,0 +1,42 @@
+<div class="cms-workspace">
+  <div class="cms-heading"><h1>{{ ui.text('sitemap.title') }}</h1></div>
+  @if (loading) {
+    <section class="cms-panel" role="status">{{ ui.text('sitemap.loading') }}</section>
+  } @else {
+    @if (error) { <p class="flash error-flash" role="alert">{{ error }}</p> }
+    <form class="cms-panel" #sitemapForm="ngForm" (ngSubmit)="save()">
+      <h2>{{ ui.text('sitemap.configuration') }}</h2>
+      <p>{{ ui.text('sitemap.description') }}</p>
+      <label class="site-url">{{ ui.text('sitemap.storefrontUrl') }}
+        <input type="url" name="siteUrl" [(ngModel)]="siteUrl" required maxlength="300" placeholder="https://example.com">
+      </label>
+      <p class="help">{{ ui.text('sitemap.storefrontUrlHelp') }}</p>
+      <div class="actions">
+        <button class="cms-button" type="submit" [disabled]="!!busy || sitemapForm.invalid">
+          {{ busy === 'save' ? ui.text('sitemap.saving') : ui.text('sitemap.saveAndGenerate') }}
+        </button>
+        <button class="cms-text-action" type="button" [disabled]="!!busy || !siteUrl" (click)="generate()">
+          {{ busy === 'generate' ? ui.text('sitemap.generating') : ui.text('sitemap.generateNow') }}
+        </button>
+        @if (status?.publicSitemapUrl) {
+          <a class="sitemap-link" [href]="publicSitemapUrl" target="_blank" rel="noopener">{{ ui.text('sitemap.openSitemap') }} ↗</a>
+        }
+      </div>
+      @if (message) { <p class="message" role="status">{{ message }}</p> }
+      @if (status?.lastRunSucceeded === false && status?.lastError) { <p class="error-detail" role="alert">{{ status?.lastError }}</p> }
+    </form>
+    @if (status; as job) {
+      <section class="cms-panel job-status" aria-labelledby="sitemap-status-heading">
+        <h2 id="sitemap-status-heading">{{ ui.text('sitemap.jobStatus') }}</h2>
+        <dl>
+          <div><dt>{{ ui.text('sitemap.schedule') }}</dt><dd>{{ job.timeZone }} · <code>{{ job.schedule }}</code></dd></div>
+          <div><dt>{{ ui.text('sitemap.nextRun') }}</dt><dd>{{ job.nextRunAt ? (job.nextRunAt | date:'medium':'UTC') : ui.text('sitemap.notScheduled') }}</dd></div>
+          <div><dt>{{ ui.text('sitemap.lastAttempt') }}</dt><dd>{{ job.lastAttemptAt ? (job.lastAttemptAt | date:'medium') : ui.text('sitemap.neverRun') }}</dd></div>
+          <div><dt>{{ ui.text('sitemap.lastSuccess') }}</dt><dd>{{ job.lastSuccessAt ? (job.lastSuccessAt | date:'medium') : ui.text('sitemap.neverGenerated') }}</dd></div>
+          <div><dt>{{ ui.text('sitemap.urlsGenerated') }}</dt><dd>{{ job.urlCount }}</dd></div>
+          <div><dt>{{ ui.text('sitemap.publicAddress') }}</dt><dd><a [href]="publicSitemapUrl" target="_blank" rel="noopener">{{ publicSitemapUrl }}</a></dd></div>
+        </dl>
+      </section>
+    }
+  }
+</div>

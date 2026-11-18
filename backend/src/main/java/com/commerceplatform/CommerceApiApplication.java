@@ -2,11 +2,13 @@ package com.commerceplatform;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 
 @SpringBootApplication
+@EnableScheduling
 public class CommerceApiApplication {
     public static void main(String[] args) {
         var application = new SpringApplication(CommerceApiApplication.class);

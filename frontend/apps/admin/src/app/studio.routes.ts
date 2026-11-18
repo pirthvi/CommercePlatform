@@ -10,6 +10,7 @@ import { CategoriesComponent } from './catalog/categories/categories.component';
 import { InventoryComponent } from './catalog/inventory/inventory.component';
 import { CommerceSettingsComponent } from './settings/commerce/commerce.component';
 import { InterfaceTextComponent } from './settings/interface-text/interface-text.component';
+import { SitemapComponent } from './settings/sitemap/sitemap.component';
 import { ProductsComponent } from './products/products.component';
 import { SiteContentComponent } from './site-content/site-content.component';
 import { editorLabels, siteEditors } from './studio-navigation';
@@ -27,6 +28,7 @@ export const studioRoutes: Routes = [
   { path: 'products/inventory', component: InventoryComponent, title: pageTitle('navigation.inventory') },
   { path: 'settings', pathMatch:'full', redirectTo: 'settings/commerce' },
   { path: 'settings/commerce', component: CommerceSettingsComponent, title: pageTitle('navigation.commerce') },
+  { path: 'settings/sitemap', component: SitemapComponent, title: pageTitle('navigation.sitemap') },
   { path: 'settings/text', component: InterfaceTextComponent, title: pageTitle('navigation.text') },
   { path: 'products', component: ProductsComponent, title: pageTitle('navigation.products') },
   { path: 'orders', component: OrdersComponent, title: pageTitle('navigation.orders') },

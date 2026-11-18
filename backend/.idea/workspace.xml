@@ -5,105 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9c7c106-d868-46e0-a8af-97ef9e0ff672" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/app.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/catalog/categories.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/catalog/categories.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/catalog/categories.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/catalog/inventory.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/catalog/inventory.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/catalog/inventory.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-footer.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-footer.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-footer.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-image-picker.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-image-picker.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-image-picker.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-links.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-links.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/content-links.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/dashboard.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/dashboard.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/dashboard.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/home-editor.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/login.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/login.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/login.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/orders.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/orders.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/orders.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/block-editor.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/page-builder.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/page-builder.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-builder/page-builder.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-templates/product-page.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-templates/product-page.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/page-templates/product-page.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/pages.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/pages.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/pages.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/products.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/products.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/products.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/commerce.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/interface-text.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/interface-text.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/settings/interface-text.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/site-content.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/site-content.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/site-content.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/CommerceApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/CommerceApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/commerceplatform/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/commerceplatform/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/commerce/interface-text.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/commerce/interface-text.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/admin-api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/admin-api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell/shell.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/shell/shell.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/app/studio.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/app/studio.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/admin/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/admin/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/blocks/product-grid/product-grid.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/blocks/product-grid/product-grid.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/featured/featured.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/home/featured/featured.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/cart.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/cart.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/cart.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/checkout.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/checkout.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/checkout.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/content-page.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-account.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-account.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-account.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-auth.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-auth.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/customer-auth.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/order-success.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/order-success.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/order-success.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-detail.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-detail.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-detail.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-gallery.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-gallery.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/product-gallery.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/related-products.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/related-products.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/related-products.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/shop.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/shop.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/pages/shop.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/product-card.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/product-card.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/app/product-card.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/apps/storefront/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/apps/storefront/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/proxy.conf.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/proxy.conf.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,23 +25,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4217939298049982E-4" />
-      <entry key="MS500" value="0.17256349450091038" />
-      <entry key="S2" value="0.8661469372502186" />
-      <entry key="S5" value="1.3872943546976382" />
-      <entry key="S10" value="1.6566136927057422" />
-      <entry key="S30" value="1.8759728194238" />
-      <entry key="S60" value="1.936695666104778" />
-      <entry key="M2" value="1.9680175259916952" />
-      <entry key="M5" value="1.9871267395588503" />
-      <entry key="M10" value="1.9935499072926472" />
-      <entry key="M15" value="1.9956969402750608" />
-      <entry key="M30" value="1.9978469696102406" />
-      <entry key="H1" value="1.9989231093791342" />
-      <entry key="H2" value="1.9994614607962742" />
-      <entry key="H4" value="1.9997307069202124" />
-      <entry key="D1" value="1.9999551145588224" />
-      <entry key="W1" value="1.9999935877142458" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.6072642219588156E-75" />
+      <entry key="S2" value="2.0022662146549928E-19" />
+      <entry key="S5" value="3.315955759837731E-8" />
+      <entry key="S10" value="1.820976595082356E-4" />
+      <entry key="S30" value="0.05668064555832147" />
+      <entry key="S60" value="0.23807697401958355" />
+      <entry key="M2" value="0.48793132100694614" />
+      <entry key="M5" value="0.7504875271229269" />
+      <entry key="M10" value="0.8663068319729026" />
+      <entry key="M15" value="0.9087571194581154" />
+      <entry key="M30" value="0.9532875324151237" />
+      <entry key="H1" value="0.9763644465281344" />
+      <entry key="H2" value="0.9881170118997301" />
+      <entry key="H4" value="0.9973413964420993" />
+      <entry key="D1" value="1.686628869373389" />
+      <entry key="W1" value="2.7169364648799115" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="1.0" />
@@ -146,30 +56,30 @@
       <entry key="M10" value="1.0" />
       <entry key="M15" value="1.0" />
       <entry key="M30" value="1.0" />
-      <entry key="H1" value="1.0" />
-      <entry key="H2" value="1.0" />
-      <entry key="H4" value="1.0" />
-      <entry key="D1" value="1.0" />
-      <entry key="W1" value="1.0" />
+      <entry key="H1" value="1.0000000000074465" />
+      <entry key="H2" value="1.0000027288332969" />
+      <entry key="H4" value="1.0016519180660393" />
+      <entry key="D1" value="1.343820222581741" />
+      <entry key="W1" value="1.8585421685346843" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.876073722782305E-4" />
-      <entry key="MS500" value="0.19388762695146025" />
-      <entry key="S2" value="1.1041720898124048" />
-      <entry key="S5" value="1.907002561099806" />
-      <entry key="S10" value="2.3675637574877113" />
-      <entry key="S30" value="2.765794449691567" />
-      <entry key="S60" value="2.8796508123566023" />
-      <entry key="M2" value="2.938987275737867" />
-      <entry key="M5" value="2.9753902562336942" />
-      <entry key="M10" value="2.9876607226183203" />
-      <entry key="M15" value="2.9917661472844683" />
-      <entry key="M30" value="2.9958792341969436" />
-      <entry key="H1" value="2.9979386561953727" />
-      <entry key="H2" value="2.998969087741558" />
-      <entry key="H4" value="2.9994844837654444" />
-      <entry key="D1" value="2.9999140722782274" />
-      <entry key="W1" value="2.9999877244066835" />
+      <entry key="MS100" value="1.498476713325771E-7" />
+      <entry key="MS500" value="0.04316482650449552" />
+      <entry key="S2" value="0.45580858416490133" />
+      <entry key="S5" value="0.7303197028929581" />
+      <entry key="S10" value="0.8547586086641681" />
+      <entry key="S30" value="1.0044937452312497" />
+      <entry key="S60" value="1.2097867958129422" />
+      <entry key="M2" value="1.472414429227065" />
+      <entry key="M5" value="1.7437182084996663" />
+      <entry key="M10" value="1.8627990662799563" />
+      <entry key="M15" value="1.906388593121672" />
+      <entry key="M30" value="1.9520875416839063" />
+      <entry key="H1" value="1.9757603788544589" />
+      <entry key="H2" value="1.987816669420007" />
+      <entry key="H4" value="1.9988411114627311" />
+      <entry key="D1" value="3.0304096449147586" />
+      <entry key="W1" value="4.5754699792109905" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -191,7 +101,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.Commerce Platform API.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "commerce-platform-v2",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",

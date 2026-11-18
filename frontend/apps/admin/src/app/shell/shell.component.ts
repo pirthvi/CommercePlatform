@@ -33,7 +33,7 @@ export class AdminShellComponent implements OnInit {
     { path: '/pages', label: 'navigation.pages', icon: '▤', children: pageTabs },
     { path: '/site-content', label: 'navigation.siteContent', icon: '☷', children: siteTabs },
     { path: '/settings', label: 'navigation.settings', icon: '⚙', children: [
-      {path:'/settings/commerce', label:'navigation.commerce'}, {path:'/settings/text', label:'navigation.text'},
+      {path:'/settings/commerce', label:'navigation.commerce'}, {path:'/settings/sitemap', label:'navigation.sitemap'}, {path:'/settings/text', label:'navigation.text'},
     ] },
   ];
   path = this.router.url.split(/[?#]/)[0];

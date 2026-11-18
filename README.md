@@ -12,7 +12,7 @@ Use Java 17 or later, Maven, and Node.js 22.12 or later. Start Spring Boot from 
 | Customer storefront | http://localhost:4200 | `npm run dev` from `frontend` starts both Angular apps |
 | Merchant Studio | http://localhost:4201 | The same `npm run dev` process serves Studio |
 
-Run `npm install` in `frontend` on first setup. The development servers proxy `/api` to port 8080. Studio sign-in uses the admin credentials configured in the backend environment through `ADMIN_USERNAME` and `ADMIN_PASSWORD`.
+Run `npm install` in `frontend` on first setup. The development servers proxy `/api` and `/sitemap.xml` to port 8080. Studio sign-in uses the admin credentials configured in the backend environment through `ADMIN_USERNAME` and `ADMIN_PASSWORD`.
 
 New local stores use `backend/data/commerce.mv.db`. An installation with only the previous database file continues to use it. An explicit `SPRING_DATASOURCE_URL` takes precedence. Set `JWT_SECRET` for deployed instances. Local development creates a persistent signing key under `backend/data` when no secret is configured.
 
@@ -30,6 +30,7 @@ New local stores use `backend/data/commerce.mv.db`. An installation with only th
 | Site content | Edit Logo, Navigation, header controls and Footer. Category links use stable category slugs. |
 | Settings → Interface text | Edit storefront and Studio wording by component, including form labels and error messages. Keep placeholders such as `{count}` and `{amount}` when editing text. |
 | Settings → Commerce settings | Set the catalog currency, delivery fee, optional free-delivery threshold, storefront theme color and font style. Currency selection changes the denomination of catalog prices. Existing receipts retain their recorded currency and amounts. |
+| Settings → Sitemap | Set the public storefront domain, inspect the scheduled job and its last/next run, and generate the sitemap immediately. The job rebuilds from published pages and active products on startup and daily at 03:00 UTC by default. |
 | Orders | Review orders and update fulfilment status. Cancelling an order returns its units to stock. Reopening checks availability again. |
 
 On its first startup with the apparel starter, Spring Boot installs four purchasable styles across Tops and Trousers, including prices, opening stock, fabric, fit, care instructions and two photos per style. The Home collection points to those product IDs. The shop, product, cart, checkout, sign-in, registration, account, confirmation, about, delivery and order help pages come with editable components and photography. Studio and the storefront serve the photos from the database.
@@ -47,10 +48,11 @@ The API verifies prices and stock at checkout, records the order and inventory m
 | Content | `/api/content/site`, `/api/content/{slug}`, `/api/content/product-page` | `/api/admin/pages`, `/api/admin/site-content/{section}`, `PUT /api/admin/product-page` |
 | Page layouts | `GET /api/content/layouts/page/{slug}`, `GET /api/content/layouts/template/{key}` | `GET`, `POST` and `PUT` under `/api/admin/page-layouts` |
 | Settings and wording | `GET /api/content/interface/{surface}` | `PATCH /api/admin/interface/{surface}`, `PUT /api/admin/commerce` |
+| Sitemap | `GET /sitemap.xml` or `GET /api/sitemap.xml` | `GET`, `PUT` and `POST` under `/api/admin/sitemap` |
 | Accounts, carts and orders | `/api/auth`, `/api/cart`, `/api/orders`, `/api/account/orders` | `POST /api/admin/session`, `/api/admin/orders` |
 
 Angular components have adjacent `.component.ts`, `.component.html` and `.component.css` files. Home sections live in `frontend/apps/storefront/src/app/home` and the shared header, footer and brand components in `layout`. Global stylesheets contain shared design rules. The `frontend/shared` directory contains the configuration, text and money formatting used by the two apps. Backend resources in `commerce/` seed missing database entries on startup. Studio edits are stored in the database.
 
-Run `mvn package` from `backend` and `npm run build:storefront` and `npm run build:admin` from `frontend` for production builds. Configure deployment origins, database connection, admin credentials and a private `JWT_SECRET` through the backend environment.
+Run `mvn package` from `backend` and `npm run build:storefront` and `npm run build:admin` from `frontend` for production builds. Configure deployment origins, database connection, admin credentials and a private `JWT_SECRET` through the backend environment. `SITEMAP_CRON` can override the six-field Spring cron expression; `SITEMAP_SITE_URL` can provide the initial public storefront origin. The deployed storefront host must route `/sitemap.xml` to the backend, as the development proxy does.
 
 After packaging the API, run `node --test tests/commerce.test.cjs` from `backend`. The tests launch the packaged application on a temporary loopback port with its own disposable database. They exercise the apparel starter, image delivery, page publishing, stock and checkout, then restart the backend to verify that merchant edits persist.

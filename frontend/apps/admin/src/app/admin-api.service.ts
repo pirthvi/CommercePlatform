@@ -9,6 +9,11 @@ import { ContentArea } from './studio-navigation';
 
 export type ProductWrite = Omit<Product, 'id' | 'imageUrl' | 'galleryImages' | 'categorySlug'> & { replaceGallery: boolean; previousStock?: number };
 export interface StockMovement { id: number; quantityChange: number; balance: number; reason: string; createdAt: string; }
+export interface SitemapJobStatus {
+  siteUrl: string; schedule: string; timeZone: string; nextRunAt: string | null;
+  lastAttemptAt: string | null; lastSuccessAt: string | null; lastRunSucceeded: boolean | null;
+  urlCount: number; lastError: string | null; publicSitemapUrl: string;
+}
 export type PageWrite = Omit<ContentPage, 'id' | 'updatedAt' | 'heroImageUrl'> & { clearHeroImage: boolean };
 
 @Injectable({ providedIn: 'root' })
@@ -29,6 +34,9 @@ export class AdminApiService {
   interfaceConfig(surface: Surface) { return this.http.get<InterfaceConfig>('/api/content/interface/' + surface); }
   saveTexts(surface: Surface, values: Record<string, string>) { return this.http.patch<void>(this.base + '/interface/' + surface, { values }); }
   saveCommerce(options: CommerceOptions, storeName?: string) { return this.http.put<CommerceOptions>(this.base + '/commerce', { ...options, ...(storeName === undefined ? {} : { storeName }) }); }
+  sitemap(): Observable<SitemapJobStatus> { return this.http.get<SitemapJobStatus>(this.base + '/sitemap'); }
+  saveSitemap(siteUrl: string): Observable<SitemapJobStatus> { return this.http.put<SitemapJobStatus>(this.base + '/sitemap', { siteUrl }); }
+  generateSitemap(): Observable<SitemapJobStatus> { return this.http.post<SitemapJobStatus>(this.base + '/sitemap/generate', {}); }
   saveProductPage(texts: Record<string, string>, symbols: Record<string, string>, uploads: Record<string, File | null>) {
     const form = new FormData();
     const removeImages = Object.keys(uploads).filter(slot => uploads[slot] === null);
